@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -26,82 +27,88 @@ import {
 } from '@mui/icons-material';
 
 const SanitaryAidPage = () => {
+  const { t } = useTranslation();
+  
   const donationBins = [
     {
       id: 1,
-      name: 'Cape Town Central Library',
-      address: '60 Strand Street, Cape Town City Centre, Western Cape',
-      phone: '+27 21 400 3500',
-      operatingHours: 'Mon-Fri: 8:00 AM - 6:00 PM, Sat: 9:00 AM - 4:00 PM',
-      availableItems: ['Sanitary Pads', 'Tampons', 'Soap', 'Underwear'],
+      name: t('sanitaryAid.donationBins.locations.capeTown.name'),
+      address: t('sanitaryAid.donationBins.locations.capeTown.address'),
+      phone: t('sanitaryAid.donationBins.locations.capeTown.phone'),
+      operatingHours: t('sanitaryAid.donationBins.locations.capeTown.hours'),
+      availableItems: [t('sanitaryAid.donationBins.items.sanitaryPads'), t('sanitaryAid.donationBins.items.tampons'), t('sanitaryAid.donationBins.items.soap'), t('sanitaryAid.donationBins.items.underwear')],
       lastRestocked: '2025-08-28',
-      status: 'Well Stocked',
-      description: 'Located at the main entrance. Free access to essential hygiene products for women in need.',
-      contactPerson: 'Sarah Mthembu',
+      status: t('sanitaryAid.donationBins.status.wellStocked'),
+      description: t('sanitaryAid.donationBins.locations.capeTown.description'),
+      contactPerson: t('sanitaryAid.donationBins.locations.capeTown.contact'),
     },
     {
       id: 2,
-      name: 'Johannesburg Women\'s Health Clinic',
-      address: '123 Commissioner Street, Johannesburg Central, Gauteng',
-      phone: '+27 11 358 0000',
-      operatingHours: 'Mon-Fri: 7:00 AM - 7:00 PM, Weekends: 8:00 AM - 2:00 PM',
-      availableItems: ['Sanitary Pads', 'Tampons', 'Menstrual Cups', 'Soap', 'Toilet Paper'],
+      name: t('sanitaryAid.donationBins.locations.johannesburg.name'),
+      address: t('sanitaryAid.donationBins.locations.johannesburg.address'),
+      phone: t('sanitaryAid.donationBins.locations.johannesburg.phone'),
+      operatingHours: t('sanitaryAid.donationBins.locations.johannesburg.hours'),
+      availableItems: [t('sanitaryAid.donationBins.items.sanitaryPads'), t('sanitaryAid.donationBins.items.tampons'), t('sanitaryAid.donationBins.items.menstrualCups'), t('sanitaryAid.donationBins.items.soap'), t('sanitaryAid.donationBins.items.toiletPaper')],
       lastRestocked: '2025-08-29',
-      status: 'Well Stocked',
-      description: 'Free hygiene products available at reception. No questions asked policy.',
-      contactPerson: 'Dr. Nalini Patel',
+      status: t('sanitaryAid.donationBins.status.wellStocked'),
+      description: t('sanitaryAid.donationBins.locations.johannesburg.description'),
+      contactPerson: t('sanitaryAid.donationBins.locations.johannesburg.contact'),
     },
     {
       id: 3,
-      name: 'Durban Community Center',
-      address: '45 Dr Pixley KaSeme Street, Durban Central, KwaZulu-Natal',
-      phone: '+27 31 311 1111',
-      operatingHours: 'Mon-Sat: 8:00 AM - 5:00 PM, Sun: Closed',
-      availableItems: ['Sanitary Pads', 'Soap', 'Shampoo', 'Toothbrush', 'Toothpaste'],
+      name: t('sanitaryAid.donationBins.locations.durban.name'),
+      address: t('sanitaryAid.donationBins.locations.durban.address'),
+      phone: t('sanitaryAid.donationBins.locations.durban.phone'),
+      operatingHours: t('sanitaryAid.donationBins.locations.durban.hours'),
+      availableItems: [t('sanitaryAid.donationBins.items.sanitaryPads'), t('sanitaryAid.donationBins.items.soap'), t('sanitaryAid.donationBins.items.shampoo'), t('sanitaryAid.donationBins.items.toothbrush'), t('sanitaryAid.donationBins.items.toothpaste')],
       lastRestocked: '2025-08-26',
-      status: 'Low Stock',
-      description: 'Community-supported donation bin. Help yourself to what you need.',
-      contactPerson: 'Nomthandazo Dlamini',
+      status: t('sanitaryAid.donationBins.status.lowStock'),
+      description: t('sanitaryAid.donationBins.locations.durban.description'),
+      contactPerson: t('sanitaryAid.donationBins.locations.durban.contact'),
     },
   ];
 
   const hygieneTips = [
     {
-      title: 'Menstrual Hygiene',
+      title: t('sanitaryAid.hygieneTips.menstrualHygiene.title'),
       tips: [
-        'Change sanitary products every 4-6 hours',
-        'Wash hands before and after changing products',
-        'Use only one method at a time (pad OR tampon)',
-        'Keep track of your cycle for better planning'
+        t('sanitaryAid.hygieneTips.menstrualHygiene.tips.tip1'),
+        t('sanitaryAid.hygieneTips.menstrualHygiene.tips.tip2'),
+        t('sanitaryAid.hygieneTips.menstrualHygiene.tips.tip3'),
+        t('sanitaryAid.hygieneTips.menstrualHygiene.tips.tip4')
       ]
     },
     {
-      title: 'General Hygiene',
+      title: t('sanitaryAid.hygieneTips.generalHygiene.title'),
       tips: [
-        'Wash intimate areas with warm water and mild soap',
-        'Always wipe from front to back',
-        'Wear clean, cotton underwear',
-        'Change underwear daily'
+        t('sanitaryAid.hygieneTips.generalHygiene.tips.tip1'),
+        t('sanitaryAid.hygieneTips.generalHygiene.tips.tip2'),
+        t('sanitaryAid.hygieneTips.generalHygiene.tips.tip3'),
+        t('sanitaryAid.hygieneTips.generalHygiene.tips.tip4')
       ]
     },
     {
-      title: 'Emergency Alternatives',
+      title: t('sanitaryAid.hygieneTips.emergencyAlternatives.title'),
       tips: [
-        'Clean cloth can be used temporarily',
-        'Toilet paper folded multiple times',
-        'Always prioritize cleanliness',
-        'Seek proper products as soon as possible'
+        t('sanitaryAid.hygieneTips.emergencyAlternatives.tips.tip1'),
+        t('sanitaryAid.hygieneTips.emergencyAlternatives.tips.tip2'),
+        t('sanitaryAid.hygieneTips.emergencyAlternatives.tips.tip3'),
+        t('sanitaryAid.hygieneTips.emergencyAlternatives.tips.tip4')
       ]
     }
   ];
 
   const getStatusColor = (status) => {
+    const wellStocked = t('sanitaryAid.donationBins.status.wellStocked').toLowerCase();
+    const lowStock = t('sanitaryAid.donationBins.status.lowStock').toLowerCase();
+    const outOfStock = t('sanitaryAid.donationBins.status.outOfStock').toLowerCase();
+    
     switch (status.toLowerCase()) {
-      case 'well stocked':
+      case wellStocked:
         return 'success';
-      case 'low stock':
+      case lowStock:
         return 'warning';
-      case 'out of stock':
+      case outOfStock:
         return 'error';
       default:
         return 'default';
@@ -123,10 +130,10 @@ const SanitaryAidPage = () => {
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <LocalHospital sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-            Sanitary Aid & Hygiene Support
+            {t('sanitaryAid.title')}
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 700, mx: 'auto' }}>
-            Access free sanitary products and hygiene essentials from our donation bins across South Africa
+            {t('sanitaryAid.subtitle')}
           </Typography>
         </Box>
 
@@ -135,7 +142,7 @@ const SanitaryAidPage = () => {
           <Grid item xs={12} lg={8}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <Inventory sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Donation Bin Locations
+              {t('sanitaryAid.donationBins.title')}
             </Typography>
             
             {donationBins.map((bin) => (
@@ -161,7 +168,7 @@ const SanitaryAidPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <LocationOn sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Address:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('sanitaryAid.donationBins.address')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>{bin.address}</Typography>
                       </Box>
@@ -169,7 +176,7 @@ const SanitaryAidPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <AccessTime sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Hours:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('sanitaryAid.donationBins.hours')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>{bin.operatingHours}</Typography>
                       </Box>
@@ -177,7 +184,7 @@ const SanitaryAidPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <Phone sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Contact:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('sanitaryAid.donationBins.contact')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>
                           {bin.contactPerson} - {bin.phone}
@@ -187,7 +194,7 @@ const SanitaryAidPage = () => {
                     
                     <Grid item xs={12} md={6}>
                       <Box sx={{ mb: 2 }}>
-                        <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>Available Items:</Typography>
+                        <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>{t('sanitaryAid.donationBins.availableItems')}</Typography>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, ml: 2 }}>
                           {bin.availableItems.map((item, index) => (
                             <Chip
@@ -205,10 +212,10 @@ const SanitaryAidPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <Schedule sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Last Restocked:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('sanitaryAid.donationBins.lastRestocked')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>
-                          {getDaysAgo(bin.lastRestocked)} days ago
+                          {getDaysAgo(bin.lastRestocked)} {t('sanitaryAid.donationBins.daysAgo')}
                         </Typography>
                       </Box>
                     </Grid>
@@ -220,7 +227,7 @@ const SanitaryAidPage = () => {
                       startIcon={<Phone />}
                       href={`tel:${bin.phone}`}
                     >
-                      Call Location
+                      {t('sanitaryAid.donationBins.callLocation')}
                     </Button>
                     <Button 
                       variant="outlined"
@@ -228,7 +235,7 @@ const SanitaryAidPage = () => {
                       href={`https://maps.google.com/?q=${encodeURIComponent(bin.address)}`}
                       target="_blank"
                     >
-                      Get Directions
+                      {t('sanitaryAid.donationBins.getDirections')}
                     </Button>
                   </Box>
                 </CardContent>
@@ -240,7 +247,7 @@ const SanitaryAidPage = () => {
           <Grid item xs={12} lg={4}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <Info sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Hygiene Tips
+              {t('sanitaryAid.hygieneTips.title')}
             </Typography>
             
             {hygieneTips.map((section, sectionIndex) => (
@@ -272,10 +279,10 @@ const SanitaryAidPage = () => {
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: 'secondary.main' }}>
-                  Want to Donate?
+                  {t('sanitaryAid.donation.title')}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                  Help keep our donation bins stocked with essential hygiene products.
+                  {t('sanitaryAid.donation.description')}
                 </Typography>
                 <List dense>
                   <ListItem sx={{ px: 0 }}>
@@ -283,7 +290,7 @@ const SanitaryAidPage = () => {
                       <CheckCircle color="success" fontSize="small" />
                     </ListItemIcon>
                     <ListItemText 
-                      primary="Sanitary pads & tampons"
+                      primary={t('sanitaryAid.donation.items.sanitaryProducts')}
                       primaryTypographyProps={{ variant: 'body2' }}
                     />
                   </ListItem>
@@ -292,7 +299,7 @@ const SanitaryAidPage = () => {
                       <CheckCircle color="success" fontSize="small" />
                     </ListItemIcon>
                     <ListItemText 
-                      primary="Soap & personal hygiene items"
+                      primary={t('sanitaryAid.donation.items.hygieneItems')}
                       primaryTypographyProps={{ variant: 'body2' }}
                     />
                   </ListItem>
@@ -301,13 +308,13 @@ const SanitaryAidPage = () => {
                       <CheckCircle color="success" fontSize="small" />
                     </ListItemIcon>
                     <ListItemText 
-                      primary="New underwear (all sizes)"
+                      primary={t('sanitaryAid.donation.items.underwear')}
                       primaryTypographyProps={{ variant: 'body2' }}
                     />
                   </ListItem>
                 </List>
                 <Button variant="outlined" fullWidth sx={{ mt: 2 }}>
-                  Learn More About Donating
+                  {t('sanitaryAid.donation.learnMore')}
                 </Button>
               </CardContent>
             </Card>

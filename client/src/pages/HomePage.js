@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -19,45 +20,45 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-const featureCards = [
+const getFeatureCards = (t) => [
   {
-    title: 'Financial Support',
-    description: 'Access tailored investment advice and attend empowering financial seminars.',
+    title: t('home.features.financialSupport.title'),
+    description: t('home.features.financialSupport.description'),
     icon: <AccountBalance sx={{ fontSize: 40 }} />,
     link: '/finance',
     color: '#4CAF50',
   },
   {
-    title: 'GBV Support',
-    description: 'Find immediate support and safe shelter locations when you need them most.',
+    title: t('home.features.gbvSupport.title'),
+    description: t('home.features.gbvSupport.description'),
     icon: <Security sx={{ fontSize: 40 }} />,
     link: '/gbv-support',
     color: '#F44336',
   },
   {
-    title: 'Sanitary Aid',
-    description: 'Locate nearby donation bins and access essential hygiene resources.',
+    title: t('home.features.sanitaryAid.title'),
+    description: t('home.features.sanitaryAid.description'),
     icon: <LocalHospital sx={{ fontSize: 40 }} />,
     link: '/sanitary-aid',
     color: '#2196F3',
   },
   {
-    title: 'AI Assistant',
-    description: 'Get instant answers and guidance from our intelligent support system.',
+    title: t('home.features.aiAssistant.title'),
+    description: t('home.features.aiAssistant.description'),
     icon: <SmartToy sx={{ fontSize: 40 }} />,
     link: '/ai-assistant',
     color: '#9C27B0',
   },
   {
-    title: 'Submit Requests',
-    description: 'Submit and track your support requests with our easy-to-use system.',
+    title: t('home.features.submitRequests.title'),
+    description: t('home.features.submitRequests.description'),
     icon: <Assignment sx={{ fontSize: 40 }} />,
     link: '/requests',
     color: '#FF9800',
   },
   {
-    title: 'About Us',
-    description: 'Learn more about our mission to empower women across South Africa.',
+    title: t('home.features.aboutUs.title'),
+    description: t('home.features.aboutUs.description'),
     icon: <Info sx={{ fontSize: 40 }} />,
     link: '/about',
     color: '#607D8B',
@@ -65,7 +66,9 @@ const featureCards = [
 ];
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const theme = useTheme();
+  const featureCards = getFeatureCards(t);
 
   return (
     <Container maxWidth="lg">
@@ -87,7 +90,7 @@ const HomePage = () => {
             fontSize: { xs: '2.5rem', md: '3.5rem' },
           }}
         >
-          EmpowerHub
+          {t('home.title')}
         </Typography>
         <Typography
           variant="h5"
@@ -99,7 +102,7 @@ const HomePage = () => {
             fontSize: { xs: '1.2rem', md: '1.5rem' },
           }}
         >
-          Empowering Women with Integrated Support
+          {t('home.subtitle')}
         </Typography>
         <Typography
           variant="h6"
@@ -111,7 +114,7 @@ const HomePage = () => {
             fontSize: { xs: '1rem', md: '1.25rem' },
           }}
         >
-          &ldquo;Strengthening independence, safety, and dignity.&rdquo;
+          "{t('home.tagline')}"
         </Typography>
       </Box>
 
@@ -169,7 +172,7 @@ const HomePage = () => {
                     },
                   }}
                 >
-                  Learn More
+                  {t('home.learnMore')}
                 </Button>
               </CardContent>
             </Card>
@@ -190,10 +193,10 @@ const HomePage = () => {
         }}
       >
         <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
-          Ready to Get Started?
+          {t('home.cta.title')}
         </Typography>
         <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
-          Join thousands of women who have found support and empowerment through our platform.
+          {t('home.cta.description')}
         </Typography>
         <Button
           component={Link}
@@ -208,7 +211,7 @@ const HomePage = () => {
             },
           }}
         >
-          Submit Your First Request
+          {t('home.cta.button')}
         </Button>
       </Box>
     </Container>
