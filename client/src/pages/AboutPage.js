@@ -99,9 +99,9 @@ const AboutPage = () => {
               Our Mission
             </Typography>
             <Typography variant="h6" sx={{ lineHeight: 1.6, opacity: 0.95, maxWidth: 800, mx: 'auto' }}>
-              "To create an integrated platform that empowers women across South Africa by providing 
+              &ldquo;To create an integrated platform that empowers women across South Africa by providing 
               comprehensive support services that address financial independence, personal safety, 
-              and basic hygiene needs in one accessible solution."
+              and basic hygiene needs in one accessible solution.&rdquo;
             </Typography>
           </CardContent>
         </Card>

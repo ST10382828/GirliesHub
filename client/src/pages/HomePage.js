@@ -111,7 +111,7 @@ const HomePage = () => {
             fontSize: { xs: '1rem', md: '1.25rem' },
           }}
         >
-          "Strengthening independence, safety, and dignity."
+          &ldquo;Strengthening independence, safety, and dignity.&rdquo;
         </Typography>
       </Box>
 
