@@ -18,6 +18,7 @@ import {
   AccountBalance,
   Security,
   LocalHospital,
+  Delete as DeleteIcon,
 } from '@mui/icons-material';
 import RequestFormModal from '../components/RequestFormModal';
 import axios from 'axios';
@@ -107,6 +108,19 @@ const RequestsPage = () => {
 
   const handleRequestSubmitted = (newRequest) => {
     setRequests([newRequest, ...requests]);
+  };
+
+  const handleDeleteRequest = async (requestId) => {
+    if (window.confirm('Are you sure you want to delete this request?')) {
+      try {
+        await axios.delete(`/api/requests/${requestId}`);
+        setRequests(requests.filter(request => request.id !== requestId));
+        console.log('Request deleted successfully:', requestId);
+      } catch (error) {
+        console.error('Error deleting request:', error);
+        alert('Failed to delete request. Please try again.');
+      }
+    }
   };
 
   const getStatusColor = (status) => {
@@ -220,12 +234,21 @@ const RequestsPage = () => {
                           {request.id}
                         </Typography>
                       </Box>
-                      <Chip
-                        label={request.status}
-                        color={getStatusColor(request.status)}
-                        size="small"
-                        sx={{ fontWeight: 'bold' }}
-                      />
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Chip
+                          label={request.status}
+                          color={getStatusColor(request.status)}
+                          size="small"
+                          sx={{ fontWeight: 'bold' }}
+                        />
+                        <IconButton
+                          size="small"
+                          onClick={() => handleDeleteRequest(request.id)}
+                          sx={{ color: 'error.main', '&:hover': { backgroundColor: 'error.light', color: 'white' } }}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
+                      </Box>
                     </Box>
 
                     {/* Content */}

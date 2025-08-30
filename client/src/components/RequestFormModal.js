@@ -68,7 +68,7 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
     setLoading(true);
     try {
       // First, submit to backend
-      const response = await axios.post('/api/request', {
+      const response = await axios.post('/api/requests', {
         name: formData.name || 'Anonymous',
         requestType: formData.requestType,
         description: formData.description,
