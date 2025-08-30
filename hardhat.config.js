@@ -7,7 +7,8 @@ module.exports = {
     hardhat: {
     },
     blockdag: {
-      url: "https://blockdag-evm-placeholder.com", // Replace with actual BlockDAG RPC
+      url: process.env.BDAG_RPC_URL || "https://rpc.primordial.bdagscan.com",
+      chainId: 1043,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     }
   },
