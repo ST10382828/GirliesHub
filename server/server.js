@@ -6,7 +6,7 @@ const { storeHashOnBlockchain, getTransactionProof } = require('./blockchain');
 const { chatWithAI } = require('./ai');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(helmet());
@@ -82,7 +82,7 @@ app.get('/api/requests', (req, res) => {
 });
 
 // Submit new request
-app.post('/api/request', async (req, res) => {
+app.post('/api/requests', async (req, res) => {
   try {
     const { name, requestType, description, date, location } = req.body;
     
