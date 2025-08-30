@@ -26,6 +26,7 @@ import {
   SmartToy,
   Info,
 } from '@mui/icons-material';
+import WalletConnectButton from './WalletConnectButton';
 
 const navigationItems = [
   { path: '/', label: 'Home', icon: <Home /> },
@@ -52,6 +53,12 @@ const NavBar = () => {
       <Typography variant="h6" sx={{ p: 2, color: 'primary.main', fontWeight: 'bold' }}>
         EmpowerHub
       </Typography>
+      
+      {/* Wallet Connect Button for Mobile */}
+      <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
+        <WalletConnectButton />
+      </Box>
+      
       <List>
         {navigationItems.map((item) => (
           <ListItem key={item.path} disablePadding>
@@ -136,6 +143,11 @@ const NavBar = () => {
               ))}
             </Box>
           )}
+
+          {/* Wallet Connect Button */}
+          <Box sx={{ ml: 2 }}>
+            <WalletConnectButton />
+          </Box>
         </Toolbar>
       </AppBar>
 

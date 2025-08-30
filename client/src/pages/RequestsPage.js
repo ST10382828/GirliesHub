@@ -15,6 +15,9 @@ import {
   Add as AddIcon,
   Refresh as RefreshIcon,
   Assignment,
+  AccountBalance,
+  Security,
+  LocalHospital,
 } from '@mui/icons-material';
 import RequestFormModal from '../components/RequestFormModal';
 import axios from 'axios';
@@ -62,8 +65,37 @@ const RequestsPage = () => {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/requests');
-      setRequests(response.data);
+      // Fetch from blockchain first
+      const blockchainResponse = await axios.get('/api/blockchain/requests');
+      console.log('Blockchain requests:', blockchainResponse.data);
+      
+      // Also fetch from backend for additional data
+      const backendResponse = await axios.get('/api/requests');
+      console.log('Backend requests:', backendResponse.data);
+      
+      // Combine blockchain data with backend data
+      const blockchainRequests = blockchainResponse.data.requests || blockchainResponse.data;
+      const backendRequests = backendResponse.data;
+      
+      // Create a map of backend requests by ID for easy lookup
+      const backendMap = new Map();
+      backendRequests.forEach(req => {
+        backendMap.set(req.id, req);
+      });
+      
+      // Combine the data, prioritizing blockchain data
+      const combinedRequests = blockchainRequests.map(blockchainReq => {
+        const backendReq = backendMap.get(blockchainReq.id);
+        return {
+          ...blockchainReq,
+          name: backendReq?.name || 'Anonymous',
+          description: backendReq?.description || 'Request stored on blockchain',
+          location: backendReq?.location || 'Unknown',
+          status: backendReq?.status || 'Processing'
+        };
+      });
+      
+      setRequests(combinedRequests);
     } catch (error) {
       console.error('Error fetching requests:', error);
       // Use mock data if API fails
@@ -91,7 +123,18 @@ const RequestsPage = () => {
   };
 
   const getTypeIcon = (type) => {
-    return <Assignment />;
+    switch (type?.toLowerCase()) {
+      case 'finance':
+        return <AccountBalance />;
+      case 'gbv support':
+      case 'gbv':
+        return <Security />;
+      case 'sanitary aid':
+      case 'sanitary':
+        return <LocalHospital />;
+      default:
+        return <Assignment />;
+    }
   };
 
   return (
@@ -104,12 +147,27 @@ const RequestsPage = () => {
               Support Requests
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Submit new requests and track your existing ones
+              View blockchain-stored requests and submit new ones
             </Typography>
           </Box>
-          <IconButton onClick={fetchRequests} color="primary">
-            <RefreshIcon />
-          </IconButton>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+            <IconButton 
+              onClick={fetchRequests} 
+              color="primary"
+              disabled={loading}
+              title="Refresh blockchain data"
+            >
+              <RefreshIcon />
+            </IconButton>
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={() => setModalOpen(true)}
+              size="medium"
+            >
+              Submit Request
+            </Button>
+          </Box>
         </Box>
 
         {/* Requests Grid */}
@@ -183,7 +241,22 @@ const RequestsPage = () => {
                     <Typography variant="body1" sx={{ mt: 2, mb: 2 }}>
                       {request.description}
                     </Typography>
-                    <Typography variant="caption" color="text.disabled">
+                    
+                    {/* Blockchain Information */}
+                    {request.requestHash && (
+                      <Box sx={{ mt: 2, p: 1, bgcolor: 'grey.50', borderRadius: 1 }}>
+                        <Typography variant="caption" color="text.secondary" display="block">
+                          <strong>Blockchain Hash:</strong> {request.requestHash.slice(0, 20)}...
+                        </Typography>
+                        {request.requester && (
+                          <Typography variant="caption" color="text.secondary" display="block">
+                            <strong>Requester:</strong> {request.requester.slice(0, 10)}...{request.requester.slice(-8)}
+                          </Typography>
+                        )}
+                      </Box>
+                    )}
+                    
+                    <Typography variant="caption" color="text.disabled" sx={{ mt: 2, display: 'block' }}>
                       Submitted: {new Date(request.timestamp).toLocaleString()}
                     </Typography>
                   </CardContent>
