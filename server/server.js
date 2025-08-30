@@ -60,8 +60,8 @@ function generateRequestId() {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
+  res.json({
+    status: 'OK',
     message: 'GirliesHub API is running',
     timestamp: new Date().toISOString()
   });
@@ -74,9 +74,9 @@ app.get('/api/requests', (req, res) => {
     res.json(requests);
   } catch (error) {
     console.error('Error fetching requests:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to fetch requests',
-      message: error.message 
+      message: error.message
     });
   }
 });
@@ -85,7 +85,7 @@ app.get('/api/requests', (req, res) => {
 app.post('/api/requests', async (req, res) => {
   try {
     const { name, requestType, description, date, location } = req.body;
-    
+
     console.log('Received request:', req.body);
 
     // Validate required fields
@@ -121,7 +121,7 @@ app.post('/api/requests', async (req, res) => {
     }
 
     console.log('Created new request:', newRequest);
-    
+
     res.status(201).json({
       ...newRequest,
       message: 'Request submitted successfully'
@@ -129,9 +129,38 @@ app.post('/api/requests', async (req, res) => {
 
   } catch (error) {
     console.error('Error creating request:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to create request',
-      message: error.message 
+      message: error.message
+    });
+  }
+});
+
+// Delete request by ID
+app.delete('/api/requests/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const requestIndex = requests.findIndex(req => req.id === id);
+
+    if (requestIndex === -1) {
+      return res.status(404).json({
+        error: 'Request not found',
+        id: id
+      });
+    }
+
+    const deletedRequest = requests.splice(requestIndex, 1)[0];
+    console.log('Deleted request:', deletedRequest.id);
+
+    res.json({
+      message: 'Request deleted successfully',
+      deletedRequest: deletedRequest
+    });
+  } catch (error) {
+    console.error('Error deleting request:', error);
+    res.status(500).json({
+      error: 'Failed to delete request',
+      message: error.message
     });
   }
 });
@@ -141,20 +170,20 @@ app.get('/api/request/:id', (req, res) => {
   try {
     const { id } = req.params;
     const request = requests.find(req => req.id === id);
-    
+
     if (!request) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         error: 'Request not found',
-        id: id 
+        id: id
       });
     }
 
     res.json(request);
   } catch (error) {
     console.error('Error fetching request:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to fetch request',
-      message: error.message 
+      message: error.message
     });
   }
 });
@@ -163,7 +192,7 @@ app.get('/api/request/:id', (req, res) => {
 app.post('/api/ai/chat', async (req, res) => {
   try {
     const { message } = req.body;
-    
+
     if (!message) {
       return res.status(400).json({
         error: 'Message is required'
@@ -174,7 +203,7 @@ app.post('/api/ai/chat', async (req, res) => {
 
     // Call AI service (stub function)
     const aiResponse = await chatWithAI(message);
-    
+
     res.json({
       response: aiResponse,
       timestamp: new Date().toISOString()
@@ -182,9 +211,9 @@ app.post('/api/ai/chat', async (req, res) => {
 
   } catch (error) {
     console.error('Error in AI chat:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'AI service temporarily unavailable',
-      message: error.message 
+      message: error.message
     });
   }
 });
@@ -193,10 +222,10 @@ app.post('/api/ai/chat', async (req, res) => {
 app.get('/api/blockchain/verify/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     // Get transaction proof (stub function)
     const proof = await getTransactionProof(id);
-    
+
     res.json({
       requestId: id,
       verified: true,
@@ -206,9 +235,9 @@ app.get('/api/blockchain/verify/:id', async (req, res) => {
 
   } catch (error) {
     console.error('Error verifying blockchain:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Blockchain verification failed',
-      message: error.message 
+      message: error.message
     });
   }
 });
@@ -234,9 +263,9 @@ app.get('/api/stats', (req, res) => {
     res.json(stats);
   } catch (error) {
     console.error('Error fetching stats:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to fetch statistics',
-      message: error.message 
+      message: error.message
     });
   }
 });
@@ -266,7 +295,8 @@ app.listen(PORT, () => {
   console.log(`📊 API endpoints available:`);
   console.log(`   GET  /api/health`);
   console.log(`   GET  /api/requests`);
-  console.log(`   POST /api/request`);
+  console.log(`   POST /api/requests`);
+  console.log(`   DELETE /api/requests/:id`);
   console.log(`   GET  /api/request/:id`);
   console.log(`   POST /api/ai/chat`);
   console.log(`   GET  /api/blockchain/verify/:id`);
