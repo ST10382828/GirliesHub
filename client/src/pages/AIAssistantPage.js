@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -22,10 +23,12 @@ import {
 import axios from 'axios';
 
 const AIAssistantPage = () => {
+  const { t } = useTranslation();
+  
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm your EmpowerHub assistant. I'm here to help you with questions about financial advice, GBV support, sanitary aid, and any other support services. How can I assist you today?",
+      text: t('aiAssistant.welcomeMessage'),
       sender: 'bot',
       timestamp: new Date(),
     }
@@ -35,11 +38,11 @@ const AIAssistantPage = () => {
   const messagesEndRef = useRef(null);
 
   const quickQuestions = [
-    'How do I find financial seminars?',
-    'Where can I find safe shelters?',
-    'How do I access sanitary products?',
-    'How do I submit a support request?',
-    'What services are available?',
+    t('aiAssistant.quickQuestions.questions.financialSeminars'),
+    t('aiAssistant.quickQuestions.questions.safeShelters'),
+    t('aiAssistant.quickQuestions.questions.sanitaryProducts'),
+    t('aiAssistant.quickQuestions.questions.submitRequest'),
+    t('aiAssistant.quickQuestions.questions.availableServices'),
   ];
 
   const scrollToBottom = () => {
@@ -49,6 +52,18 @@ const AIAssistantPage = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Reset to welcome message when language changes to avoid stuck translations
+  useEffect(() => {
+    setMessages([
+      {
+        id: 1,
+        text: t('aiAssistant.welcomeMessage'),
+        sender: 'bot',
+        timestamp: new Date(),
+      }
+    ]);
+  }, [t]);
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -83,11 +98,11 @@ const AIAssistantPage = () => {
       
       // Fallback mock response
       const mockResponses = [
-        "I understand you're looking for help. Let me provide you with some guidance on that topic.",
-        "That's a great question! Based on your inquiry, I'd recommend checking out our specific support pages for detailed information.",
-        "I'm here to help! For immediate assistance with urgent matters, please don't hesitate to contact our emergency hotlines.",
-        "Thank you for reaching out. I can help connect you with the right resources and support services.",
-        "That's an important question. Our platform offers comprehensive support across financial, safety, and health services."
+        t('aiAssistant.mockResponses.response1'),
+        t('aiAssistant.mockResponses.response2'),
+        t('aiAssistant.mockResponses.response3'),
+        t('aiAssistant.mockResponses.response4'),
+        t('aiAssistant.mockResponses.response5')
       ];
 
       const randomResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)];
@@ -113,7 +128,7 @@ const AIAssistantPage = () => {
     setMessages([
       {
         id: 1,
-        text: "Hello! I'm your EmpowerHub assistant. I'm here to help you with questions about financial advice, GBV support, sanitary aid, and any other support services. How can I assist you today?",
+        text: t('aiAssistant.welcomeMessage'),
         sender: 'bot',
         timestamp: new Date(),
       }
@@ -134,17 +149,17 @@ const AIAssistantPage = () => {
         <Box sx={{ textAlign: 'center', mb: 3 }}>
           <SmartToy sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-            AI Assistant
+            {t('aiAssistant.title')}
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            Get instant answers and guidance from our intelligent support system
+            {t('aiAssistant.subtitle')}
           </Typography>
         </Box>
 
         {/* Quick Questions */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold' }}>
-            Quick Questions:
+            {t('aiAssistant.quickQuestions.title')}
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {quickQuestions.map((question, index) => (
@@ -176,10 +191,10 @@ const AIAssistantPage = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                    EmpowerHub Assistant
+                    {t('aiAssistant.chat.assistantName')}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Online • Ready to help
+                    {t('aiAssistant.chat.status')}
                   </Typography>
                 </Box>
               </Box>
@@ -290,7 +305,7 @@ const AIAssistantPage = () => {
                   }}
                 >
                   <Typography variant="body1">
-                    Typing...
+                    {t('aiAssistant.chat.typing')}
                   </Typography>
                 </Paper>
               </Box>
@@ -309,7 +324,7 @@ const AIAssistantPage = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message here..."
+                placeholder={t('aiAssistant.chat.placeholder')}
                 variant="outlined"
                 size="small"
                 disabled={isLoading}
@@ -329,7 +344,7 @@ const AIAssistantPage = () => {
               </Button>
             </Box>
             <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-              Press Enter to send, Shift+Enter for new line
+              {t('aiAssistant.chat.keyboardHint')}
             </Typography>
           </Box>
         </Card>
@@ -338,7 +353,7 @@ const AIAssistantPage = () => {
         <Box sx={{ mt: 2, textAlign: 'center' }}>
           <Typography variant="body2" color="text.secondary">
             <QuestionAnswer sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
-            For urgent matters, please contact our emergency hotlines directly
+            {t('aiAssistant.footer')}
           </Typography>
         </Box>
       </Box>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -24,74 +25,84 @@ import {
 } from '@mui/icons-material';
 
 const FinancePage = () => {
-  const upcomingSeminars = [
+  const { t } = useTranslation();
+  const getUpcomingSeminars = () => [
     {
       id: 1,
-      title: 'Women in Business: Starting Your First Investment',
+      title: t('finance.seminars.seminar1.title'),
       date: '2025-09-15',
-      time: '10:00 AM',
-      location: 'Cape Town Community Center',
-      facilitator: 'Dr. Nomsa Mbeki',
-      description: 'Learn the basics of investment and how to start building wealth for your future.',
+      time: t('finance.seminars.seminar1.time'),
+      location: t('finance.seminars.seminar1.location'),
+      facilitator: t('finance.seminars.seminar1.facilitator'),
+      description: t('finance.seminars.seminar1.description'),
       spots: 25,
     },
     {
       id: 2,
-      title: 'Financial Independence Workshop',
+      title: t('finance.seminars.seminar2.title'),
       date: '2025-09-22',
-      time: '2:00 PM',
-      location: 'Johannesburg Business Hub',
-      facilitator: 'Sarah Williams, CFA',
-      description: 'Practical strategies for achieving financial independence as a woman entrepreneur.',
+      time: t('finance.seminars.seminar2.time'),
+      location: t('finance.seminars.seminar2.location'),
+      facilitator: t('finance.seminars.seminar2.facilitator'),
+      description: t('finance.seminars.seminar2.description'),
       spots: 15,
     },
     {
       id: 3,
-      title: 'Budgeting and Saving for Single Mothers',
+      title: t('finance.seminars.seminar3.title'),
       date: '2025-09-28',
-      time: '6:00 PM',
-      location: 'Durban Women\'s Center',
-      facilitator: 'Thandiwe Nkomo',
-      description: 'Essential budgeting skills and saving strategies tailored for single mothers.',
+      time: t('finance.seminars.seminar3.time'),
+      location: t('finance.seminars.seminar3.location'),
+      facilitator: t('finance.seminars.seminar3.facilitator'),
+      description: t('finance.seminars.seminar3.description'),
       spots: 30,
     },
   ];
+  
+  const [seminars, setSeminars] = useState([]);
+  
+  // Update seminars when language changes
+  useEffect(() => {
+    setSeminars(getUpcomingSeminars());
+  }, [t]);
 
-  const financialTips = [
+  const getFinancialTips = () => [
     {
-      title: 'Start an Emergency Fund',
-      description: 'Aim to save at least 3-6 months of living expenses for unexpected situations.',
-      category: 'Savings',
+      title: t('finance.tips.emergencyFund.title'),
+      description: t('finance.tips.emergencyFund.description'),
+      category: t('finance.categories.savings'),
     },
     {
-      title: 'Invest in Your Education',
-      description: 'Financial literacy is your best investment. Learn about different investment options.',
-      category: 'Education',
+      title: t('finance.tips.education.title'),
+      description: t('finance.tips.education.description'),
+      category: t('finance.categories.education'),
     },
     {
-      title: 'Diversify Your Income',
-      description: 'Consider multiple income streams to build financial stability and independence.',
-      category: 'Income',
+      title: t('finance.tips.diversifyIncome.title'),
+      description: t('finance.tips.diversifyIncome.description'),
+      category: t('finance.categories.income'),
     },
     {
-      title: 'Plan for Retirement Early',
-      description: 'The earlier you start saving for retirement, the more time your money has to grow.',
-      category: 'Planning',
+      title: t('finance.tips.retirement.title'),
+      description: t('finance.tips.retirement.description'),
+      category: t('finance.categories.planning'),
     },
     {
-      title: 'Track Your Expenses',
-      description: 'Understanding where your money goes is the first step to taking control of your finances.',
-      category: 'Budgeting',
+      title: t('finance.tips.trackExpenses.title'),
+      description: t('finance.tips.trackExpenses.description'),
+      category: t('finance.categories.budgeting'),
     },
   ];
+  
+  const financialTips = getFinancialTips();
 
   const getCategoryColor = (category) => {
     const colors = {
-      'Savings': '#4CAF50',
-      'Education': '#2196F3',
-      'Income': '#FF9800',
-      'Planning': '#9C27B0',
-      'Budgeting': '#F44336',
+      [t('finance.categories.savings')]: '#4CAF50',
+      [t('finance.categories.education')]: '#2196F3',
+      [t('finance.categories.income')]: '#FF9800',
+      [t('finance.categories.planning')]: '#9C27B0',
+      [t('finance.categories.budgeting')]: '#F44336',
     };
     return colors[category] || '#757575';
   };
@@ -103,10 +114,10 @@ const FinancePage = () => {
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <AccountBalance sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-            Financial Empowerment
+            {t('finance.title')}
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            Access tailored financial advice, attend empowering seminars, and build your path to financial independence
+            {t('finance.subtitle')}
           </Typography>
         </Box>
 
@@ -115,10 +126,10 @@ const FinancePage = () => {
           <Grid item xs={12} lg={8}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <Event sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Upcoming Seminars
+              {t('finance.upcomingSeminars')}
             </Typography>
             
-            {upcomingSeminars.map((seminar) => (
+            {seminars.map((seminar) => (
               <Card key={seminar.id} sx={{ mb: 3 }}>
                 <CardContent sx={{ p: 3 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
@@ -126,7 +137,7 @@ const FinancePage = () => {
                       {seminar.title}
                     </Typography>
                     <Chip
-                      label={`${seminar.spots} spots available`}
+                      label={`${seminar.spots} ${t('finance.spotsAvailable')}`}
                       color="primary"
                       size="small"
                       variant="outlined"
@@ -175,7 +186,7 @@ const FinancePage = () => {
           <Grid item xs={12} lg={4}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <TrendingUp sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Financial Tips
+              {t('finance.financialTips')}
             </Typography>
             
             <Card>
@@ -229,28 +240,28 @@ const FinancePage = () => {
             <Card sx={{ mt: 3 }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                  Quick Stats
+                  {t('finance.quickStats')}
                 </Typography>
                 <Box sx={{ textAlign: 'center' }}>
                   <Typography variant="h4" color="primary.main" sx={{ fontWeight: 'bold' }}>
                     2,500+
                   </Typography>
                   <Typography variant="body2" color="text.secondary" gutterBottom>
-                    Women Empowered
+                    {t('finance.womenEmpowered')}
                   </Typography>
                   
                   <Typography variant="h4" color="success.main" sx={{ fontWeight: 'bold', mt: 2 }}>
                     150+
                   </Typography>
                   <Typography variant="body2" color="text.secondary" gutterBottom>
-                    Seminars Conducted
+                    {t('finance.seminarsCompleted')}
                   </Typography>
                   
                   <Typography variant="h4" color="warning.main" sx={{ fontWeight: 'bold', mt: 2 }}>
                     85%
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Success Rate
+                    {t('finance.successRate')}
                   </Typography>
                 </Box>
               </CardContent>

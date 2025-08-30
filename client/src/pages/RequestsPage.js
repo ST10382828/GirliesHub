@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -20,44 +21,45 @@ import RequestFormModal from '../components/RequestFormModal';
 import axios from 'axios';
 
 const RequestsPage = () => {
+  const { t } = useTranslation();
   const [requests, setRequests] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // Mock data for initial state
-  const mockRequests = [
+  const getMockRequests = () => [
     {
       id: 'REQ001',
       name: 'Sarah M.',
-      requestType: 'Finance',
-      description: 'Looking for investment advice for small business startup',
+      requestType: t('requests.types.finance'),
+      description: t('requests.mockData.req001.description'),
       status: 'Processing',
       timestamp: new Date().toISOString(),
-      location: 'Cape Town, Western Cape'
+      location: t('requests.mockData.req001.location')
     },
     {
       id: 'REQ002',
-      name: 'Anonymous',
-      requestType: 'GBV Support',
-      description: 'Need immediate safe shelter information',
+      name: t('requests.mockData.req002.name'),
+      requestType: t('requests.types.gbvSupport'),
+      description: t('requests.mockData.req002.description'),
       status: 'Urgent',
       timestamp: new Date(Date.now() - 86400000).toISOString(),
-      location: 'Johannesburg, Gauteng'
+      location: t('requests.mockData.req002.location')
     },
     {
       id: 'REQ003',
       name: 'Linda K.',
-      requestType: 'Sanitary Aid',
-      description: 'Looking for nearby donation bins for hygiene products',
+      requestType: t('requests.types.sanitaryAid'),
+      description: t('requests.mockData.req003.description'),
       status: 'Completed',
       timestamp: new Date(Date.now() - 172800000).toISOString(),
-      location: 'Durban, KwaZulu-Natal'
+      location: t('requests.mockData.req003.location')
     }
   ];
 
   useEffect(() => {
     fetchRequests();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [t]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchRequests = async () => {
     setLoading(true);
@@ -67,7 +69,7 @@ const RequestsPage = () => {
     } catch (error) {
       console.error('Error fetching requests:', error);
       // Use mock data if API fails
-      setRequests(mockRequests);
+      setRequests(getMockRequests());
     } finally {
       setLoading(false);
     }
@@ -90,6 +92,19 @@ const RequestsPage = () => {
     }
   };
 
+  const getTranslatedStatus = (status) => {
+    switch (status.toLowerCase()) {
+      case 'completed':
+        return t('requests.status.completed');
+      case 'processing':
+        return t('requests.status.processing');
+      case 'urgent':
+        return t('requests.status.urgent');
+      default:
+        return status;
+    }
+  };
+
   const getTypeIcon = (type) => {
     return <Assignment />;
   };
@@ -101,10 +116,10 @@ const RequestsPage = () => {
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
           <Box>
             <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-              Support Requests
+              {t('requests.title')}
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Submit new requests and track your existing ones
+              {t('requests.subtitle')}
             </Typography>
           </Box>
           <IconButton onClick={fetchRequests} color="primary">
@@ -116,17 +131,17 @@ const RequestsPage = () => {
         {loading ? (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Typography variant="h6" color="text.secondary">
-              Loading requests...
+              {t('requests.loading')}
             </Typography>
           </Box>
         ) : requests.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Assignment sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }} />
             <Typography variant="h6" gutterBottom color="text.secondary">
-              No requests yet
+              {t('requests.noRequests')}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              Start by submitting your first support request
+              {t('requests.noRequestsDesc')}
             </Typography>
             <Button
               variant="contained"
@@ -134,7 +149,7 @@ const RequestsPage = () => {
               onClick={() => setModalOpen(true)}
               size="large"
             >
-              Submit Request
+              {t('requests.submitRequest')}
             </Button>
           </Box>
         ) : (
@@ -163,7 +178,7 @@ const RequestsPage = () => {
                         </Typography>
                       </Box>
                       <Chip
-                        label={request.status}
+                        label={getTranslatedStatus(request.status)}
                         color={getStatusColor(request.status)}
                         size="small"
                         sx={{ fontWeight: 'bold' }}
@@ -172,19 +187,19 @@ const RequestsPage = () => {
 
                     {/* Content */}
                     <Typography variant="body2" color="text.secondary" gutterBottom>
-                      <strong>Type:</strong> {request.requestType}
+                      <strong>{t('requests.type')}:</strong> {request.requestType}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" gutterBottom>
-                      <strong>Name:</strong> {request.name}
+                      <strong>{t('requests.name')}:</strong> {request.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" gutterBottom>
-                      <strong>Location:</strong> {request.location}
+                      <strong>{t('requests.location')}:</strong> {request.location}
                     </Typography>
                     <Typography variant="body1" sx={{ mt: 2, mb: 2 }}>
                       {request.description}
                     </Typography>
                     <Typography variant="caption" color="text.disabled">
-                      Submitted: {new Date(request.timestamp).toLocaleString()}
+                      {t('requests.submitted')}: {new Date(request.timestamp).toLocaleString()}
                     </Typography>
                   </CardContent>
                 </Card>

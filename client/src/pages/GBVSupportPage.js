@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -28,76 +29,82 @@ import {
 } from '@mui/icons-material';
 
 const GBVSupportPage = () => {
+  const { t } = useTranslation();
+  
   const safeShelters = [
     {
       id: 1,
-      name: 'Safe Haven Women\'s Shelter',
-      address: '123 Hope Street, Cape Town, Western Cape',
-      phone: '+27 21 123 4567',
-      emergency: '+27 21 123 4568',
-      capacity: 'Available',
-      services: ['Emergency Accommodation', 'Counseling', 'Legal Support', 'Job Training'],
-      operatingHours: '24/7 Emergency Access',
-      description: 'A secure facility providing comprehensive support for women and children escaping domestic violence.',
+      name: t('gbvSupport.safeShelters.locations.safeHaven.name'),
+      address: t('gbvSupport.safeShelters.locations.safeHaven.address'),
+      phone: t('gbvSupport.safeShelters.locations.safeHaven.phone'),
+      emergency: t('gbvSupport.safeShelters.locations.safeHaven.emergency'),
+      capacity: t('gbvSupport.safeShelters.capacity.available'),
+      services: [t('gbvSupport.safeShelters.services.emergencyAccommodation'), t('gbvSupport.safeShelters.services.counseling'), t('gbvSupport.safeShelters.services.legalSupport'), t('gbvSupport.safeShelters.services.jobTraining')],
+      operatingHours: t('gbvSupport.safeShelters.locations.safeHaven.hours'),
+      description: t('gbvSupport.safeShelters.locations.safeHaven.description'),
     },
     {
       id: 2,
-      name: 'Ubuntu Women\'s Sanctuary',
-      address: '456 Freedom Avenue, Johannesburg, Gauteng',
-      phone: '+27 11 987 6543',
-      emergency: '+27 11 987 6544',
-      capacity: 'Limited',
-      services: ['Safe Housing', 'Trauma Counseling', 'Legal Aid', 'Children Support'],
-      operatingHours: '24/7 Emergency Access',
-      description: 'Providing a safe environment with holistic support services for survivors of gender-based violence.',
+      name: t('gbvSupport.safeShelters.locations.ubuntu.name'),
+      address: t('gbvSupport.safeShelters.locations.ubuntu.address'),
+      phone: t('gbvSupport.safeShelters.locations.ubuntu.phone'),
+      emergency: t('gbvSupport.safeShelters.locations.ubuntu.emergency'),
+      capacity: t('gbvSupport.safeShelters.capacity.limited'),
+      services: [t('gbvSupport.safeShelters.services.safeHousing'), t('gbvSupport.safeShelters.services.traumaCounseling'), t('gbvSupport.safeShelters.services.legalAid'), t('gbvSupport.safeShelters.services.childrenSupport')],
+      operatingHours: t('gbvSupport.safeShelters.locations.ubuntu.hours'),
+      description: t('gbvSupport.safeShelters.locations.ubuntu.description'),
     },
     {
       id: 3,
-      name: 'Themba House',
-      address: '789 Courage Road, Durban, KwaZulu-Natal',
-      phone: '+27 31 555 7890',
-      emergency: '+27 31 555 7891',
-      capacity: 'Available',
-      services: ['Emergency Shelter', 'Medical Support', 'Court Support', 'Skills Development'],
-      operatingHours: '24/7 Emergency Access',
-      description: 'A community-based shelter offering immediate safety and long-term empowerment programs.',
+      name: t('gbvSupport.safeShelters.locations.themba.name'),
+      address: t('gbvSupport.safeShelters.locations.themba.address'),
+      phone: t('gbvSupport.safeShelters.locations.themba.phone'),
+      emergency: t('gbvSupport.safeShelters.locations.themba.emergency'),
+      capacity: t('gbvSupport.safeShelters.capacity.available'),
+      services: [t('gbvSupport.safeShelters.services.emergencyShelter'), t('gbvSupport.safeShelters.services.medicalSupport'), t('gbvSupport.safeShelters.services.courtSupport'), t('gbvSupport.safeShelters.services.skillsDevelopment')],
+      operatingHours: t('gbvSupport.safeShelters.locations.themba.hours'),
+      description: t('gbvSupport.safeShelters.locations.themba.description'),
     },
   ];
 
   const emergencyContacts = [
     {
-      name: 'National GBV Command Centre',
-      number: '0800 428 428',
-      description: '24/7 toll-free helpline for immediate assistance',
+      name: t('gbvSupport.emergencyContacts.contacts.gbvCommand.name'),
+      number: t('gbvSupport.emergencyContacts.contacts.gbvCommand.number'),
+      description: t('gbvSupport.emergencyContacts.contacts.gbvCommand.description'),
       type: 'emergency'
     },
     {
-      name: 'South African Police Service',
-      number: '10111',
-      description: 'Emergency police response',
+      name: t('gbvSupport.emergencyContacts.contacts.police.name'),
+      number: t('gbvSupport.emergencyContacts.contacts.police.number'),
+      description: t('gbvSupport.emergencyContacts.contacts.police.description'),
       type: 'emergency'
     },
     {
-      name: 'LifeLine National',
-      number: '0861 322 322',
-      description: '24/7 counseling and crisis support',
+      name: t('gbvSupport.emergencyContacts.contacts.lifeline.name'),
+      number: t('gbvSupport.emergencyContacts.contacts.lifeline.number'),
+      description: t('gbvSupport.emergencyContacts.contacts.lifeline.description'),
       type: 'support'
     },
     {
-      name: 'Childline South Africa',
-      number: '116',
-      description: 'Support for children in crisis',
+      name: t('gbvSupport.emergencyContacts.contacts.childline.name'),
+      number: t('gbvSupport.emergencyContacts.contacts.childline.number'),
+      description: t('gbvSupport.emergencyContacts.contacts.childline.description'),
       type: 'support'
     }
   ];
 
   const getCapacityColor = (capacity) => {
+    const available = t('gbvSupport.safeShelters.capacity.available').toLowerCase();
+    const limited = t('gbvSupport.safeShelters.capacity.limited').toLowerCase();
+    const full = t('gbvSupport.safeShelters.capacity.full').toLowerCase();
+    
     switch (capacity.toLowerCase()) {
-      case 'available':
+      case available:
         return 'success';
-      case 'limited':
+      case limited:
         return 'warning';
-      case 'full':
+      case full:
         return 'error';
       default:
         return 'default';
@@ -115,10 +122,10 @@ const GBVSupportPage = () => {
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Security sx={{ fontSize: 48, color: 'error.main', mb: 2 }} />
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'error.main' }}>
-            GBV Support & Safe Shelters
+            {t('gbvSupport.title')}
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 700, mx: 'auto' }}>
-            Immediate support and safe shelter locations for women experiencing gender-based violence
+            {t('gbvSupport.subtitle')}
           </Typography>
         </Box>
 
@@ -129,11 +136,10 @@ const GBVSupportPage = () => {
           icon={<Warning />}
         >
           <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
-            In Immediate Danger?
+            {t('gbvSupport.emergencyAlert.title')}
           </Typography>
           <Typography>
-            Call <strong>0800 428 428</strong> (GBV Command Centre) or <strong>10111</strong> (Police) immediately. 
-            These services are available 24/7 and completely free.
+            {t('gbvSupport.emergencyAlert.description')}
           </Typography>
         </Alert>
 
@@ -142,7 +148,7 @@ const GBVSupportPage = () => {
           <Grid item xs={12} lg={8}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <Home sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Safe Shelter Locations
+              {t('gbvSupport.safeShelters.title')}
             </Typography>
             
             {safeShelters.map((shelter) => (
@@ -168,7 +174,7 @@ const GBVSupportPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <LocationOn sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Address:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('gbvSupport.safeShelters.address')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>{shelter.address}</Typography>
                       </Box>
@@ -176,7 +182,7 @@ const GBVSupportPage = () => {
                       <Box sx={{ mb: 2 }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                           <AccessTime sx={{ fontSize: 18, mr: 1, color: 'text.secondary' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Hours:</Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>{t('gbvSupport.safeShelters.hours')}</Typography>
                         </Box>
                         <Typography variant="body2" sx={{ ml: 3 }}>{shelter.operatingHours}</Typography>
                       </Box>
@@ -184,15 +190,15 @@ const GBVSupportPage = () => {
                     
                     <Grid item xs={12} md={6}>
                       <Box sx={{ mb: 2 }}>
-                        <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>Contact Numbers:</Typography>
+                        <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>{t('gbvSupport.safeShelters.contactNumbers')}</Typography>
                         <Box sx={{ ml: 2 }}>
                           <Typography variant="body2">
                             <Phone sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
-                            General: {shelter.phone}
+                            {t('gbvSupport.safeShelters.general')}: {shelter.phone}
                           </Typography>
                           <Typography variant="body2" color="error.main" sx={{ fontWeight: 'bold' }}>
-                                            <EmergencyShare sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
-                Emergency: {shelter.emergency}
+                            <EmergencyShare sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
+                            {t('gbvSupport.safeShelters.emergency')}: {shelter.emergency}
                           </Typography>
                         </Box>
                       </Box>
@@ -200,7 +206,7 @@ const GBVSupportPage = () => {
                   </Grid>
                   
                   <Box sx={{ mt: 2 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>Services Available:</Typography>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>{t('gbvSupport.safeShelters.servicesAvailable')}</Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {shelter.services.map((service, index) => (
                         <Chip
@@ -221,14 +227,14 @@ const GBVSupportPage = () => {
                       startIcon={<Phone />}
                       href={`tel:${shelter.emergency}`}
                     >
-                      Emergency Call
+                      {t('gbvSupport.safeShelters.emergencyCall')}
                     </Button>
                     <Button 
                       variant="outlined" 
                       startIcon={<Phone />}
                       href={`tel:${shelter.phone}`}
                     >
-                      General Contact
+                      {t('gbvSupport.safeShelters.generalContact')}
                     </Button>
                   </Box>
                 </CardContent>
@@ -240,7 +246,7 @@ const GBVSupportPage = () => {
           <Grid item xs={12} lg={4}>
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               <Phone sx={{ mr: 1, verticalAlign: 'middle' }} />
-              Emergency Contacts
+              {t('gbvSupport.emergencyContacts.title')}
             </Typography>
             
             <Card>
@@ -280,7 +286,7 @@ const GBVSupportPage = () => {
                             href={`tel:${contact.number}`}
                             fullWidth
                           >
-                            Call Now
+                            {t('gbvSupport.emergencyContacts.callNow')}
                           </Button>
                         </Box>
                       </ListItem>
@@ -296,7 +302,7 @@ const GBVSupportPage = () => {
               <CardContent>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                   <Gavel sx={{ mr: 1, verticalAlign: 'middle' }} />
-                  Legal Resources
+                  {t('gbvSupport.legalResources.title')}
                 </Typography>
                 <List dense>
                   <ListItem>
@@ -304,8 +310,8 @@ const GBVSupportPage = () => {
                       <Gavel fontSize="small" />
                     </ListItemIcon>
                     <ListItemText 
-                      primary="Legal Aid South Africa" 
-                      secondary="Free legal assistance: 0800 110 110"
+                      primary={t('gbvSupport.legalResources.legalAid.name')} 
+                      secondary={t('gbvSupport.legalResources.legalAid.description')}
                     />
                   </ListItem>
                   <ListItem>
@@ -313,8 +319,8 @@ const GBVSupportPage = () => {
                       <LocalHospital fontSize="small" />
                     </ListItemIcon>
                     <ListItemText 
-                      primary="Medical Support" 
-                      secondary="Available at all shelter locations"
+                      primary={t('gbvSupport.legalResources.medicalSupport.name')} 
+                      secondary={t('gbvSupport.legalResources.medicalSupport.description')}
                     />
                   </ListItem>
                 </List>
