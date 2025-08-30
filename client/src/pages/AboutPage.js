@@ -105,7 +105,7 @@ const AboutPage = () => {
               {t('about.mission')}
             </Typography>
             <Typography variant="h6" sx={{ lineHeight: 1.6, opacity: 0.95, maxWidth: 800, mx: 'auto' }}>
-              "{t('about.missionText')}"
+              &ldquo;{t('about.missionText')}&rdquo;
             </Typography>
           </CardContent>
         </Card>

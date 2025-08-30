@@ -114,7 +114,7 @@ const HomePage = () => {
             fontSize: { xs: '1rem', md: '1.25rem' },
           }}
         >
-          "{t('home.tagline')}"
+          &ldquo;{t('home.tagline')}&rdquo;
         </Typography>
       </Box>
 

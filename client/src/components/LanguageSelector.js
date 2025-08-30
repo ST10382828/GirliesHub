@@ -6,13 +6,11 @@ import {
   MenuItem,
   Box,
   Typography,
-  useTheme,
 } from '@mui/material';
 import { Language as LanguageIcon } from '@mui/icons-material';
 
 const LanguageSelector = () => {
   const { i18n, t } = useTranslation();
-  const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const languages = [

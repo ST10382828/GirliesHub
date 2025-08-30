@@ -68,37 +68,55 @@ const RequestsPage = () => {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      // Fetch from blockchain first
-      const blockchainResponse = await axios.get('/api/blockchain/requests');
-      console.log('Blockchain requests:', blockchainResponse.data);
-      
-      // Also fetch from backend for additional data
+      // Fetch from backend first (this has the full request details and supports CRUD)
       const backendResponse = await axios.get('/api/requests');
       console.log('Backend requests:', backendResponse.data);
       
-      // Combine blockchain data with backend data
-      const blockchainRequests = blockchainResponse.data.requests || blockchainResponse.data;
-      const backendRequests = backendResponse.data;
-      
-      // Create a map of backend requests by ID for easy lookup
-      const backendMap = new Map();
-      backendRequests.forEach(req => {
-        backendMap.set(req.id, req);
-      });
-      
-      // Combine the data, prioritizing blockchain data
-      const combinedRequests = blockchainRequests.map(blockchainReq => {
-        const backendReq = backendMap.get(blockchainReq.id);
-        return {
-          ...blockchainReq,
-          name: backendReq?.name || 'Anonymous',
-          description: backendReq?.description || 'Request stored on blockchain',
-          location: backendReq?.location || 'Unknown',
-          status: backendReq?.status || 'Processing'
-        };
-      });
-      
-      setRequests(combinedRequests);
+      // Also fetch from blockchain for verification data
+      try {
+        const blockchainResponse = await axios.get('/api/blockchain/requests');
+        console.log('Blockchain requests:', blockchainResponse.data);
+        
+        const blockchainRequests = blockchainResponse.data.requests || blockchainResponse.data;
+        
+        // Create a map of blockchain requests by timestamp for matching
+        const blockchainMap = new Map();
+        blockchainRequests.forEach(req => {
+          // Use timestamp as key for matching (closest match)
+          const timestamp = new Date(req.timestamp).getTime();
+          blockchainMap.set(timestamp, req);
+        });
+        
+        // Enhance backend requests with blockchain data when available
+        const enhancedRequests = backendResponse.data.map(backendReq => {
+          const backendTimestamp = new Date(backendReq.timestamp).getTime();
+          
+          // Find the closest matching blockchain request (within 5 minutes)
+          let closestBlockchainReq = null;
+          let minTimeDiff = Infinity;
+          
+          blockchainMap.forEach((blockchainReq, blockchainTimestamp) => {
+            const timeDiff = Math.abs(backendTimestamp - blockchainTimestamp);
+            if (timeDiff < minTimeDiff && timeDiff < 300000) { // 5 minutes
+              minTimeDiff = timeDiff;
+              closestBlockchainReq = blockchainReq;
+            }
+          });
+          
+          return {
+            ...backendReq,
+            blockchainVerified: !!closestBlockchainReq,
+            requestHash: closestBlockchainReq?.requestHash,
+            requester: closestBlockchainReq?.requester
+          };
+        });
+        
+        setRequests(enhancedRequests);
+      } catch (blockchainError) {
+        console.error('Blockchain fetch failed:', blockchainError);
+        // Continue with backend data only
+        setRequests(backendResponse.data);
+      }
     } catch (error) {
       console.error('Error fetching requests:', error);
       // Use mock data if API fails
@@ -281,10 +299,13 @@ const RequestsPage = () => {
                     </Typography>
                     
                     {/* Blockchain Information */}
-                    {request.requestHash && (
-                      <Box sx={{ mt: 2, p: 1, bgcolor: 'grey.50', borderRadius: 1 }}>
+                    {request.blockchainVerified && (
+                      <Box sx={{ mt: 2, p: 1, bgcolor: 'success.50', borderRadius: 1, border: '1px solid', borderColor: 'success.200' }}>
+                        <Typography variant="caption" color="success.main" display="block" sx={{ fontWeight: 'bold', mb: 1 }}>
+                          ✓ Blockchain Verified
+                        </Typography>
                         <Typography variant="caption" color="text.secondary" display="block">
-                          <strong>Blockchain Hash:</strong> {request.requestHash.slice(0, 20)}...
+                          <strong>Hash:</strong> {request.requestHash?.slice(0, 20)}...
                         </Typography>
                         {request.requester && (
                           <Typography variant="caption" color="text.secondary" display="block">

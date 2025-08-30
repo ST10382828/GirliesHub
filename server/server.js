@@ -68,15 +68,30 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Get all requests
+// Get all requests (excluding deleted ones)
 app.get('/api/requests', (req, res) => {
   try {
     console.log('Fetching all requests');
-    res.json(requests);
+    const activeRequests = requests.filter(req => !req.deleted);
+    res.json(activeRequests);
   } catch (error) {
     console.error('Error fetching requests:', error);
     res.status(500).json({
       error: 'Failed to fetch requests',
+      message: error.message
+    });
+  }
+});
+
+// Get all requests including deleted ones (for admin purposes)
+app.get('/api/requests/all', (req, res) => {
+  try {
+    console.log('Fetching all requests including deleted');
+    res.json(requests);
+  } catch (error) {
+    console.error('Error fetching all requests:', error);
+    res.status(500).json({
+      error: 'Failed to fetch all requests',
       message: error.message
     });
   }
@@ -192,7 +207,7 @@ app.post('/api/request', async (req, res) => {
   }
 });
 
-// Delete request by ID
+// Delete request by ID (soft delete - marks as deleted but keeps for audit)
 app.delete('/api/requests/:id', (req, res) => {
   try {
     const { id } = req.params;
@@ -205,8 +220,13 @@ app.delete('/api/requests/:id', (req, res) => {
       });
     }
 
-    const deletedRequest = requests.splice(requestIndex, 1)[0];
-    console.log('Deleted request:', deletedRequest.id);
+    // Soft delete - mark as deleted instead of removing
+    requests[requestIndex].deleted = true;
+    requests[requestIndex].deletedAt = new Date().toISOString();
+    requests[requestIndex].status = 'Deleted';
+    
+    const deletedRequest = requests[requestIndex];
+    console.log('Soft deleted request:', deletedRequest.id);
 
     res.json({
       message: 'Request deleted successfully',
