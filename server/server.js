@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const { storeHashOnBlockchain, getTransactionProof } = require('./blockchain');
+const { storeHashOnBlockchain, getTransactionProof, getRequestsFromBlockchain, getRequestCount } = require('./blockchain');
 const { chatWithAI } = require('./ai');
 
 const app = express();
@@ -213,6 +214,47 @@ app.get('/api/blockchain/verify/:id', async (req, res) => {
   }
 });
 
+// Get requests from blockchain
+app.get('/api/blockchain/requests', async (req, res) => {
+  try {
+    console.log('Fetching requests from blockchain...');
+    const blockchainRequests = await getRequestsFromBlockchain();
+    
+    res.json({
+      success: true,
+      requests: blockchainRequests,
+      count: blockchainRequests.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error fetching blockchain requests:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch blockchain requests',
+      message: error.message 
+    });
+  }
+});
+
+// Get blockchain request count
+app.get('/api/blockchain/count', async (req, res) => {
+  try {
+    console.log('Fetching blockchain request count...');
+    const count = await getRequestCount();
+    
+    res.json({
+      success: true,
+      count: count,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error fetching blockchain count:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch blockchain count',
+      message: error.message 
+    });
+  }
+});
+
 // Statistics endpoint
 app.get('/api/stats', (req, res) => {
   try {
@@ -270,6 +312,8 @@ app.listen(PORT, () => {
   console.log(`   GET  /api/request/:id`);
   console.log(`   POST /api/ai/chat`);
   console.log(`   GET  /api/blockchain/verify/:id`);
+  console.log(`   GET  /api/blockchain/requests`);
+  console.log(`   GET  /api/blockchain/count`);
   console.log(`   GET  /api/stats`);
 });
 

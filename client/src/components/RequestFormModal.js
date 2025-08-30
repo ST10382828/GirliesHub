@@ -14,9 +14,11 @@ import {
   Typography,
   Alert,
   Snackbar,
+  Chip,
 } from '@mui/material';
 
 import axios from 'axios';
+import { storeRequestOnChain, getWalletStatus } from '../blockchain/contract';
 
 const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
   const [formData, setFormData] = useState({
@@ -56,8 +58,16 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
       return;
     }
 
+    // Check if wallet is connected
+    const walletStatus = getWalletStatus();
+    if (!walletStatus.isConnected) {
+      alert('Please connect your wallet first to submit a request on the blockchain');
+      return;
+    }
+
     setLoading(true);
     try {
+      // First, submit to backend
       const response = await axios.post('/api/request', {
         name: formData.name || 'Anonymous',
         requestType: formData.requestType,
@@ -66,7 +76,31 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
         location: formData.location,
       });
 
-      setSubmittedRequest(response.data);
+      console.log('✅ Request submitted to backend:', response.data);
+
+      // Then, store on blockchain
+      try {
+        const blockchainResult = await storeRequestOnChain(response.data);
+        console.log('✅ Request stored on blockchain:', blockchainResult);
+        
+        // Add blockchain info to the response
+        const enhancedRequest = {
+          ...response.data,
+          blockchain: {
+            transactionId: blockchainResult.transactionId,
+            blockNumber: blockchainResult.blockNumber,
+            network: blockchainResult.network,
+            blockExplorerUrl: `https://primordial.bdagscan.com/tx/${blockchainResult.transactionId}`
+          }
+        };
+        
+        setSubmittedRequest(enhancedRequest);
+      } catch (blockchainError) {
+        console.error('❌ Blockchain storage failed:', blockchainError);
+        // Still show success for backend submission
+        setSubmittedRequest(response.data);
+      }
+
       setShowConfirmation(true);
       
       // Reset form
@@ -226,6 +260,31 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
               <Typography variant="body2">
                 <strong>Submitted:</strong> {new Date(submittedRequest.timestamp).toLocaleString()}
               </Typography>
+              
+              {submittedRequest.blockchain && (
+                <Box sx={{ mt: 2, p: 1, bgcolor: 'rgba(255,255,255,0.1)', borderRadius: 1 }}>
+                  <Typography variant="body2" sx={{ mb: 1, fontWeight: 'bold' }}>
+                    🌐 Blockchain Transaction:
+                  </Typography>
+                  <Typography variant="body2" sx={{ mb: 0.5 }}>
+                    <strong>TX Hash:</strong> {submittedRequest.blockchain.transactionId.slice(0, 10)}...
+                  </Typography>
+                  <Typography variant="body2" sx={{ mb: 0.5 }}>
+                    <strong>Block:</strong> {submittedRequest.blockchain.blockNumber}
+                  </Typography>
+                  <Typography variant="body2" sx={{ mb: 1 }}>
+                    <strong>Network:</strong> {submittedRequest.blockchain.network}
+                  </Typography>
+                  <Chip
+                    label="View on BlockDAG Explorer"
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    onClick={() => window.open(submittedRequest.blockchain.blockExplorerUrl, '_blank')}
+                    sx={{ cursor: 'pointer' }}
+                  />
+                </Box>
+              )}
             </Box>
           )}
         </Alert>
