@@ -99,6 +99,44 @@
     },
     "learnMore": "Funda Kabanzi"
   },
+  "requests": {
+    "title": "Izicelo Zokusekela",
+    "subtitle": "Thumela izicelo ezintsha futhi ulandelele ezikhona",
+    "loading": "Kulayishwa izicelo...",
+    "noRequests": "Azikho izicelo okwamanje",
+    "noRequestsDesc": "Qala ngokuthumela isicelo sakho sokuqala sokusekela",
+    "submitRequest": "Thumela Isicelo",
+    "type": "Uhlobo",
+    "name": "Igama",
+    "location": "Indawo",
+    "submitted": "Kuthunyelwe",
+    "status": {
+      "completed": "Kuqediwe",
+      "processing": "Kuyacutshungulwa",
+      "urgent": "Kuphuthumayo"
+    },
+    "spotsAvailable": "izikhala ezitholakalayo",
+    "types": {
+      "finance": "Ezezimali",
+      "gbvSupport": "Ukusekela kwe-GBV",
+      "sanitaryAid": "Usizo Lokuhlanzeka"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ngifuna izeluleko zokutshala imali zebhizinisi elincane",
+        "location": "eThekwini, KwaZulu-Natal"
+      },
+      "req002": {
+        "name": "Ongaziwa",
+        "description": "Ngidinga ulwazi lwendawo yokuphephela ngokushesha",
+        "location": "eGoli, eGauteng"
+      },
+      "req003": {
+        "description": "Ngifuna amabhokisi okunikela aseduze emikhiqizo yokuhlanzeka",
+        "location": "eThekwini, KwaZulu-Natal"
+      }
+    }
+  },
   "aiAssistant": {
     "title": "Umsizi we-AI",
     "subtitle": "Thola izimpendulo ezisheshayo nokuqondiswa kusistimu yethu ehlakaniphile yokusekela",
@@ -328,6 +366,133 @@
         "description": "Kuyatholakala kuzo zonke izindawo zamakhaya"
       }
     }
+  },
+  "finance": {
+    "title": "Ukuqinisa Ngezimali",
+    "subtitle": "Thola izeluleko zezimali ezilungiselelwe wena, yiya ezingqungqutheleni eziqinisayo, futhi wakhe indlela yakho yokuqina ngezimali",
+    "upcomingSeminars": "Izingqungquthela Ezizayo",
+    "financialTips": "Amathiphu Ezimali",
+    "quickStats": "Izibalo Ezisheshayo",
+    "womenEmpowered": "Abesifazane Abaqinisiwe",
+    "seminarsCompleted": "Izingqungquthela Ezenziwe",
+    "successRate": "Isilinganiso Sempumelelo",
+    "spotsAvailable": "izikhala ezitholakalayo",
+    "seminars": {
+      "seminar1": {
+        "title": "Abesifazane Ebhizinisini: Ukuqala Ukutshala Imali Kwakho Kokuqala",
+        "time": "10:00 Ekuseni",
+        "location": "Isikhungo Somphakathi saseKapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Funda izisekelo zokutshala imali nokuthi ungaqala kanjani ukwakha inotho yekusasa lakho."
+      },
+      "seminar2": {
+        "title": "Iworkshop Yokuzimela Ngezimali",
+        "time": "14:00 Ntambama",
+        "location": "Isikhungo Sebhizinisi saseGoli",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Amasu asebenzayo okufeza ukuzimela ngezimali njengomuntu wesifazane osebenza ngokuzimela."
+      },
+      "seminar3": {
+        "title": "Isabelomali Nokonga Komama Abazimele",
+        "time": "18:00 Ntambama",
+        "location": "Isikhungo Sabesifazane saseDurban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Amakhono abalulekile esabelomali namasu okonga alungiselelwe omama abazimele."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Yakha Isikhwama Sesimo Esiphuthumayo",
+        "description": "Qala ngokonga izindleko zezinyanga ezi-3-6 ezimweni ezingalindelekile."
+      },
+      "education": {
+        "title": "Tshala Imali Emfundweni Yezimali",
+        "description": "Ulwazi lunamandla. Funda ngezabelomali, ukutshala imali, nohlelo lwezimali."
+      },
+      "diversifyIncome": {
+        "title": "Hlukanisa Imali Engenayo Yakho",
+        "description": "Dala imithombo eminingi yemali engenayo ukuze wandise ukuzinza kwezimali."
+      },
+      "retirement": {
+        "title": "Hlela Ukuthatha Umhlalaphansi Kusenesikhathi",
+        "description": "Uma uqala kusenesikhathi, imali yakho inesikhathi esingaphezulu sokukhula."
+      },
+      "trackExpenses": {
+        "title": "Landelela Izindleko Zakho",
+        "description": "Ukuqonda ukuthi imali yakho iya kuphi kuyisinyathelo sokuqala ekulawuleni izimali."
+      }
+    },
+    "categories": {
+      "savings": "Ukonga",
+      "education": "Imfundo",
+      "income": "Imali Engenayo",
+      "planning": "Uhlelo",
+      "budgeting": "Isabelomali"
+    }
+  },
+  "about": {
+    "title": "Mayelana ne-EmpowerHub",
+    "subtitle": "I-EmpowerHub iqinisa abesifazane eNingizimu Afrika ngokunikeza izeluleko zokutshala imali ezilungiselelwe wena nezingqungquthela, ukusekela okusheshayo kwe-GBV nezindawo zokuphephela eziphephile, nokufinyelela emabhokisini okunikela ezempilo. Lesi sisombululo esihlanganisiwe sibonisa ukuzinikela kwethu ekuqiniseni ukuzimela, ukuphepha, nesithunzi.",
+    "mission": "Umgomo Wethu",
+    "missionText": "Ukudala ipulatifomu ehlanganisiwe eqinisa abesifazane kulo lonke iNingizimu Afrika ngokunikeza izinsizakalo zokusekela eziphelele ezibhekene nokuzimela ngezimali, ukuphepha komuntu siqu, nezidingo zokuhlanzeka eziyisisekelo esisombululweni esisodwa esingafinyeleka.",
+    "coreServices": "Izinsizakalo Zethu Eziyinhloko",
+    "impact": "Umthelela Wethu",
+    "values": "Amanani Ethu",
+    "technologyInnovation": "Ubuchwepheshe & Ukusungula",
+    "currentFeatures": "Izici Zamanje",
+    "futureDevelopment": "Ukuthuthukiswa Kwekusasa",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Ukuqinisa Ngezimali",
+        "description": "Izeluleko zokutshala imali ezilungiselelwe wena, izingqungquthela zezimali, nezinsiza zokwakha ukuzimela ngomnotho."
+      },
+      "gbvSupport": {
+        "title": "Ukusekela kwe-GBV",
+        "description": "Ukusekela okusheshayo nezindawo zokuphephela eziphephile kwabesifazane ababhekene nodlame olusekelwe ebulilini."
+      },
+      "sanitaryAid": {
+        "title": "Usizo Lwezempilo",
+        "description": "Ukufinyelela emikhiqizweni ebalulekile yezempilo ngamabhokisi okunikela abekwe ngendlela ehlakaniphile."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Abesifazane Abaqinisiwe",
+      "seminarsCompleted": "Izingqungquthela Ezenziwe",
+      "shelterLocations": "Izindawo Zokuphephela",
+      "donationBins": "Amabhokisi Okunikela"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Ukuqinisa",
+        "description": "Sikholelwa ekuqiniseni ukuzimela kwabesifazane ngemfundo, izinsiza, nokusekela."
+      },
+      "safety": {
+        "title": "Ukuphepha",
+        "description": "Ukuqinisekisa ukufinyelela okusheshayo ezindaweni eziphephile nokusekela kwabesifazane ezimweni zenkinga."
+      },
+      "dignity": {
+        "title": "Isithunzi",
+        "description": "Ukunikeza izinsiza ezibalulekile kuyilapho kugcinwa isithunzi nobumfihlo bomfazi ngamunye."
+      },
+      "community": {
+        "title": "Umphakathi",
+        "description": "Ukwakha inethiwekhi eqinile yokusekela ngezinyathelo eziqhutshwa umphakathi nokubambisana."
+      }
+    },
+    "techDescription": "I-EmpowerHub isebenzisa ubuchwepheshe besimanje ukunikeza ipulatifomu yokusekela ehlanganisiwe. Umboniso wethu wamanje ubonisa isikhombimsebenzisi nezici eziyinhloko, ngezinhlelo zokuhlanganisa izici ezithuthukisiwe okuhlanganisa:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Isikhombimsebenzisi sewebhu esiphendulayo",
+      "requestSystem": "Isistimu yokuthumela izicelo",
+      "resourceMapping": "Ukumapa kwezindawo zezinsiza",
+      "aiInterface": "Isikhombimsebenzisi somsizi we-AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Ukusekela okuqhutshwa yi-AI & izincomo",
+      "blockchain": "Ukuhlanganiswa kwe-blockchain ne-BlockDAG",
+      "database": "Ukuphila kwedathabheyisi & ukuhlaziya",
+      "metamask": "Ukuhlanganiswa kwe-MetaMask ukuze kube nokuthengiselana okuphephile"
+    },
+    "demoNote": "Lolu mboniso ubonisa umqondo wesisombululo esihlanganisiwe, esiklanywe ukuvumela ukuthuthukiswa okuzimele kwezici kuyilapho kugcinwa ulwazi lomuntu osebenzisayo oluhambisanayo. Ukwakheka okuyizingxenye kuvumela ukuthuthukiswa kwekusasa ngaphandle kokuphazamisa ukusebenza okuyinhloko."
   },
   "language": {
     "selector": "Ulimi",

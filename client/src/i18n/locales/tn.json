@@ -45,6 +45,399 @@
     },
     "learnMore": "Ithute go le Gontsi"
   },
+  "about": {
+    "title": "Ka EmpowerHub",
+    "subtitle": "EmpowerHub e nonotsha basadi mo Aforika Borwa ka go naya dikeletso tsa peeletso tse di rulagantsweng le dikopano, thuso e e bonako ya GBV le mafelo a botshabelo a a sireletsegileng, le phitlhelelo ya mabokoso a dimpho a boitekanelo. Tharabololo eno e e kopantsweng e bontsha boikano jwa rona jwa go nonotsha boikemelo, pabalesego le seriti.",
+    "mission": "Maikaelelo a Rona",
+    "missionText": "Go tlhama sethala se se kopantsweng se se nonotshang basadi mo Aforika Borwa yotlhe ka go naya ditirelo tsa thuso tse di feletseng tse di lebisanang le boikemelo jwa madi, pabalesego ya motho, le ditlhokego tsa motheo tsa boitekanelo mo tharabololong e le nngwe e e fitlhelelekang.",
+    "coreServices": "Ditirelo tsa Rona tsa Motheo",
+    "impact": "Tlhotlheletso ya Rona",
+    "values": "Dikgatlhego tsa Rona",
+    "technologyInnovation": "Thekenoloji le Boqapi",
+    "currentFeatures": "Dikarolo tsa Gompieno",
+    "futureDevelopment": "Tlhabololo ya Bokamoso",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Nonotshego ya Madi",
+        "description": "Dikeletso tsa peeletso tse di rulagantsweng, dikopano tsa madi, le didirisiwa tsa go aga boikemelo jwa ikonomi."
+      },
+      "gbvSupport": {
+        "title": "Thuso ya GBV",
+        "description": "Thuso e e bonako le mafelo a botshabelo a a sireletsegileng a basadi ba ba lebaganeng le tlhekefetso e e theilweng mo bongng."
+      },
+      "sanitaryAid": {
+        "title": "Thuso ya Boitekanelo",
+        "description": "Phitlhelelo ya dihlahiswa tsa boitekanelo tse di botlhokwa ka mabokoso a dimpho a a beilweng ka botlhale."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Basadi ba ba Nonotshitsweng",
+      "seminarsCompleted": "Dikopano tse di Dirilweng",
+      "shelterLocations": "Mafelo a Botshabelo",
+      "donationBins": "Mabokoso a Dimpho"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Nonotshego",
+        "description": "Re dumela mo go nonotsheng boikemelo jwa basadi ka thuto, didirisiwa le thuso."
+      },
+      "safety": {
+        "title": "Pabalesego",
+        "description": "Go netefatsa phitlhelelo e e bonako ya mafelo a a sireletsegileng le thuso ya basadi mo maemong a mathata."
+      },
+      "dignity": {
+        "title": "Seriti",
+        "description": "Go naya didirisiwa tse di botlhokwa fa go ntse go bolokwa seriti le sephiri sa mosadi mongwe le mongwe."
+      },
+      "community": {
+        "title": "Setshaba",
+        "description": "Go aga mafaratlhatlha a a nonofileng a thuso ka matsapa a a etelwang pele ke setshaba le tirisanommogo."
+      }
+    },
+    "techDescription": "EmpowerHub e dirisa thekenoloji ya sejoalejoale go naya sethala sa thuso se se kopantsweng. Pontsho ya rona ya gompieno e bontsha sesebeliswa sa modirisi le tiro ya motheo, le meralo ya go kopanya dikarolo tse di tswetseng pele tse di akaretsang:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Sesebeliswa sa wepe se se arabang",
+      "requestSystem": "Thulaganyo ya go romela dikopo",
+      "resourceMapping": "Mmapa wa mafelo a didirisiwa",
+      "aiInterface": "Sesebeliswa sa mothusi wa AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Thuso e e etelwang pele ke AI le dikeletso",
+      "blockchain": "Kopanyo ya blockchain le BlockDAG",
+      "database": "Poloko ya database le tshekatsheko",
+      "metamask": "Kopanyo ya MetaMask ya dikgwebisano tse di sireletsegileng"
+    },
+    "demoNote": "Pontsho eno e bontsha mogopolo wa tharabololo e e kopantsweng, e e rulagantsweng go letla tlhabololo e e ikemetseng ya dikarolo fa go ntse go bolokwa maitemogelo a modirisi a a tshwanang. Sebopego sa modular se letla dikatlego tsa bokamoso ntle le go kgoreletsa tiro ya motheo."
+  },
+  "requests": {
+    "title": "Dikopo tsa Thuso",
+    "subtitle": "Romela dikopo tse ntšha le go latela tse o di nang",
+    "loading": "Go laišwa dikopo...",
+    "noRequests": "Ga go na dikopo jaanong",
+    "noRequestsDesc": "Simolola ka go romela kopo ya gago ya ntlha ya thuso",
+    "submitRequest": "Romela Kopo",
+    "type": "Mofuta",
+    "name": "Leina",
+    "location": "Lefelo",
+    "submitted": "E romelilwe",
+    "status": {
+      "completed": "E fedile",
+      "processing": "E šomišwa",
+      "urgent": "E bonako"
+    },
+    "spotsAvailable": "mafelo a a leng teng",
+    "types": {
+      "finance": "Madi",
+      "gbvSupport": "Thuso ya GBV",
+      "sanitaryAid": "Thuso ya Phitlhelo"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ke batla keletso ya peeletso ya kgwebo e nnye",
+        "location": "Gaborone, Botswana"
+      },
+      "req002": {
+        "name": "Yo o sa itsegeng",
+        "description": "Ke tlhoka tshedimosetso ya lefelo la polokesego ka bonako",
+        "location": "Johannesburg, Gauteng"
+      },
+      "req003": {
+        "description": "Ke batla mabokoso a dineelo a a gaufi a dihlahiswa tsa phitlhelo",
+        "location": "Cape Town, Western Cape"
+      }
+    }
+  },
+  "finance": {
+    "title": "Nonotshego ya Madi",
+    "subtitle": "Fumana dikeletso tsa madi tse di rulagantsweng, ya kwa dikopanong tse di nonotshang, mme o age tsela ya gago ya boikemelo jwa ikonomi",
+    "upcomingSeminars": "Dikopano tse di Tlang",
+    "financialTips": "Malebela a Madi",
+    "quickStats": "Dipalopalo tse di Bonako",
+    "womenEmpowered": "Basadi ba ba Nonotshitsweng",
+    "seminarsCompleted": "Dikopano tse di Dirilweng",
+    "successRate": "Kelo ya Katlego",
+    "spotsAvailable": "mafelo a a leng teng",
+    "seminars": {
+      "seminar1": {
+        "title": "Basadi mo Kgwebong: Go simolola Peeletso ya Gago ya Ntlha",
+        "time": "10:00 AM",
+        "location": "Lefelo la Setšhaba la Cape Town",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Ithuta motheo wa peeletso le gore o ka simolola jang go aga leruo la bokamoso jwa gago."
+      },
+      "seminar2": {
+        "title": "Workshop ya Boikemelo jwa Madi",
+        "time": "2:00 PM",
+        "location": "Lefelo la Kgwebo la Johannesburg",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Mekgwa e e šomang ya go fitlhelela boikemelo jwa madi jaaka mosadi yo o ikemetseng."
+      },
+      "seminar3": {
+        "title": "Tekanyetso ya Madi le Polokelo ya Bomme ba ba Ikemetseng",
+        "time": "6:00 PM",
+        "location": "Lefelo la Basadi la Durban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Bokgoni jo bo botlhokwa jwa tekanyetso ya madi le maano a polokelo a a rulagantsweng bomme ba ba ikemetseng."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Aga Letlole la Maemo a a sa Lebelelwang",
+        "description": "Simolola ka go boloka ditshenyegelo tsa dikgwedi tse 3-6 bakeng sa maemo a a sa lebelelwang."
+      },
+      "education": {
+        "title": "Beeletsa mo Thutong ya Madi",
+        "description": "Kitso ke maatla. Ithute ka tekanyetso ya madi, peeletso, le thulaganyo ya madi."
+      },
+      "diversifyIncome": {
+        "title": "Farologanya Lotseno lwa Gago",
+        "description": "Tlhama metswedi e mentsi ya lotseno go oketsa tsitsipano ya madi."
+      },
+      "retirement": {
+        "title": "Rulaganya Bokhutlo pele",
+        "description": "Go feta o simolola pele, go feta madi a gago a na le nako e ntsi ya go gola."
+      },
+      "trackExpenses": {
+        "title": "Latela Ditshenyegelo tsa Gago",
+        "description": "Go tlhaloganya gore madi a gago a ya kae ke kgato ya ntlha ya go laola madi."
+      }
+    },
+    "categories": {
+      "savings": "Polokelo",
+      "education": "Thuto",
+      "income": "Lotseno",
+      "planning": "Thulaganyo",
+      "budgeting": "Tekanyetso ya Madi"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Thuso ya Phitlhelo & Tshegetso ya Tlhago",
+    "subtitle": "Fumana dihlahiswa tsa mahala tsa phitlhelo le ditlhokego tsa tlhago mo mabokosong a rona a dimpho mo Afrika Borwa",
+    "donationBins": {
+      "title": "Mabokoso a Dimpho",
+      "address": "Aterese",
+      "hours": "Dinako tsa Tiro",
+      "contact": "Ikgolagane",
+      "availableItems": "Dilo tse di Leng Teng",
+      "lastRestocked": "Bofelo e Tlatselitswe",
+      "daysAgo": "malatsi a a fetileng",
+      "callLocation": "Letsetsa Lefelo",
+      "getDirections": "Fumana Ditaelo",
+      "status": {
+        "wellStocked": "E Tletse Sentle",
+        "lowStock": "Stock e Kwa Tlase",
+        "outOfStock": "Ga go na Stock"
+      },
+      "items": {
+        "sanitaryPads": "Dipete tsa Phitlhelo",
+        "tampons": "Ditampone",
+        "menstrualCups": "Dikomiki tsa Kgwedi",
+        "soap": "Sesepa",
+        "underwear": "Diaparo tsa ka fa teng",
+        "toiletPaper": "Pampiri ya Ntlwana",
+        "shampoo": "Shampoo",
+        "toothbrush": "Borašele ya Meno",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Lefelo la Setšhaba la Cape Town",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Mantaga - Labotlhano: 8:00 - 17:00",
+          "description": "Lefelo le legolo la setšhaba le le fanang ka dihlahiswa tsa phitlhelo tse di botlhokwa mo basading ba selegae.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Lefelo la Basadi la Johannesburg",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Mantaga - Labotlhano: 9:00 - 16:00",
+          "description": "Lefelo le le ikanyegang go thusa basadi ka dihlahiswa tsa phitlhelo le tshegetso.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Lefelo la Boitekanelo la Durban",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Mantaga - Labotlhano: 8:30 - 16:30",
+          "description": "Lefelo la boitekanelo le le fanang ka dihlahiswa tsa phitlhelo le thuto ya boitekanelo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Malebela a Phitlhelo",
+      "menstrualHygiene": {
+        "title": "Phitlhelo ya Kgwedi",
+        "tips": {
+          "tip1": "Fetola dipete kgotsa ditampone gangwe ka diura tse 4-6",
+          "tip2": "Tlhapa diatla tsa gago pele le morago ga go dirisa dihlahiswa tsa kgwedi",
+          "tip3": "Dirisa dihlahiswa tse di phepa tse di sa kotsi",
+          "tip4": "Boloka dihlahiswa tse di sa dirisiwang lefelong le le omileng, le le phodileng"
+        }
+      },
+      "generalHygiene": {
+        "title": "Phitlhelo ya Kakaretso",
+        "tips": {
+          "tip1": "Tlhapa mmele o mogolo letsatsi le letsatsi ka sesepa se se bonolo",
+          "tip2": "Apara diaparo tse di phepa, tse di omileng",
+          "tip3": "Boloka lefelo la gago la poraefete le le phepa le le omileng",
+          "tip4": "Nwa metsi a mantsi le go ja dijo tse di nang le phepo e e siameng"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Dikgetho tsa Tshoganyetso",
+        "tips": {
+          "tip1": "Masela a a phepa a ka dirisiwa jaaka kgetho ya nakwana",
+          "tip2": "Dijo tse di tsididi di ka thusa go fokotsa bohloko jwa kgwedi",
+          "tip3": "Metsi a a mogote a ka thusa go phomola mesifa",
+          "tip4": "Batla thuso ya bongaka fa go na le mathata a a sa tlwaelegang"
+        }
+      }
+    },
+    "donation": {
+      "title": "Neela Dihlahiswa",
+      "description": "Re amogela dimpho tsa dihlahiswa tsa phitlhelo go thusa basadi ba selegae. Dilo tse di tlhokega thata:",
+      "items": {
+        "sanitaryProducts": "Dihlahiswa tsa phitlhelo ya kgwedi (dipete, ditampone, dikomiki)",
+        "hygieneItems": "Dilo tsa phitlhelo (sesepa, shampoo, borašele ya meno)",
+        "underwear": "Diaparo tsa ka fa teng tse dintšha, tse di sa dirisiwang"
+      },
+      "learnMore": "Ithuta go Oketsa ka go Neela"
+    }
+  },
+  "gbvSupport": {
+    "title": "Thuso ya GBV & Mafelo a Polokesego",
+    "subtitle": "Thuso e e bonako le mafelo a botshabelo a a sireletsegileng a basadi ba ba lebaganeng le tlhekefetso e e theilweng mo bongng",
+    "emergencyAlert": {
+      "title": "Tshoganyetso ya Maemo a a Kotsi",
+      "description": "Fa o mo kotsing e e bonako, letsetsa 10111 kgotsa o ye kwa polasing e e gaufi. Botshelo jwa gago bo botlhokwa."
+    },
+    "safeShelters": {
+      "title": "Mafelo a Polokesego",
+      "address": "Aterese",
+      "hours": "Dinako tsa Tiro",
+      "contactNumbers": "Dinomoro tsa Mogala",
+      "general": "Kakaretso",
+      "emergency": "Tshoganyetso",
+      "emergencyCall": "Letsetsa Tshoganyetso",
+      "generalContact": "Ikgolagane ka Kakaretso",
+      "servicesAvailable": "Ditirelo tse di Leng Teng",
+      "capacity": {
+        "available": "E Leng Teng",
+        "limited": "E Lekanyeditsweng",
+        "full": "E Tletse"
+      },
+      "services": {
+        "emergencyAccommodation": "Bodulo jwa Tshoganyetso",
+        "counseling": "Keletso",
+        "legalSupport": "Thuso ya Semolao",
+        "jobTraining": "Katiso ya Tiro",
+        "safeHousing": "Bodulo jo bo Sireletsegileng",
+        "traumaCounseling": "Keletso ya Kgobalo",
+        "legalAid": "Thuso ya Semolao",
+        "childrenSupport": "Thuso ya Bana",
+        "emergencyShelter": "Botshabelo jwa Tshoganyetso",
+        "medicalSupport": "Thuso ya Bongaka",
+        "courtSupport": "Thuso ya Kgotla",
+        "skillsDevelopment": "Tlhabololo ya Bokgoni"
+      },
+      "locations": {
+        "safeHaven": {
+          "name": "Safe Haven Women's Shelter",
+          "address": "15 Protection Street, Cape Town, Western Cape",
+          "phone": "+27 21 447 9762",
+          "emergency": "+27 21 447 1467",
+          "hours": "24/7 - Letsatsi le letsatsi",
+          "description": "Botshabelo jo bo sireletsegileng jo bo fanang ka bodulo jwa tshoganyetso le ditirelo tsa thuso."
+        },
+        "ubuntu": {
+          "name": "Ubuntu Women's Centre",
+          "address": "88 Hope Avenue, Johannesburg, Gauteng",
+          "phone": "+27 11 836 4105",
+          "emergency": "+27 11 836 4911",
+          "hours": "24/7 - Letsatsi le letsatsi",
+          "description": "Lefelo la basadi le le fanang ka thuso e e felletseng le bodulo jo bo sireletsegileng."
+        },
+        "themba": {
+          "name": "Themba Safe House",
+          "address": "42 Shelter Road, Durban, KwaZulu-Natal",
+          "phone": "+27 31 205 3587",
+          "emergency": "+27 31 205 4444",
+          "hours": "24/7 - Letsatsi le letsatsi",
+          "description": "Ntlo e e sireletsegileng e e ikanyegang go thusa basadi le bana ba ba mo kotsing."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Dinomoro tsa Tshoganyetso",
+      "callNow": "Letsetsa Jaanong",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "number": "0800 428 428",
+          "description": "Thuso ya tshoganyetso ya GBV ya mahala - 24/7"
+        },
+        "police": {
+          "name": "Mapodisi a Tshoganyetso",
+          "number": "10111",
+          "description": "Nomoro ya tshoganyetso ya mapodisi - 24/7"
+        },
+        "lifeline": {
+          "name": "Lifeline Southern Africa",
+          "number": "0861 322 322",
+          "description": "Keletso ya maikutlo le thuso - 24/7"
+        },
+        "childline": {
+          "name": "Childline South Africa",
+          "number": "116",
+          "description": "Thuso ya bana - 24/7"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Didirisiwa tsa Semolao",
+      "legalAid": {
+        "name": "Legal Aid South Africa",
+        "description": "Thuso ya semolao ya mahala: 0800 110 110"
+      },
+      "medicalSupport": {
+        "name": "Thuso ya Bongaka",
+        "description": "E leng teng mo dikokelong tsotlhe tsa bongaka"
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Mothusi wa AI",
+    "subtitle": "Fumana dikarabo tse di bonako le kaelo go tswa mo tsamaisong ya rona ya thuso e e botlhale",
+    "welcomeMessage": "Dumelang! Ke mothusi wa gago wa EmpowerHub. Ke mo go thusa ka dipotso tsa dikeletso tsa madi, thuso ya GBV, thuso ya phitlhelo, le ditirelo dingwe tsotlhe tsa thuso. Nka go thusa jang gompieno?",
+    "quickQuestions": {
+      "title": "Dipotso tse di Bonako:",
+      "questions": {
+        "financialSeminars": "Nka fumana jang dikopano tsa madi?",
+        "safeShelters": "Ke kae moo nka fumanang mafelo a polokesego?",
+        "sanitaryProducts": "Nka fumana jang dihlahiswa tsa phitlhelo?",
+        "submitRequest": "Nka romela jang kopo?",
+        "availableServices": "Ke ditirelo dife tse di leng teng?"
+      }
+    },
+    "chat": {
+      "assistantName": "Mothusi wa EmpowerHub",
+      "status": "Mo inthaneteng",
+      "typing": "O kwala...",
+      "placeholder": "Kwala molaetsa wa gago mo...",
+      "keyboardHint": "Tobetsa Enter go romela"
+    },
+    "mockResponses": {
+      "response1": "Ke itumelela go go thusa! A o ka mpolelela gore o batla thuso efe?",
+      "response2": "Dikopano tsa rona tsa madi di tshwarwa Laboraro le Labone. A o batla tshedimosetso e oketsegileng?",
+      "response3": "Mafelo a polokesego a leng gaufi le wena a ka bonwa mo tsebeng ya rona ya mafelo. A ke go romele tshedimosetso?",
+      "response4": "Dihlahiswa tsa phitlhelo di leng teng mo mabokosong a dimpho a a mo mafelong a mantsi. A o batla go itse gore ke kae?",
+      "response5": "Potso eo e botlhokwa. Sethala sa rona se naya thuso e e felletseng ya ditirelo tsa madi, polokesego le boitekanelo."
+    },
+    "footer": "Mothusi wa AI o leng teng go go thusa ka dipotso tsotlhe tsa thuso"
+  },
   "language": {
     "selector": "Puo",
     "languages": {

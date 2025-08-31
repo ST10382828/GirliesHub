@@ -45,6 +45,401 @@
     },
     "learnMore": "Ithute Haholwanyane"
   },
+  "sanitaryAid": {
+    "title": "Thuso ya Bohloeki & Tshehetso ya Tlhaho",
+    "subtitle": "Fumana dihlahiswa tsa mahala tsa bohloeki le ditlhoko tsa tlhaho mabokoseng a rona a dimpho Afrika Borwa",
+    "donationBins": {
+      "title": "Mabokose a Dimpho",
+      "address": "Aterese",
+      "hours": "Dinako tsa Mosebetsi",
+      "contact": "Ikopanye",
+      "availableItems": "Dilo tse Fumanehang",
+      "lastRestocked": "Qetellong e Tlatselitswe",
+      "daysAgo": "matsatsi a fetileng",
+      "callLocation": "Letsetsa Sebaka",
+      "getDirections": "Fumana Ditaelo",
+      "status": {
+        "wellStocked": "E Tletse Hantle",
+        "lowStock": "Stock e Tlase",
+        "outOfStock": "Ha ho Stock"
+      },
+      "items": {
+        "sanitaryPads": "Dipete tsa Bohloeki",
+        "tampons": "Ditampone",
+        "menstrualCups": "Dikomiki tsa Kgwedi",
+        "soap": "Sesepa",
+        "underwear": "Diaparo tsa ka hare",
+        "toiletPaper": "Pampiri ya Ntlwana",
+        "shampoo": "Shampoo",
+        "toothbrush": "Borashele ya Meno",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Setsi sa Sechaba sa Cape Town",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Mmantaha - Labone: 8:00 - 17:00",
+          "description": "Setsi se seholo sa sechaba se fanang ka dihlahiswa tsa bohloeki tsa bohlokwa ho basadi ba lehae.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Setsi sa Basadi sa Johannesburg",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Mmantaha - Labone: 9:00 - 16:00",
+          "description": "Setsi se ikemiseditseng ho thusa basadi ka dihlahiswa tsa bohloeki le tshehetso.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Setsi sa Bophelo sa Durban",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Mmantaha - Labone: 8:30 - 16:30",
+          "description": "Setsi sa bophelo se fanang ka dihlahiswa tsa bohloeki le thuto ya bophelo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Malebela a Bohloeki",
+      "menstrualHygiene": {
+        "title": "Bohloeki ba Kgwedi",
+        "tips": {
+          "tip1": "Fetola dipete kapa ditampone kamehla ka hora tse 4-6",
+          "tip2": "Hlatswa matsoho a hao pele le ka mora ho sebedisa dihlahiswa tsa kgwedi",
+          "tip3": "Sebedisa dihlahiswa tse hloekileng tse sa nang kotsi",
+          "tip4": "Boloka dihlahiswa tse sa sebediswang sebakeng se omileng, se phodileng"
+        }
+      },
+      "generalHygiene": {
+        "title": "Bohloeki ba Kakaretso",
+        "tips": {
+          "tip1": "Hlapa 'mele o moholo ka letsatsi kamehla ka sesepa se bonolo",
+          "tip2": "Apara diaparo tse hloekileng, tse omileng",
+          "tip3": "Boloka sebaka sa hao sa poraefete se le hloekileng le se omileng",
+          "tip4": "Noa metsi a mangata le ho ja dijo tse nang le phepo e nepahetseng"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Dikgetho tsa Tshohanyetso",
+        "tips": {
+          "tip1": "Masapo a hloekileng a ka sebediswa e le kgetho ya nako e khutshwane",
+          "tip2": "Dieta tse tshehla di ka thusa ho fokotsa bohloko ba kgwedi",
+          "tip3": "Metsi a chesang a ka thusa ho phomola mesifa",
+          "tip4": "Batla thuso ya bongaka haeba ho na le mathata a sa tlwaelehang"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nehelana ka Dihlahiswa",
+      "description": "Re amohela dimpho tsa dihlahiswa tsa bohloeki ho thusa basadi ba lehae. Dilo tsena di hlokahala haholo:",
+      "items": {
+        "sanitaryProducts": "Dihlahiswa tsa bohloeki ba kgwedi (dipete, ditampone, dikomiki)",
+        "hygieneItems": "Dilo tsa bohloeki (sesepa, shampoo, borashele ya meno)",
+        "underwear": "Diaparo tsa ka hare tse ntjha, tse sa sebediswang"
+      },
+      "learnMore": "Ithute Haholoanyane ka ho Nehelana"
+    }
+  },
+  "requests": {
+    "title": "Dikopo tsa Tshehetso",
+    "subtitle": "Romela dikopo tse ntjha mme o latele tse seng di le teng",
+    "loading": "Ho layishwa dikopo...",
+    "noRequests": "Ha ho dikopo hajwale",
+    "noRequestsDesc": "Qala ka ho romela kopo ya hao ya pele ya tshehetso",
+    "submitRequest": "Romela Kopo",
+    "type": "Mofuta",
+    "name": "Lebitso",
+    "location": "Sebaka",
+    "submitted": "E rometse",
+    "status": {
+      "completed": "E phethilwe",
+      "processing": "E sebetswa",
+      "urgent": "E potlakile"
+    },
+    "spotsAvailable": "dibaka tse fumanehang",
+    "types": {
+      "finance": "Ditjhelete",
+      "gbvSupport": "Tshehetso ya GBV",
+      "sanitaryAid": "Thuso ya Bohloeki"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ke batla dikeletso tsa matsete bakeng sa kgwebo e nyane",
+        "location": "Kapa, Kolone ya Bophirima"
+      },
+      "req002": {
+        "name": "Ha a tsejwe",
+        "description": "Ke hloka tlhahisoleseding ya sebaka sa tshireletso ka potlako",
+        "location": "Johannesburg, Gauteng"
+      },
+      "req003": {
+        "description": "Ke batla mabokose a dimpho a haufi a dihlahiswa tsa bohloeki",
+        "location": "Durban, KwaZulu-Natal"
+      }
+    }
+  },
+  "finance": {
+    "title": "Matla a Ditjhelete",
+    "subtitle": "Fumana dikeletso tsa ditjhelete tse hlophisitsweng, kena dikopanong tse matlafatsang, mme o hahele tsela ya hao ya boikemelo ba moruo",
+    "upcomingSeminars": "Dikopano tse Tlang",
+    "financialTips": "Dikeletso tsa Ditjhelete",
+    "quickStats": "Dipalopalo tse Potlakileng",
+    "womenEmpowered": "Basadi ba Matlafaditseng",
+    "seminarsCompleted": "Dikopano tse Entsweng",
+    "successRate": "Sekhahla sa Katleho",
+    "spotsAvailable": "dibaka tse fumanehang",
+    "seminars": {
+      "seminar1": {
+        "title": "Basadi Kgwebong: Ho Qala Matsete a Hao a Pele",
+        "time": "10:00 AM",
+        "location": "Setsi sa Sechaba sa Kapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Ithute motheo wa matsete le kamoo o ka qalang kateng ho aha leruo la hao la bokamoso."
+      },
+      "seminar2": {
+        "title": "Workshop ya Boikemelo ba Ditjhelete",
+        "time": "2:00 PM",
+        "location": "Setsi sa Kgwebo sa Johannesburg",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Maano a sebetsang a ho finyella boikemelo ba ditjhelete e le mosadi ya ikemetseng."
+      },
+      "seminar3": {
+        "title": "Tekanyetso ya Tjhelete le ho Boloka bakeng sa Bo-mme ba Ikemetseng",
+        "time": "6:00 PM",
+        "location": "Setsi sa Basadi sa Durban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Bokgoni bo bohlokwa ba tekanyetso ya tjhelete le maano a ho boloka a hlophisitsweng bakeng sa bo-mme ba ikemetseng."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Haha Letlotlo la Tshohanyetso",
+        "description": "Qala ka ho boloka ditjhelete tsa dikgwedi tse 3-6 bakeng sa maemo a sa lebellwang."
+      },
+      "education": {
+        "title": "Tsetela Thutong ya Ditjhelete",
+        "description": "Tsebo ke matla. Ithute ka tekanyetso ya tjhelete, matsete, le tlhophiso ya ditjhelete."
+      },
+      "diversifyIncome": {
+        "title": "Fapanyetsa Kenelo ya Hao",
+        "description": "Theha methopo e mengata ya kenelo ho eketsa botsitso ba ditjhelete."
+      },
+      "retirement": {
+        "title": "Rulaganya Phomolo Hoo Hang",
+        "description": "Ho qala hang ho feta, ho feta nako e telele tjhelete ya hao e nang le ho hola."
+      },
+      "trackExpenses": {
+        "title": "Latela Ditshenyehelo tsa Hao",
+        "description": "Ho utlwisisa hore tjhelete ya hao e ya hokae ke mohato wa pele wa ho laola ditjhelete."
+      }
+    },
+    "categories": {
+      "savings": "Ho Boloka",
+      "education": "Thuto",
+      "income": "Kenelo",
+      "planning": "Tlhophiso",
+      "budgeting": "Tekanyetso ya Tjhelete"
+    }
+  },
+  "gbvSupport": {
+    "title": "Tshehetso ya GBV le Dibaka tsa Bodulo tse Sireletsehileng",
+    "subtitle": "Tshehetso e potlakileng le dibaka tsa bodulo tse sireletsehileng bakeng sa basadi ba tobaneng le tlhekefetso e thehilweng hodima bong",
+    "emergencyAlert": {
+      "title": "O Kotsing e Potlakileng?",
+      "description": "Letsetsa 0800 428 428 (Setsi sa Taolo sa GBV) kapa 10111 (Mapodisi) hang-hang. Ditshebeletso tsena di fumaneha 24/7 mme di mahala ho hang."
+    },
+    "safeShelters": {
+      "title": "Dibaka tsa Bodulo tse Sireletsehileng",
+      "address": "Aterese:",
+      "hours": "Dinako:",
+      "contactNumbers": "Dinomoro tsa Puisano:",
+      "general": "Kakaretso:",
+      "emergency": "Tshohanyetso:",
+      "servicesAvailable": "Ditshebeletso tse Fumanehang:",
+      "emergencyCall": "Mohala wa Tshohanyetso",
+      "generalContact": "Puisano ya Kakaretso",
+      "capacity": {
+        "available": "E Fumaneha",
+        "limited": "E Lekanyeditsweng",
+        "full": "E Tletse"
+      },
+      "locations": {
+        "safeHaven": {
+          "name": "Sebaka sa Bodulo sa Basadi sa Safe Haven",
+          "address": "123 Hope Street, Kapa, Kolone ya Bophirima",
+          "phone": "+27 21 123 4567",
+          "emergency": "+27 21 123 4568",
+          "hours": "Phihlello ya Tshohanyetso ya 24/7",
+          "description": "Sebaka se sireletsehileng se fanang ka tshehetso e felletseng bakeng sa basadi le bana ba balehelang tlhekefetso ya lapeng."
+        },
+        "ubuntu": {
+          "name": "Sebaka sa Polokelo sa Basadi sa Ubuntu",
+          "address": "456 Freedom Avenue, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "emergency": "+27 11 987 6544",
+          "hours": "Phihlello ya Tshohanyetso ya 24/7",
+          "description": "Ho fana ka tikoloho e sireletsehileng ka ditshebeletso tsa tshehetso tse felletseng bakeng sa ba phelosang tlhekefetso e thehilweng hodima bong."
+        },
+        "themba": {
+          "name": "Ntlo ya Themba",
+          "address": "789 Courage Road, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 7890",
+          "emergency": "+27 31 555 7891",
+          "hours": "Phihlello ya Tshohanyetso ya 24/7",
+          "description": "Sebaka sa bodulo se thehilweng setjhabeng se fanang ka tshireletso e potlakileng le mananeo a boikemelo a nako e telele."
+        }
+      },
+      "services": {
+        "emergencyAccommodation": "Bodulo ba Tshohanyetso",
+        "counseling": "Keletso",
+        "legalSupport": "Tshehetso ya Molao",
+        "jobTraining": "Koetliso ya Mosebetsi",
+        "safeHousing": "Bodulo bo Sireletsehileng",
+        "traumaCounseling": "Keletso ya Khatello ya Maikutlo",
+        "legalAid": "Thuso ya Molao",
+        "childrenSupport": "Tshehetso ya Bana",
+        "emergencyShelter": "Sebaka sa Bodulo sa Tshohanyetso",
+        "medicalSupport": "Tshehetso ya Bongaka",
+        "courtSupport": "Tshehetso ya Lekgotla",
+        "skillsDevelopment": "Ntlafatso ya Bokgoni"
+      }
+    },
+    "emergencyContacts": {
+      "title": "Puisano ya Tshohanyetso",
+      "callNow": "Letsetsa Hona Jwale",
+      "contacts": {
+        "gbvCommand": {
+          "name": "Setsi sa Naha sa Taolo sa GBV",
+          "number": "0800 428 428",
+          "description": "Mohala wa thuso wa 24/7 o sa lefellweng bakeng sa thuso e potlakileng"
+        },
+        "police": {
+          "name": "Tshebeletso ya Mapodisi ya Afrika Borwa",
+          "number": "10111",
+          "description": "Karabo ya mapodisi ya tshohanyetso"
+        },
+        "lifeline": {
+          "name": "LifeLine National",
+          "number": "0861 322 322",
+          "description": "Keletso ya 24/7 le tshehetso ya mathata"
+        },
+        "childline": {
+          "name": "Childline Afrika Borwa",
+          "number": "116",
+          "description": "Tshehetso bakeng sa bana ba maemong a mathata"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Disebediswa tsa Molao",
+      "legalAid": {
+        "name": "Thuso ya Molao Afrika Borwa",
+        "description": "Thuso ya molao ya mahala: 0800 110 110"
+      },
+      "medicalSupport": {
+        "name": "Tshehetso ya Bongaka",
+        "description": "E fumaneha dibakeng tsohle tsa bodulo"
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Mothusi wa AI",
+    "subtitle": "Fumana dikarabo tse potlakileng le tataiso ho tswa tsamaisong ya rona ya tshehetso e bohlale",
+    "welcomeMessage": "Dumela! Ke mothusi wa hao wa EmpowerHub. Ke mona ho o thusa ka dipotso tsa dikeletso tsa ditjhelete, tshehetso ya GBV, thuso ya bohloeki, le ditshebeletso tse ding tsa tshehetso. Nka o thusa jwang kajeno?",
+    "quickQuestions": {
+      "title": "Dipotso tse Potlakileng:",
+      "questions": {
+        "financialSeminars": "Nka fumana jwang dikopano tsa ditjhelete?",
+        "safeShelters": "Nka fumana hokae dibaka tsa bodulo tse sireletsehileng?",
+        "sanitaryProducts": "Nka fumana jwang dihlahiswa tsa bohloeki?",
+        "submitRequest": "Nka romela jwang kopo ya tshehetso?",
+        "availableServices": "Ke ditshebeletso dife tse fumanehang?"
+      }
+    },
+    "chat": {
+      "assistantName": "Mothusi wa EmpowerHub",
+      "status": "O sebetsa • O ikemiseditse ho thusa",
+      "placeholder": "Ngola molaetsa wa hao mona...",
+      "sendButton": "Romela",
+      "clearChat": "Hlakola Puisano",
+      "typing": "O ngola...",
+      "keyboardHint": "Tobetsa Enter ho romela, Shift+Enter bakeng sa mola o motjha"
+    },
+    "footer": "Bakeng sa taba tse potlakileng, ka kopo ikopanye le mehala ya rona ya tshohanyetso ka kotloloho",
+    "mockResponses": {
+      "response1": "Ke utlwisisa hore o batla thuso. Ke tla o fa tataiso ka sehlooho seo.",
+      "response2": "Eo ke potso e ntle! Ho latela potso ya hao, ke kgothaletsa hore o shebe maqephe a rona a ikgethileng a tshehetso bakeng sa tlhahisoleseding e qaqileng.",
+      "response3": "Ke mona ho thusa! Bakeng sa thuso e potlakileng ka taba tse potlakileng, ka kopo se ke wa qeqa ho ikopanya le mehala ya rona ya tshohanyetso.",
+      "response4": "Kea leboha ka ho ikopanya. Nka thusa ho o hokahanya le disebediswa tse nepahetseng le ditshebeletso tsa tshehetso.",
+      "response5": "Eo ke potso e bohlokwa. Sethala sa rona se fana ka tshehetso e felletseng ho pholletsa le ditshebeletso tsa ditjhelete, tshireletso, le bophelo."
+    }
+  },
+  "about": {
+    "title": "Ka EmpowerHub",
+    "subtitle": "EmpowerHub e matlafatsa basadi Afrika Borwa ka ho fana ka dikeletso tsa matsete tse hlophisitsweng le dikopano, tshehetso e potlakileng ya GBV le dibaka tsa bodulo tse sireletsehileng, le phihlello ya mabokose a dimpho a bohloeki. Tharollo ena e kopaneng e bontsha boitlamo ba rona ho matlafatsa boikemelo, tshireletso le seriti.",
+    "mission": "Sepheo sa Rona",
+    "missionText": "Ho theha sethala se kopaneng se matlafatsang basadi ho pholletsa le Afrika Borwa ka ho fana ka ditshebeletso tsa tshehetso tse felletseng tse sebetsanang le boikemelo ba ditjhelete, tshireletso ya motho, le ditlhoko tsa motheo tsa bohloeki tharong e le nngwe e fumanehang.",
+    "coreServices": "Ditshebeletso tsa Rona tsa Motheo",
+    "impact": "Tshwaelo ya Rona",
+    "values": "Boleng ba Rona",
+    "technologyInnovation": "Theknoloji le Boqapi",
+    "currentFeatures": "Dikarolo tsa Hajwale",
+    "futureDevelopment": "Ntlafatso ya Bokamoso",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Matla a Ditjhelete",
+        "description": "Dikeletso tsa matsete tse hlophisitsweng, dikopano tsa ditjhelete, le disebediswa tsa ho aha boikemelo ba moruo."
+      },
+      "gbvSupport": {
+        "title": "Tshehetso ya GBV",
+        "description": "Tshehetso e potlakileng le dibaka tsa bodulo tse sireletsehileng bakeng sa basadi ba tobaneng le tlhekefetso e thehilweng hodima bong."
+      },
+      "sanitaryAid": {
+        "title": "Thuso ya Bohloeki",
+        "description": "Phihlello ya dihlahiswa tsa bohloeki tse bohlokwa ka mabokose a dimpho a behilweng ka bohlale."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Basadi ba Matlafaditseng",
+      "seminarsCompleted": "Dikopano tse Entsweng",
+      "shelterLocations": "Dibaka tsa Bodulo",
+      "donationBins": "Mabokose a Dimpho"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Matla",
+        "description": "Re dumela ho matlafatsa boikemelo ba basadi ka thuto, disebediswa le tshehetso."
+      },
+      "safety": {
+        "title": "Tshireletso",
+        "description": "Ho netefatsa phihlello e potlakileng ya dibaka tse sireletsehileng le tshehetso bakeng sa basadi maemong a mathata."
+      },
+      "dignity": {
+        "title": "Seriti",
+        "description": "Ho fana ka disebediswa tse bohlokwa ha ho ntse ho bolokwa seriti le lekunutu la mosadi e mong le e mong."
+      },
+      "community": {
+        "title": "Setjhaba",
+        "description": "Ho aha marang-rang a matla a tshehetso ka matsapa a tsamaiswang ke setjhaba le tshebedisano."
+      }
+    },
+    "techDescription": "EmpowerHub e sebedisa theknoloji ya sejoalejoale ho fana ka sethala sa tshehetso se kopaneng. Pontshiso ya rona ya hajwale e bontsha sesebeliswa sa mosebedisi le tshebetso ya motheo, le meralo ya ho kopanya dikarolo tse tsoetseng pele tse kenyelletsang:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Sesebeliswa sa wepe se arabelang",
+      "requestSystem": "Tsamaiso ya ho romela dikopo",
+      "resourceMapping": "Mmapa wa dibaka tsa disebediswa",
+      "aiInterface": "Sesebeliswa sa mothusi wa AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Tshehetso e tsamaiswang ke AI le dikeletso",
+      "blockchain": "Kopanyo ya blockchain le BlockDAG",
+      "database": "Tshwaro ya database le manollo",
+      "metamask": "Kopanyo ya MetaMask bakeng sa dikgwebisano tse sireletsehileng"
+    },
+    "demoNote": "Pontshiso ena e bontsha mohopolo wa tharollo e kopaneng, e hlophisitsweng ho dumella ntlafatso e ikemetseng ya dikarolo ha ho ntse ho bolokwa boiphihlelo ba mosebedisi bo tshwanang. Sebopeho sa modular se dumella dikatlehiso tsa bokamoso ntle le ho sitisa tshebetso ya motheo."
+  },
   "language": {
     "selector": "Puo",
     "languages": {

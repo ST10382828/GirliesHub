@@ -45,6 +45,448 @@
     },
     "learnMore": "Gududzani Zwinzhi"
   },
+  "requests": {
+    "title": "Mikumbelo ya Thikhedzo",
+    "subtitle": "Rumelani mikumbelo miswa na u tevhedza ine ya vha nayo",
+    "loading": "Hu khou ḓi layisha mikumbelo...",
+    "noRequests": "A hu na mikumbelo zwino",
+    "noRequestsDesc": "Thomani nga u rumela kumbelo yanu ya u thoma ya thikhedzo",
+    "submitRequest": "Rumelani Kumbelo",
+    "type": "Tshaka",
+    "name": "Dzina",
+    "location": "Fhethu",
+    "submitted": "Zwo rumelwa",
+    "status": {
+      "completed": "Zwo fhedziswa",
+      "processing": "Zwo khou shumiswa",
+      "urgent": "Zwa u tavhanya"
+    },
+    "spotsAvailable": "fhethu dzo vhonala",
+    "types": {
+      "finance": "Zwa Mali",
+      "gbvSupport": "Thikhedzo ya GBV",
+      "sanitaryAid": "Thuso ya Vhuhwavho"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ndi khou ṱoda themendelo dza u bvisa mali dza bindu ḽiṅwe",
+        "location": "Tshwane, Gauteng"
+      },
+      "req002": {
+        "name": "Asina divhi",
+        "description": "Ndi ṱoda mafhungo a fhethu ḽa u tshirelela nga u tavhanya",
+        "location": "Kapa, Western Cape"
+      },
+      "req003": {
+        "description": "Ndi khou ṱoda mabokisi a mpho o fhufhelaho a zwiṅwe zwa vhuhwavho",
+        "location": "eThekwini, KwaZulu-Natal"
+      }
+    }
+  },
+  "finance": {
+    "title": "U Ḓuḓuwedza nga Mali",
+    "subtitle": "Wanani themendelo dza mali dzo lugaganyiswaho, dzhenelelani miangaredzo yo khwathisedziaho, na u fhaṱa tsela yanu ya u ita zwithu nga uṅwe ha ikonomi",
+    "upcomingSeminars": "Miangaredzo yo Ḓaho",
+    "financialTips": "Themendelo dza Mali",
+    "quickStats": "Mbalombalo dza u Tavhanya",
+    "womenEmpowered": "Vhafumakadzi vho Ḓuḓuwedzwaho",
+    "seminarsCompleted": "Miṅwedzi yo Itiwaho",
+    "successRate": "Kelo ya u Fhela",
+    "spotsAvailable": "fhethu dzo vhonala",
+    "seminars": {
+      "seminar1": {
+        "title": "Vhafumakadzi kha Bindu: U thoma u Bvisa Mali ha Vhukuma",
+        "time": "10:00 Matsheloni",
+        "location": "Senthara ya Tshitshavha ya Kapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Gududzani motheo wa u bvisa mali na uri ni nga thoma hani u fhaṱa pfumo ḽa matshelo anu a vhukuma."
+      },
+      "seminar2": {
+        "title": "Workshop ya u Ita Zwithu nga Uṅwe nga Mali",
+        "time": "14:00 Madekwana",
+        "location": "Senthara ya Bindu ya Johannesburg",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Maitele o shuma a u swikela u ita zwithu nga uṅwe nga mali sa mufumakadzi a itaho zwithu nga uṅwe."
+      },
+      "seminar3": {
+        "title": "U Vhala Mali na u Dzhenisa ha Vhomme vho Itaho Zwithu nga Uṅwe",
+        "time": "18:00 Madekwana",
+        "location": "Senthara ya Vhafumakadzi ya Durban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Vhukoni ha ndeme ha u vhala mali na maitele a u dzhenisa o lugaganyiswaho kha vhomme vho itaho zwithu nga uṅwe."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Fhathani Tshikwama tsha Maemo a u sa Lindeli",
+        "description": "Thomani nga u dzhenisa zwiṱaleli zwa miṅwedzi 3-6 kha maemo a sa lindeli."
+      },
+      "education": {
+        "title": "Bvisani Mali kha Pfunzo ya Mali",
+        "description": "Nḓivho ndi maanḓa. Gududzani nga u vhala mali, u bvisa mali, na u runga mali."
+      },
+      "diversifyIncome": {
+        "title": "Fhambanyani Mbadelo yanu",
+        "description": "Vhumbani zwiṱaleli zwinzhi zwa mbadelo u engedza u dzudzanela ha mali."
+      },
+      "retirement": {
+        "title": "Rongani u Fhela Mushumo ri sa Athu",
+        "description": "Arali ni thoma ri sa athu, mali yanu i na tshifhinga tshine tshi khou ṱalela tsha u khwina."
+      },
+      "trackExpenses": {
+        "title": "Tevhedzani Zwiṱaleli Zwanu",
+        "description": "U pfesesa uri mali yanu i khou ya hani ndi khato ya u thoma ya u laola mali."
+      }
+    },
+    "categories": {
+      "savings": "U Dzhenisa",
+      "education": "Pfunzo",
+      "income": "Mbadelo",
+      "planning": "U Runga",
+      "budgeting": "U Vhala Mali"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Thuso ya U penya & Thikhedzo ya Zwithu zwa Vhutshilo",
+    "subtitle": "Wanani zwiṅwe zwa mahala zwa u penya na zwiṱakalelo zwa zwithu zwa vhutshilo kha mabokisi anga a mpho kha Afrika Tshipembe",
+    "donationBins": {
+      "title": "Mabokisi a Mpho",
+      "address": "Adirese",
+      "hours": "Tshifhinga tsha Mushumo",
+      "contact": "Vhudavhidzani",
+      "availableItems": "Zwithu zwo Wanalaho",
+      "lastRestocked": "Zwa u Fhedzisela zwo Dzhiwa",
+      "daysAgo": "maḓuvha o fhelaho",
+      "callLocation": "Fonelani Fhethu",
+      "getDirections": "Wanani Tshiṱaṱiso",
+      "status": {
+        "wellStocked": "Zwo Dzhia Zwavhuḓi",
+        "lowStock": "Stock yo Fhasi",
+        "outOfStock": "A hu na Stock"
+      },
+      "items": {
+        "sanitaryPads": "Maphedi a U penya",
+        "tampons": "Mathamponi",
+        "menstrualCups": "Makombe a Ṅwedzi",
+        "soap": "Sepe",
+        "underwear": "Zwiambaro zwa Ngomu",
+        "toiletPaper": "Phepha ḽa Thoilete",
+        "shampoo": "Shampoo",
+        "toothbrush": "Buraṱa ya Maḓo",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Senthara ya Tshitshavha ya Kapa",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Musumbuluwo - Lavhuvhili: 8:00 - 17:00",
+          "description": "Senthara khulwane ya tshitshavha ine ya ṋea zwiṅwe zwa u penya zwa ndeme kha vhafumakadzi vha fhethu.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Senthara ya Vhafumakadzi ya Johannesburg",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Musumbuluwo - Lavhuvhili: 9:00 - 16:00",
+          "description": "Senthara ine ya ṱuṱuwedza u thusa vhafumakadzi nga zwiṅwe zwa u penya na thikhedzo.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Senthara ya Mutakalo ya Durban",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Musumbuluwo - Lavhuvhili: 8:30 - 16:30",
+          "description": "Senthara ya mutakalo ine ya ṋea zwiṅwe zwa u penya na pfunzo ya mutakalo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Themendelo dza U penya",
+      "menstrualHygiene": {
+        "title": "U penya ha Ṅwedzi",
+        "tips": {
+          "tip1": "Shandukisani maphedi kana mathamponi tshifhinga tshinwe nga awara dza 4-6",
+          "tip2": "Sumbani maanḓa anu phanḓa na murahu ha u shumisa zwiṅwe zwa ṅwedzi",
+          "tip3": "Shumisani zwiṅwe zwo penaho zwi songo vha na khombo",
+          "tip4": "Dzhenisani zwiṅwe zwi songo shumiswa fhethuni ḽo omaho, ḽo tonḓaho"
+        }
+      },
+      "generalHygiene": {
+        "title": "U penya ha Zwoṱhe",
+        "tips": {
+          "tip1": "Sumbani muvhili woṱhe ḓuvha ḽiṅwe na ḽiṅwe nga sepe yo ṱalifhaho",
+          "tip2": "Ambarani zwiambaro zwo penaho, zwo omaho",
+          "tip3": "Dzhenisani fhethu ḽanu ḽa vhuphara ḽi tshi pena na ḽi tshi oma",
+          "tip4": "Nwani maḓi mazhinzhi na u ḽa zwiḽiwa zwine zwa vha na phepho yo ṱuṱuwedza"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Tshanduko dza Maemo a u sa Lindeli",
+        "tips": {
+          "tip1": "Masira o penaho a nga shumiswa sa tshanduko ya tshifhingana",
+          "tip2": "Zwiḽiwa zwo tonḓaho zwi nga thusa u fhungudza vhudifhi ha ṅwedzi",
+          "tip3": "Maḓi o fudumaho a nga thusa u phumulisa mishifa",
+          "tip4": "Ṱodani thuso ya vhakoma arali hu na mathata a sa ḓoweleaho"
+        }
+      }
+    },
+    "donation": {
+      "title": "Mphai Zwiṅwe",
+      "description": "Ri amukela mpho dza zwiṅwe zwa u penya u thusa vhafumakadzi vha fhethu. Izwi ndi zwithu zwine zwa ṱoḓea nga maanḓa:",
+      "items": {
+        "sanitaryProducts": "Zwiṅwe zwa u penya ha ṅwedzi (maphedi, mathamponi, makombe)",
+        "hygieneItems": "Zwithu zwa u penya (sepe, shampoo, buraṱa ya maḓo)",
+        "underwear": "Zwiambaro zwa ngomu zwiswa, zwi songo shumiswa"
+      },
+      "learnMore": "Gududzani zwo Ṱalela nga u Pha"
+    }
+  },
+  "gbvSupport": {
+    "title": "Thikhedzo ya GBV & Fhethu dza u Tshirelela",
+    "subtitle": "Wanani thikhedzo ya u tavhanya, fhethu dza u tshirelela dzo chenereaho, na themendelo dza vhakoma vha u fhambanya vhudifhi ha tshithu",
+    "emergencyAlert": "Arali ni kha maemo a u tavhanya, fonelani 10111 kana 112 nga u tavhanya",
+    "safeShelters": {
+      "title": "Fhethu dza u Tshirelela dzo Chenereaho",
+      "subtitle": "Fhethu dzo vhisiwaho dza u tshirelela vhafumakadzi vhane vha ṱoda fhethu ḽa u tshirelela",
+      "availableBeds": "mibeddo yo wanalaho",
+      "capacity": "Vhukoni",
+      "currentOccupancy": "U dzula ha Zwino",
+      "contactShelter": "Vhudavhidzanani na Fhethu ḽa u Tshirelela",
+      "getDirections": "Wanani Tshiṱaṱiso",
+      "locations": {
+        "safeHaven": {
+          "name": "Fhethu ḽa u Tshirelela ḽa Safe Haven",
+          "address": "Adirese yo Vhisiwaho, Cape Town",
+          "phone": "+27 21 XXX XXXX",
+          "capacity": "50 vhafumakadzi na vhana",
+          "services": "Muḓi, zwiḽiwa, thikhedzo ya muvhuso, thikhedzo ya mulayo",
+          "description": "Fhethu ḽa u tshirelela ḽa 24/7 ḽa vhafumakadzi vhane vha ṱoda fhethu ḽa u tshirelela nga u tavhanya."
+        },
+        "newBeginnings": {
+          "name": "Senthara ya New Beginnings",
+          "address": "Adirese yo Vhisiwaho, Johannesburg",
+          "phone": "+27 11 XXX XXXX",
+          "capacity": "30 vhafumakadzi na vhana",
+          "services": "Muḓi wa tshifhingana, gudiso ya mushumo, pfunzo ya vhana",
+          "description": "Senthara ine ya thusa vhafumakadzi na u fhaṱa u ita zwithu nga uṅwe."
+        },
+        "hopeCentre": {
+          "name": "Senthara ya Hope Centre",
+          "address": "Adirese yo Vhisiwaho, Durban",
+          "phone": "+27 31 XXX XXXX",
+          "capacity": "40 vhafumakadzi na vhana",
+          "services": "Thikhedzo ya muvhuso, gudiso ya mulayo, thikhedzo ya mutakalo",
+          "description": "Senthara ine ya ṋea thikhedzo yo fhelelaho kha vhafumakadzi vho ṱaṱuwaho."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Vhudavhidzani ha Maemo a u sa Lindeli",
+      "subtitle": "Nomboro dza u fonela arali ni tshi ṱoda thikhedzo nga u tavhanya",
+      "available247": "Zwo wanala 24/7",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "phone": "0800 428 428",
+          "description": "Thikhedzo ya u tavhanya ya GBV ya lushaka ḽoṱhe",
+          "languages": "Luambo ḽoṱhe lwa Afrika Tshipembe"
+        },
+        "lifeline": {
+          "name": "Lifeline",
+          "phone": "0861 322 322",
+          "description": "Gudiso ya muvhuso na thikhedzo",
+          "languages": "Tshiṅgirisi, Tshiafurikana, na luambo luzhinzhi"
+        },
+        "childline": {
+          "name": "Childline",
+          "phone": "116",
+          "description": "Thikhedzo ya vhana vho ṱaṱuwaho",
+          "languages": "Luambo ḽoṱhe lwa Afrika Tshipembe"
+        },
+        "police": {
+          "name": "Mapholisa",
+          "phone": "10111",
+          "description": "Thikhedzo ya mapholisa ya maemo a u sa lindeli",
+          "languages": "Luambo ḽoṱhe lwa Afrika Tshipembe"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Thikhedzo ya Mulayo",
+      "subtitle": "Wanani mafhungo nga ha pfanelo dzanu na uri ni nga wana hani thikhedzo ya mulayo",
+      "resources": {
+        "legalAid": {
+          "title": "Legal Aid South Africa",
+          "description": "Thikhedzo ya mulayo ya mahala kha vhafumakadzi vhane vha ṱoda",
+          "phone": "0800 110 110",
+          "services": "Gudiso ya mulayo, u imelwa kha makhothe, thikhedzo ya mulayo"
+        },
+        "wlce": {
+          "title": "Women's Legal Centre",
+          "description": "Senthara ine ya ṱuṱuwedza u thusa vhafumakadzi nga mulayo",
+          "phone": "+27 21 424 5660",
+          "services": "Gudiso ya mulayo, pfunzo ya pfanelo, u sireledza"
+        },
+        "familyLaw": {
+          "title": "Gudiso ya Mulayo wa Muḓi",
+          "description": "Thikhedzo ya mulayo ya zwa muḓi",
+          "services": "U tshimbidza, u gudisa vhana, vhutshilo ha vhathu vhavhili"
+        }
+      }
+    },
+    "supportGroups": {
+      "title": "Zwigwada zwa Thikhedzo",
+      "subtitle": "Vhudavhidzanani na vhafumakadzi vhaṅwe vhe vha fhira zwithu zwo fanaho",
+      "groups": {
+        "survivors": {
+          "name": "Tshigwada tsha Vho Pholaho",
+          "schedule": "Ṱhanzhi vhege ḽiṅwe na ḽiṅwe nga 18:00",
+          "location": "Senthara ya Tshitshavha",
+          "description": "Tshigwada tsho vhisiwaho tsha vho pholaho vha GBV"
+        },
+        "healing": {
+          "name": "Tshigwada tsha u Phola",
+          "schedule": "Ṱhafula vhege ḽiṅwe na ḽiṅwe nga 19:00",
+          "location": "Senthara ya Mutakalo wa Muvhuso",
+          "description": "Tshigwada tsho ṱuṱuwedzaho u phola ha muvhuso"
+        },
+        "empowerment": {
+          "name": "Tshigwada tsha u Ḓuḓuwedza",
+          "schedule": "Mugivhela vhege ḽiṅwe na ḽiṅwe nga 10:00",
+          "location": "Senthara ya Vhafumakadzi",
+          "description": "Tshigwada tsho ḓuḓuwedzaho vhafumakadzi na u fhaṱa u ita zwithu nga uṅwe"
+        }
+      }
+    },
+    "safetyTips": {
+      "title": "Themendelo dza u Tshirelela",
+      "personalSafety": {
+        "title": "u Tshirelela ha Muṅwe na Muṅwe",
+        "tips": {
+          "tip1": "Shandukisani tsela yanu ya u famba tshifhinga tshinwe na tshinwe",
+          "tip2": "Vhudzani muṅwe muthu uri ni khou ya hani",
+          "tip3": "Dzhenisani nomboro ya u fonela ya maemo a u sa lindeli i tshi lugela",
+          "tip4": "Tshembani mivhuso yanu - arali zwo vhonala sa zwo sa tshireledzi, bvani"
+        }
+      },
+      "digitalSafety": {
+        "title": "u Tshirelela ha Digital",
+        "tips": {
+          "tip1": "Shumisani maphasiwede a matshaka na u a shandukisa tshifhinga tshinwe na tshinwe",
+          "tip2": "Sedzani zwiṱiriti zwanu zwa social media",
+          "tip3": "Divhani uri ni nga vhisa hani fhethu ḽanu",
+          "tip4": "Shumisani browser ya private mode arali ni tshi ṱoda thikhedzo"
+        }
+      },
+      "emergencyPreparedness": {
+        "title": "u Lugaganya ha Maemo a u sa Lindeli",
+        "tips": {
+          "tip1": "Vhumbani tshirongwa tsho vhisiwaho tsha u bva",
+          "tip2": "Dzhenisani mali, manwalwa, na zwiambaro fhethuni dzo vhisiwaho",
+          "tip3": "Divhani nomboro dza u fonela dzo teaho",
+          "tip4": "Rongani fhethu ḽa u tshirelela ḽa u ya hone"
+        }
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Muthusi wa AI",
+    "subtitle": "Vhudzani mbudziso dzanu na u wana themendelo dzo lugaganyiswaho",
+    "welcomeMessage": "Avhudi! Ndi muthusi wanu wa AI. Ndi nga ni thusa hani namusi?",
+    "placeholder": "Ṅwalani mbudziso yanu afha...",
+    "send": "Rumelani",
+    "quickQuestions": {
+      "title": "Mbudziso dza u Tavhanya:",
+      "questions": {
+        "financialSeminars": "Ndi nga wana hani mafhungo nga ha miangaredzo ya mali?",
+        "safeShelters": "Ndi nga wana hani fhethu dza u tshirela dzo teaho?",
+        "sanitaryProducts": "Ndi nga wana hani zwiṅwe zwa u penya?",
+        "submitRequest": "Ndi nga rumela hani khumbelo ya thikhedzo?",
+        "availableServices": "Ndi thikhedzo ifhio ine ya hone?"
+      }
+    },
+    "chatHistory": {
+      "title": "Mbalombalo ya u Amba",
+      "clear": "Suthani Mbalombalo",
+      "empty": "A hu na mbalombalo ya u amba"
+    },
+    "mockResponses": {
+      "response1": "Ndo pfesesa! Ri nga ni thusa nga miangaredzo ya mali yo fhambanaho. Vhonani siaṱari yanga ya Finance u wana mafhungo o fhelelaho nga ha miangaredzo yo ḓaho.",
+      "response2": "u Tshirelela hwanu ndi zwa ndeme. Ri nga ni thusa nga fhethu dza u tshirelela dzo chenereaho, nomboro dza maemo a u sa lindeli, na thikhedzo ya mulayo. Vhonani siaṱari yanga ya GBV Support.",
+      "response3": "Ri na mabokisi a mpho a zwiṅwe zwa u penya kha Afrika Tshipembe yoṱhe. Vhonani siaṱari yanga ya Sanitary Aid u wana fhethu ḽo fhufhelaho na inwi.",
+      "response4": "Ri nga ni vhudavhidzanya na thikhedzo ya mulayo ya mahala. Legal Aid South Africa i ṋea thikhedzo ya mahala kha vhafumakadzi vhane vha ṱoda. Fonelani 0800 110 110.",
+      "response5": "Arali ni kha maemo a u sa lindeli, fonelani 10111 (mapholisa) kana 0800 428 428 (GBV Command Centre) nga u tavhanya. u Tshirelela hwanu ndi zwa ndeme."
+    },
+    "footer": {
+      "disclaimer": "Muthusi wa AI u a thusa fhedzi a si u tshinya fhethu ḽa gudiso ya vhakoma. Arali ni tshi ṱoda thikhedzo ya maemo a u sa lindeli, vhudavhidzanani na vhakoma."
+    }
+  },
+  "about": {
+    "title": "Nga EmpowerHub",
+    "subtitle": "EmpowerHub i khou ḓuḓuwedza vhafumakadzi Afrika Tshipembe nga u ḓea themendelo dza u bvisa mali dzo ḓanganelwaho na miṅwedzi, thuso ya u tavhanya ya GBV na fhethu dza u tshirelela dzo chenereaho, na u swikela kha mabokisi a mpho a u penya. Iyi ndi thandululo yo ḓanganelanywaho ine ya sumbedza u ḓuḓuwedza hwaṅwe ha u ita zwithu nga uṅwe, tshirelelo na vhuḓifhinduleli.",
+    "mission": "Ndivho yaṅu",
+    "missionText": "U vhumbha pulatifomo yo ḓanganelanywaho ine ya ḓuḓuwedza vhafumakadzi Afrika Tshipembe yoṱhe nga u ḓea tshumelo dza thuso dzo fhelelaho dze dza ḓangana na u ita zwithu nga uṅwe ha mali, tshirelelo ya muṅwe na muṅwe, na zwiḓoḓea zwa mutheo zwa u penya kha thandululo ithihi ine ya swikeleleka.",
+    "coreServices": "Tshumelo dzaṅu dza Mutheo",
+    "impact": "Khwiniso yaṅu",
+    "values": "Ndivho dzaṅu",
+    "technologyInnovation": "Thekhinolodzhi na u Ḓa Zwitsha",
+    "currentFeatures": "Zwiṅwe zwa Zwino",
+    "futureDevelopment": "Mveledziso ya Matshelo",
+    "features": {
+      "financialEmpowerment": {
+        "title": "U Ḓuḓuwedza nga Mali",
+        "description": "Themendelo dza u bvisa mali dzo ḓanganelwaho, miṅwedzi ya mali, na zwithu zwa u fhaṱa u ita zwithu nga uṅwe ha ikonomi."
+      },
+      "gbvSupport": {
+        "title": "Thuso ya GBV",
+        "description": "Thuso ya u tavhanya na fhethu dza u tshirelela dzo chenereaho kha vhafumakadzi vhane vha khou ḓangana na vhuṅwe ho sedzwaho nga mbeu."
+      },
+      "sanitaryAid": {
+        "title": "Thuso ya U penya",
+        "description": "U swikela kha zwiṅwe zwa u penya zwine zwa ḓoḓea nga mabokisi a mpho ane a vheiwa nga vhuhali."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Vhafumakadzi vho Ḓuḓuwedzwaho",
+      "seminarsCompleted": "Miṅwedzi yo Itiwaho",
+      "shelterLocations": "Fhethu dza U tshirelela",
+      "donationBins": "Mabokisi a Mpho"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "U Ḓuḓuwedza",
+        "description": "Ri tenda nga u ḓuḓuwedza u ita zwithu nga uṅwe ha vhafumakadzi nga pfunzo, zwithu na thuso."
+      },
+      "safety": {
+        "title": "Tshirelelo",
+        "description": "U tikedza u swikela ha u tavhanya ha fhethu dzo chenereaho na thuso ya vhafumakadzi kha maimo a thaidzo."
+      },
+      "dignity": {
+        "title": "Vhuḓifhinduleli",
+        "description": "U ḓea zwithu zwine zwa ḓoḓea hu tshi khou dzudzanywa vhuḓifhinduleli na u vhifha ha mufumakadzi muṅwe na muṅwe."
+      },
+      "community": {
+        "title": "Tshitshavha",
+        "description": "U fhaṱa netweke ine ya khwine ya thuso nga matsangwana ane a ḓuḓuwedzwa nga tshitshavha na vhudifhindani."
+      }
+    },
+    "techDescription": "EmpowerHub i khou shumisa thekhinolodzhi ya zwino u ḓea pulatifomo ya thuso yo ḓanganelanywaho. Kombetshedzo yaṅu ya zwino i sumbedza ḓhalutshedzo ya mushumisi na mushumo wa mutheo, na milayo ya u ḓanganyisa zwiṅwe zwo ḓoweleaho zwine zwa katela:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Ḓhalutshedzo ya webusaiti ine ya araba",
+      "requestSystem": "Maitele a u rumela mbaḓo",
+      "resourceMapping": "Mapo a fhethu dza zwithu",
+      "aiInterface": "Ḓhalutshedzo ya muthusi wa AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Thuso ine ya ḓuḓuwedzwa nga AI na themendelo",
+      "blockchain": "U ḓanganyisa ha blockchain na BlockDAG",
+      "database": "U dzula ha database na u saukanya",
+      "metamask": "U ḓanganyisa ha MetaMask ha mabindudzo o chenereaho"
+    },
+    "demoNote": "Iyi kombetshedzo i sumbedza mihumbulo ya thandululo yo ḓanganelanywaho, yo ḓanganelwaho u tendelela mveledziso yo ḓakalaho ya zwiṅwe hu tshi khou dzudzanywa maṱangano a mushumisi o linganaho. Muvhumbeo wa modular u tendelela mveledziso ya matshelo hu si na u khakhamela mushumo wa mutheo."
+  },
   "language": {
     "selector": "Luambo",
     "languages": {

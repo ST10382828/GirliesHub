@@ -45,6 +45,448 @@
     },
     "learnMore": "Funda Kabanzi"
   },
+  "requests": {
+    "title": "Imibuzo Yosizo",
+    "subtitle": "Thumela imibuzo emitsha futhi ulandelele leyo eseyikhona",
+    "loading": "Kulayishwa imibuzo...",
+    "noRequests": "Ayikho imibuzo manje",
+    "noRequestsDesc": "Qala ngokuthumela isicelo sakho sokuqala sosizo",
+    "submitRequest": "Thumela Isicelo",
+    "type": "Uhlobo",
+    "name": "Igama",
+    "location": "Indawo",
+    "submitted": "Kuthunyelwe",
+    "status": {
+      "completed": "Kuqediwe",
+      "processing": "Kuyacutshungulwa",
+      "urgent": "Kuphuthumayo"
+    },
+    "spotsAvailable": "izindawo ezikhona",
+    "types": {
+      "finance": "Ezezimali",
+      "gbvSupport": "Usizo lwe-GBV",
+      "sanitaryAid": "Usizo Lokuhlanzeka"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ngifuna izeluleko zokutshala imali ebhizinisini elincane",
+        "location": "eThekwini, KwaZulu-Natal"
+      },
+      "req002": {
+        "name": "Angaziwa",
+        "description": "Ngidinga ulwazi lwendawo ephephile ngokushesha",
+        "location": "eGoli, eGauteng"
+      },
+      "req003": {
+        "description": "Ngifuna amabhokisi okupha aseduzane ezinto zokuhlanzeka",
+        "location": "eKapa, eNtshonalanga Koloni"
+      }
+    }
+  },
+  "finance": {
+    "title": "Ukuqinisa Ngezimali",
+    "subtitle": "Thola izeluleko zezimali ezilungiselelwe wena, zibandakanyeke emihlanganisweni yezimali eqinisayo, futhi wakhe indlela yakho yezomnotho",
+    "upcomingSeminars": "Imihlangano Ezayo",
+    "financialTips": "Amathiphu Ezimali",
+    "quickStats": "Izibalo Ezisheshayo",
+    "womenEmpowered": "Abesifazane Abaqinisiwe",
+    "seminarsCompleted": "Imihlangano Eqediwe",
+    "successRate": "Isilinganiso Sempumelelo",
+    "spotsAvailable": "izindawo ezikhona",
+    "seminars": {
+      "seminar1": {
+        "title": "Abesifazane Ebhizinisini: Ukuqala Uhambo Lwakho Lwezimali",
+        "time": "10:00 Ekuseni",
+        "location": "Isikhungo Somphakathi saseKapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Funda izisekelo zokutshala imali nokuthi ungaqala kanjani ukwakha ingcebo yakho yesikhathi esizayo."
+      },
+      "seminar2": {
+        "title": "I-Workshop Yokuzimela Ngezimali",
+        "time": "14:00 Ntambama",
+        "location": "Isikhungo Sebhizinisi saseJozi",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Amasu asebenzayo okufeza ukuzimela ngezimali njengowesifazane ozimele."
+      },
+      "seminar3": {
+        "title": "Ukubala Imali Nokonga Kwabesifazane Abazimele",
+        "time": "18:00 Ntambama",
+        "location": "Isikhungo Sabesifazane saseThekwini",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Amakhono abalulekile okubala imali namasu okonga alungiselelwe abesifazane abazimele."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Yakha Isikhwama Sesimo Esiphuthumayo",
+        "description": "Qala ngokonga izindleko zezinyanga ezi-3-6 ezimweni ezingalindelekile."
+      },
+      "education": {
+        "title": "Tshala Imali Emfundweni Yezimali",
+        "description": "Ulwazi lunamandla. Funda ngokubala imali, ukutshala imali, nokuhlela imali."
+      },
+      "diversifyIncome": {
+        "title": "Hlukanisa Imali Engenayo Yakho",
+        "description": "Yakha imithombo eminingi yemali engenayo ukwandisa ukuqina kwezimali."
+      },
+      "retirement": {
+        "title": "Hlela Umhlalaphansi Kusenesikhathi",
+        "description": "Uma uqala kusenesikhathi, imali yakho inesikhathi esinganeno sokukhula."
+      },
+      "trackExpenses": {
+        "title": "Landelela Izindleko Zakho",
+        "description": "Ukuqonda ukuthi imali yakho iya kuphi kuyisinyathelo sokuqala sokulawula imali."
+      }
+    },
+    "categories": {
+      "savings": "Ukonga",
+      "education": "Imfundo",
+      "income": "Imali Engenayo",
+      "planning": "Ukuhlela",
+      "budgeting": "Ukubala Imali"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Usizo Lokuhlanzeka & Ukusekela Impilo",
+    "subtitle": "Thola izinto zamahhala zokuhlanzeka nezidingo zempilo emabhokisini ethu okupha eNingizimu Afrika",
+    "donationBins": {
+      "title": "Amabhokisi Okupha",
+      "address": "Ikheli",
+      "hours": "Amahora Omsebenzi",
+      "contact": "Xhumana",
+      "availableItems": "Izinto Ezikhona",
+      "lastRestocked": "Ekugcineni Kugcwaliswe",
+      "daysAgo": "izinsuku ezedlule",
+      "callLocation": "Shayela Indawo",
+      "getDirections": "Thola Izikhombisi",
+      "status": {
+        "wellStocked": "Kugcwele Kahle",
+        "lowStock": "I-Stock Ephansi",
+        "outOfStock": "Ayikho I-Stock"
+      },
+      "items": {
+        "sanitaryPads": "Amaphedi Okuhlanzeka",
+        "tampons": "Ama-tampon",
+        "menstrualCups": "Izinkomishi Zenyanga",
+        "soap": "Insipho",
+        "underwear": "Izingubo Zangaphansi",
+        "toiletPaper": "Iphepha Lasethoyilethi",
+        "shampoo": "I-Shampoo",
+        "toothbrush": "Ibhrashi Yamazinyo",
+        "toothpaste": "I-Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Isikhungo Somphakathi saseKapa",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "NgoMsombuluko - NgoLwesihlanu: 8:00 - 17:00",
+          "description": "Isikhungo esikhulu somphakathi esihlinzeka ngezinto ezibalulekile zokuhlanzeka kubesifazane bendawo.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Isikhungo Sabesifazane saseJozi",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "NgoMsombuluko - NgoLwesihlanu: 9:00 - 16:00",
+          "description": "Isikhungo esizinikezele ekusizeni abesifazane ngezinto zokuhlanzeka nosizo.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Isikhungo Sezempilo saseThekwini",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "NgoMsombuluko - NgoLwesihlanu: 8:30 - 16:30",
+          "description": "Isikhungo sezempilo esihlinzeka ngezinto zokuhlanzeka nemfundo yezempilo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Amathiphu Okuhlanzeka",
+      "menstrualHygiene": {
+        "title": "Ukuhlanzeka Kwenyanga",
+        "tips": {
+          "tip1": "Shintsha amaphedi noma ama-tampon njalo ngemahora angu-4-6",
+          "tip2": "Geza izandla zakho ngaphambi nangemva kokusebenzisa izinto zenyanga",
+          "tip3": "Sebenzisa imikhiqizo ehlanzekile engenabungozi",
+          "tip4": "Gcina imikhiqizo engakasebenziswa endaweni eyomile, epholile"
+        }
+      },
+      "generalHygiene": {
+        "title": "Ukuhlanzeka Okujwayelekile",
+        "tips": {
+          "tip1": "Geza umzimba wonke nsuku zonke ngensipho emsulwa",
+          "tip2": "Gqoka izingubo ezihlanzekile, ezomile",
+          "tip3": "Gcina indawo yakho yangasese ihlanzekile futhi yome",
+          "tip4": "Phuza amanzi amaningi futhi udle ukudla okunomsoco"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Ezinye Izindlela Zesimo Esiphuthumayo",
+        "tips": {
+          "tip1": "Amalaphu ahlanzekile angasetshenziswa njengenye indlela yesikhashana",
+          "tip2": "Ukudla okufudumele kungasiza ukunciphisa ubuhlungu benyanga",
+          "tip3": "Amanzi afudumele angasiza ukuphumuza imisipha",
+          "tip4": "Funa usizo lwezingcweti uma kunezinkinga ezingajwayelekile"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nikela Izinto",
+      "description": "Samukela iminikelo yezinto zokuhlanzeka ukusiza abesifazane bendawo. Lezi yizinto ezidingeka kakhulu:",
+      "items": {
+        "sanitaryProducts": "Imikhiqizo yokuhlanzeka kwenyanga (amaphedi, ama-tampon, izinkomishi)",
+        "hygieneItems": "Izinto zokuhlanzeka (insipho, i-shampoo, ibhrashi yamazinyo)",
+        "underwear": "Izingubo zangaphansi ezintsha, ezingakasebenziswa"
+      },
+      "learnMore": "Funda Kabanzi Ngokunakekela"
+    }
+  },
+  "gbvSupport": {
+    "title": "Usizo lwe-GBV & Izindawo Zokuphepha",
+    "subtitle": "Thola usizo olusheshayo, izindawo zokuphepha eziphephile, nezeluleko zezingcweti zokudlula udlame lwesidalwa",
+    "emergencyAlert": "Uma usesimweni esiphuthumayo, shayela 10111 noma 112 ngokushesha",
+    "safeShelters": {
+      "title": "Izindawo Zokuphepha Eziphephile",
+      "subtitle": "Izindawo ezifihlakele zokuphepha zabesifazane abadinga indawo yokuphepha",
+      "availableBeds": "imibhede etholakalayo",
+      "capacity": "Umthamo",
+      "currentOccupancy": "Ukugcwala Kwamanje",
+      "contactShelter": "Xhumana Nendawo Yokuphepha",
+      "getDirections": "Thola Izikhombisi",
+      "locations": {
+        "safeHaven": {
+          "name": "Indawo Yokuphepha ye-Safe Haven",
+          "address": "Ikheli Elifihlakele, Cape Town",
+          "phone": "+27 21 XXX XXXX",
+          "capacity": "50 abesifazane nezingane",
+          "services": "Indawo yokuhlala, ukudla, ukusekela kwengqondo, usizo lwezomthetho",
+          "description": "Indawo yokuphepha ye-24/7 yabesifazane abadinga indawo yokuphepha ngokushesha."
+        },
+        "newBeginnings": {
+          "name": "Isikhungo se-New Beginnings",
+          "address": "Ikheli Elifihlakele, Johannesburg",
+          "phone": "+27 11 XXX XXXX",
+          "capacity": "30 abesifazane nezingane",
+          "services": "Indawo yokuhlala yesikhashana, ukuqeqeshwa komsebenzi, imfundo yezingane",
+          "description": "Isikhungo esisiza abesifazane nokwakha ukuzimela kwabo."
+        },
+        "hopeCentre": {
+          "name": "Isikhungo se-Hope Centre",
+          "address": "Ikheli Elifihlakele, Durban",
+          "phone": "+27 31 XXX XXXX",
+          "capacity": "40 abesifazane nezingane",
+          "services": "Ukusekela kwengqondo, ukuqeqeshwa kwezomthetho, usizo lwezempilo",
+          "description": "Isikhungo esinikeza ukusekela okugcwele kubesifazane abahluphekile."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Oxhumana Nabo Esimweni Esiphuthumayo",
+      "subtitle": "Izinombolo zokushayela uma udinga usizo ngokushesha",
+      "available247": "Kuyatholakala 24/7",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "phone": "0800 428 428",
+          "description": "Usizo olusheshayo lwe-GBV lwezwe lonke",
+          "languages": "Zonke izilimi zaseNingizimu Afrika"
+        },
+        "lifeline": {
+          "name": "Lifeline",
+          "phone": "0861 322 322",
+          "description": "Ukuqeqeshwa kwengqondo nokusekela",
+          "languages": "IsiNgisi, isiAfrikaans, nezilimi eziningi"
+        },
+        "childline": {
+          "name": "Childline",
+          "phone": "116",
+          "description": "Usizo lwezingane ezihluphekile",
+          "languages": "Zonke izilimi zaseNingizimu Afrika"
+        },
+        "police": {
+          "name": "Amaphoyisa",
+          "phone": "10111",
+          "description": "Usizo lwamaphoyisa lwesimo esiphuthumayo",
+          "languages": "Zonke izilimi zaseNingizimu Afrika"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Ukusekela Kwezomthetho",
+      "subtitle": "Thola ulwazi ngamalungelo akho nokuthi ungathola kanjani usizo lwezomthetho",
+      "resources": {
+        "legalAid": {
+          "title": "Legal Aid South Africa",
+          "description": "Usizo lwezomthetho lwamahhala kubesifazane abadinga",
+          "phone": "0800 110 110",
+          "services": "Ukuqeqeshwa kwezomthetho, ukumelwa emakhotini, ukusekela kwezomthetho"
+        },
+        "wlce": {
+          "title": "Women's Legal Centre",
+          "description": "Isikhungo esizinikezele ekusizeni abesifazane ngezomthetho",
+          "phone": "+27 21 424 5660",
+          "services": "Ukuqeqeshwa kwezomthetho, imfundo yamalungelo, ukuvikela"
+        },
+        "familyLaw": {
+          "title": "Ukuqeqeshwa Kwezomthetho Womndeni",
+          "description": "Usizo lwezomthetho lwezindaba zomndeni",
+          "services": "Ukwehlukana, ukukhulisa izingane, ukuphila kwababili"
+        }
+      }
+    },
+    "supportGroups": {
+      "title": "Amaqembu Okusekela",
+      "subtitle": "Xhumana nabanye abesifazane abadlule izinto ezifanayo",
+      "groups": {
+        "survivors": {
+          "name": "Iqembu Labasindile",
+          "schedule": "NgoLwesibili masonto onke ngo-18:00",
+          "location": "Isikhungo Somphakathi",
+          "description": "Iqembu elifihlakele labasindile be-GBV"
+        },
+        "healing": {
+          "name": "Iqembu Lokuphola",
+          "schedule": "NgoLwesine masonto onke ngo-19:00",
+          "location": "Isikhungo Sezempilo Zengqondo",
+          "description": "Iqembu eligxile ekuphileni kwengqondo"
+        },
+        "empowerment": {
+          "name": "Iqembu Lokuqinisa",
+          "schedule": "NgoMgqibelo masonto onke ngo-10:00",
+          "location": "Isikhungo Sabesifazane",
+          "description": "Iqembu eliqinisa abesifazane nokwakha ukuzimela"
+        }
+      }
+    },
+    "safetyTips": {
+      "title": "Amathiphu Okuphepha",
+      "personalSafety": {
+        "title": "Ukuphepha Komuntu Siqu",
+        "tips": {
+          "tip1": "Shintsha indlela yakho yokuhamba njalo",
+          "tip2": "Tshela omunye umuntu lapho uya khona",
+          "tip3": "Gcina inombolo yokushayela yesimo esiphuthumayo ilungile",
+          "tip4": "Themba imizwa yakho - uma kubonakala kungaphephile, suka"
+        }
+      },
+      "digitalSafety": {
+        "title": "Ukuphepha Kwedijithali",
+        "tips": {
+          "tip1": "Sebenzisa amaphasiwedi aqinile futhi uwashintje njalo",
+          "tip2": "Hlola izilungiselelo zakho ze-social media",
+          "tip3": "Yazi ukuthi ungakwazi kanjani ukufihla indawo yakho",
+          "tip4": "Sebenzisa i-browser ye-private mode uma ufuna usizo"
+        }
+      },
+      "emergencyPreparedness": {
+        "title": "Ukulungiselela Isimo Esiphuthumayo",
+        "tips": {
+          "tip1": "Yenza icebo elifihlakele lokubaleka",
+          "tip2": "Gcina imali, amadokhumenti, nezingubo ezindaweni ezifihlakele",
+          "tip3": "Yazi izinombolo ezifanele zokushayela",
+          "tip4": "Hlela indawo yokuphepha lapho ungaya khona"
+        }
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Umsizi we-AI",
+    "subtitle": "Buza imibuzo yakho futhi uthole izeluleko ezilungiselelwe wena",
+    "welcomeMessage": "Sawubona! Ngingumsizi wakho we-AI. Ngingakusiza kanjani namhlanje?",
+    "placeholder": "Bhala umbuzo wakho lapha...",
+    "send": "Thumela",
+    "quickQuestions": {
+      "title": "Imibuzo Esheshayo:",
+      "questions": {
+        "financialSeminars": "Ngingayithola kanjani ulwazi ngemihlangano yezimali?",
+        "safeShelters": "Ngingayithola kuphi izindawo zokukhusela eziphephile?",
+        "sanitaryProducts": "Ngingayifikelela kanjani imikhiqizo yokuhlanzeka?",
+        "submitRequest": "Ngingathumela kanjani isicelo sosizo?",
+        "availableServices": "Yiziphi izinsizakalo ezikhona?"
+      }
+    },
+    "chatHistory": {
+      "title": "Umlando Wengxoxo",
+      "clear": "Sula Umlando",
+      "empty": "Awukho umlando wengxoxo"
+    },
+    "mockResponses": {
+      "response1": "Ngiyaqonda! Singakusiza ngemihlangano yezimali ehlukahlukene. Bheka ikhasi lethu le-Finance ukuthola ulwazi olugcwele ngemihlangano ezayo.",
+      "response2": "Ukuphepha kwakho kubalulekile. Singakusiza ngezindawo zokuphepha eziphephile, izinombolo zesimo esiphuthumayo, nokusekela kwezomthetho. Bheka ikhasi lethu le-GBV Support.",
+      "response3": "Sinamabhokisi okupha imikhiqizo yokuhlanzeka kuyo yonke iNingizimu Afrika. Bheka ikhasi lethu le-Sanitary Aid ukuthola indawo eseduzane nawe.",
+      "response4": "Singakuxhumanisa nosizo lwezomthetho lwamahhala. I-Legal Aid South Africa inikeza usizo lwamahhala kubesifazane abadinga. Shayela 0800 110 110.",
+      "response5": "Uma usesimweni esiphuthumayo, shayela 10111 (amaphoyisa) noma 0800 428 428 (GBV Command Centre) ngokushesha. Ukuphepha kwakho kubalulekile."
+    },
+    "footer": {
+      "disclaimer": "Umsizi we-AI uyasiza kodwa awuthathi indawo yokuqeqeshwa kwezingcweti. Uma udinga usizo lwesimo esiphuthumayo, xhumana nezingcweti."
+    }
+  },
+  "about": {
+    "title": "Nge-EmpowerHub",
+    "subtitle": "I-EmpowerHub iqinisa abesifazane eNingizimu Afrika ngokunikeza izeluleko zokutshala imali ezilungiselelwe wena kanye nemibono, ukusekela okusheshayo kwe-GBV kanye nezindawo zokuphephela eziphephile, kanye nokufinyelela emabhokisini okunikela okokuhlanzeka. Lesi yisixazululo esihlanganisiwe esibonisa ukuzinikela kwethu ekuqiniseni ukuzimela, ukuphepha, nesithunzi.",
+    "mission": "Umgomo Wethu",
+    "missionText": "Ukudala ipulatifomu ehlanganisiwe eqinisa abesifazane eNingizimu Afrika yonke ngokunikeza izinsizakalo zokusekela eziphelele ezibhekene nokuzimela ngezimali, ukuphepha komuntu, kanye nezidingo zokuqala zokuhlanzeka esixazululweni esisodwa esingafinyeleka.",
+    "coreServices": "Izinsizakalo Zethu Eziyinhloko",
+    "impact": "Umthelela Wethu",
+    "values": "Amanani Ethu",
+    "technologyInnovation": "Ubuchwepheshe Nokusungula",
+    "currentFeatures": "Izici Zamanje",
+    "futureDevelopment": "Ukuthuthukiswa Kwekusasa",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Ukuqinisa Ngezimali",
+        "description": "Izeluleko zokutshala imali ezilungiselelwe wena, imibono yezimali, kanye nezinsiza zokwakha ukuzimela komnotho."
+      },
+      "gbvSupport": {
+        "title": "Ukusekela kwe-GBV",
+        "description": "Ukusekela okusheshayo kanye nezindawo zokuphephela eziphephile kwabesifazane ababhekene nodlame olusekelwe ebulilini."
+      },
+      "sanitaryAid": {
+        "title": "Usizo Lokuhlanzeka",
+        "description": "Ukufinyelela emikhiqizweni yokuhlanzeka ebalulekile ngamabhokisi okunikela abekwe ngobuchule."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Abesifazane Abaqinisiwe",
+      "seminarsCompleted": "Imibono Eyenziwe",
+      "shelterLocations": "Izindawo Zokuphephela",
+      "donationBins": "Amabhokisi Okunikela"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Ukuqinisa",
+        "description": "Sikholelwa ekuqiniseni ukuzimela kwabesifazane ngemfundo, izinsiza, nokusekela."
+      },
+      "safety": {
+        "title": "Ukuphepha",
+        "description": "Ukuqinisekisa ukufinyelela okusheshayo ezindaweni eziphephile nokusekela kwabesifazane ezimweni zenkinga."
+      },
+      "dignity": {
+        "title": "Isithunzi",
+        "description": "Ukunikeza izinsiza ezibalulekile kuyilapho kugcinwa isithunzi nobumfihlo bomfazi ngamunye."
+      },
+      "community": {
+        "title": "Umphakathi",
+        "description": "Ukwakha inethiwekhi eqinile yokusekela ngezinyathelo eziqhutshwa umphakathi nokubambisana."
+      }
+    },
+    "techDescription": "I-EmpowerHub isebenzisa ubuchwepheshe besimanje ukunikeza ipulatifomu yokusekela ehlanganisiwe. Umboniso wethu wamanje ubonisa isikhombimsebenzisi nezici eziyinhloko, kanye nezinhlelo zokuhlanganisa izici ezithuthukisiwe ezihlanganisa:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Isikhombimsebenzisi sewebhu esiphendulayo",
+      "requestSystem": "Isistimu yokuthumela izicelo",
+      "resourceMapping": "Ukumapa kwezindawo zezinsiza",
+      "aiInterface": "Isikhombimsebenzisi somsizi we-AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Ukusekela okuqhutshwa yi-AI nezincomo",
+      "blockchain": "Ukuhlanganiswa kwe-blockchain ne-BlockDAG",
+      "database": "Ukuphila kwedathabheyisi nokuhlaziya",
+      "metamask": "Ukuhlanganiswa kwe-MetaMask ukuze kube nokuthengiselana okuphephile"
+    },
+    "demoNote": "Lolu mboniso ubonisa umqondo wesixazululo esihlanganisiwe, esihlanganiselwe ukuvumela ukuthuthukiswa okuzimele kwezici kuyilapho kugcinwa ulwazi lomuntu osebenzisayo oluhambisanayo. Ukwakheka okuyizingxenye kuvumela ukuthuthukiswa kwekusasa ngaphandle kokuphazamisa ukusebenza okuyinhloko."
+  },
   "language": {
     "selector": "Ulimi",
     "languages": {

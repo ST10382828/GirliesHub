@@ -45,6 +45,448 @@
     },
     "learnMore": "Fundza Kabanzi"
   },
+  "requests": {
+    "title": "Ticelo Telusito",
+    "subtitle": "Thumela ticelo letintjha futsi ulandzele letikhoyo",
+    "loading": "Kulayishwa ticelo...",
+    "noRequests": "Akukho ticelo njengamanje",
+    "noRequestsDesc": "Cala ngekuthumela sicelo sakho sekucala selusito",
+    "submitRequest": "Thumela Sicelo",
+    "type": "Luhlobo",
+    "name": "Libito",
+    "location": "Indawo",
+    "submitted": "Kuthunyelwe",
+    "status": {
+      "completed": "Kuphelelisiwe",
+      "processing": "Kuyacutshungulwa",
+      "urgent": "Kuphuthumile"
+    },
+    "spotsAvailable": "tindawo letikhoyo",
+    "types": {
+      "finance": "Temali",
+      "gbvSupport": "Lusito lwe-GBV",
+      "sanitaryAid": "Lusito Lwekuhlambuluka"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ngifuna tincomo tetfutselo tebhizinisi lelincane",
+        "location": "eThekwini, KwaZulu-Natal"
+      },
+      "req002": {
+        "name": "Longatiwako",
+        "description": "Ngidinga lwati lwendawo yekuphepha ngekushesha",
+        "location": "eGoli, eGauteng"
+      },
+      "req003": {
+        "description": "Ngifuna emabhokisi ekupha lasedvute emkhiqizweni wekuhlambuluka",
+        "location": "eKapa, eNtshonalanga Koloni"
+      }
+    }
+  },
+  "finance": {
+    "title": "Kucinisa Ngetimali",
+    "subtitle": "Tfola tincomo tetimali letilungiselelwe wena, ya emahlanganweni etimali lacinisako, futsi wakhe indlela yakho yekutimela ngemnotfo",
+    "upcomingSeminars": "Emahlanganweni Letako",
+    "financialTips": "Tincomo Tetimali",
+    "quickStats": "Tibalo Letisheshayo",
+    "womenEmpowered": "Bomake Labacinisiwe",
+    "seminarsCompleted": "Tibonano Letentiweko",
+    "successRate": "Silinganiso Semphumelelo",
+    "spotsAvailable": "tindawo letikhoyo",
+    "seminars": {
+      "seminar1": {
+        "title": "Bomake Ebhizinisini: Kucala Kutfutsela Kwakho Kwekucala",
+        "time": "10:00 Ekuseni",
+        "location": "Sikhungo Semphakathi saseKapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Fundza sisekelo sekutfutsela nekutsi ungacala kanjani kwakha inotho yekusasa lakho."
+      },
+      "seminar2": {
+        "title": "Workshop Yekutimela Ngetimali",
+        "time": "14:00 Ntambama",
+        "location": "Sikhungo Sebhizinisi saseGoli",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Emasu lasebentako ekufezeni kutimela ngetimali njengomfati lotsatsa tinyatselo."
+      },
+      "seminar3": {
+        "title": "Kubala Timali Nekonga Kwemake Labatimele",
+        "time": "18:00 Ntambama",
+        "location": "Sikhungo Sabomake saseThekwini",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Emakhono labalulekile ekubaleni timali nemasu ekongeni lalungiselelwe emake labatimele."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Yakha Sikhwama Sesimo Lesiphuthumayo",
+        "description": "Cala ngekonga tindleko tetinyanga leti-3-6 etimweni letingalindelekile."
+      },
+      "education": {
+        "title": "Tfutsela Emfundzweni Yetimali",
+        "description": "Lwati lunamandla. Fundza ngekubala timali, kutfutsela, neluhlelo lwetimali."
+      },
+      "diversifyIncome": {
+        "title": "Hlukanisa Imali Lengenako Yakho",
+        "description": "Yakha imisebenti leminingi yemali lengenako kwandza kutinzeka kwetimali."
+      },
+      "retirement": {
+        "title": "Hlela Kumhlalaphansi Kusenesikhati",
+        "description": "Uma ucala kusenesikhati, timali yakho inesikhati lesiningi sekukhula."
+      },
+      "trackExpenses": {
+        "title": "Landzela Tindleko Takho",
+        "description": "Kutiva kutsi timali yakho iya kuphi kuyinyatselo yekucala ekulawuleni timali."
+      }
+    },
+    "categories": {
+      "savings": "Konga",
+      "education": "Imfundvo",
+      "income": "Imali Lengenako",
+      "planning": "Luhlelo",
+      "budgeting": "Kubala Timali"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Lusito Lwekucoceka & Lusekelo Lwemvelo",
+    "subtitle": "Tfola imkhiqizo yamahhala yekucoceka netidingo temvelo emabhokisini etfu ekupha eNingizimu Afrika",
+    "donationBins": {
+      "title": "Emabhokisi Ekupha",
+      "address": "Likheli",
+      "hours": "Tikhati Temsebenti",
+      "contact": "Xhumana",
+      "availableItems": "Tintfo Letikhoyo",
+      "lastRestocked": "Ekugcineni Kugcwaliswe",
+      "daysAgo": "emalanga ladlule",
+      "callLocation": "Shayela Indawo",
+      "getDirections": "Tfola Tindlela",
+      "status": {
+        "wellStocked": "Kugcwele Kahle",
+        "lowStock": "Stock Lephansi",
+        "outOfStock": "Akukho Stock"
+      },
+      "items": {
+        "sanitaryPads": "Emapedi Ekucoceka",
+        "tampons": "Ematamponi",
+        "menstrualCups": "Tinkomishi Tenyanga",
+        "soap": "Insipho",
+        "underwear": "Tingubo Tekangaphakati",
+        "toiletPaper": "Liphephandlwana",
+        "shampoo": "Shampoo",
+        "toothbrush": "Brushe Yamatinyo",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Sikhungo Semphakathi saseKapa",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Msombuluko - Lwesihlanu: 8:00 - 17:00",
+          "description": "Sikhungo sesikhulu semphakathi lesiniketela imkhiqizo yekucoceka lebalulekile kubomake basendaweni.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Sikhungo Sabomake saseGoli",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Msombuluko - Lwesihlanu: 9:00 - 16:00",
+          "description": "Sikhungo lesitiniketele kusita bomake ngemkhiqizo yekucoceka nelusekelo.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Sikhungo Sempilo saseThekwini",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Msombuluko - Lwesihlanu: 8:30 - 16:30",
+          "description": "Sikhungo sempilo lesiniketela imkhiqizo yekucoceka nemfundvo yempilo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Tincomo Tekucoceka",
+      "menstrualHygiene": {
+        "title": "Kucoceka Kwenyanga",
+        "tips": {
+          "tip1": "Shintja emapedi noma ematamponi njalo ngemahora la-4-6",
+          "tip2": "Geza tandla takho ngaphambi nangemva kekusebentisa imkhiqizo yenyanga",
+          "tip3": "Sebentisa imkhiqizo lecocekile lengenabunyonyi",
+          "tip4": "Gcina imkhiqizo lengakasebentiswa endaweni lecomile, lebandza"
+        }
+      },
+      "generalHygiene": {
+        "title": "Kucoceka Kwejwayelekile",
+        "tips": {
+          "tip1": "Geta umtimba wonkhe njalo ngelilanga ngensipho lebuyele",
+          "tip2": "Gqoka tingubo leticocekile, leticomile",
+          "tip3": "Gcina indawo yakho yebuciko icocekile futsi icomile",
+          "tip4": "Phuza emanti lamaningi futsi udle kudla lokunemvelo lekuhle"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Tinkhetho Tesimo Lesiphuthumayo",
+        "tips": {
+          "tip1": "Emadwala lacocekile angasebentiswa njengenkhetho yesikhashana",
+          "tip2": "Kudla lokubandzako kungasita kunciphisa buhlungu benyanga",
+          "tip3": "Emanti lafudumele angasita kuphumula imisipha",
+          "tip4": "Funa lusito lwetinsingati uma kunenkinga lengajwayelekile"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nikela Imkhiqizo",
+      "description": "Siamukela tiphiwo temkhiqizo yekucoceka kusita bomake basendaweni. Leti tintfo letifuneka kakhulu:",
+      "items": {
+        "sanitaryProducts": "Imkhiqizo yekucoceka kwenyanga (emapedi, ematamponi, tinkomishi)",
+        "hygieneItems": "Tintfo tekucoceka (insipho, shampoo, brushe yamatinyo)",
+        "underwear": "Tingubo tekangaphakati letintjha, letingakasebentiswa"
+      },
+      "learnMore": "Fundza Kabanzi Ngekunikela"
+    }
+  },
+  "gbvSupport": {
+    "title": "Lusito lwe-GBV & Tindawo Tekuphepha",
+    "subtitle": "Tfola lusito loluleshesha, tindawo tekuphepha letiphephile, nemibono yetinsingati tekudlulisela budlova besidzakambe",
+    "emergencyAlert": "Uma usesimweni lesiphuthumayo, shayela 10111 noma 112 ngekushesha",
+    "safeShelters": {
+      "title": "Tindawo Tekuphepha Letiphephile",
+      "subtitle": "Tindawo letiphephile letifihliwe kubomake labadinga indawo yekuphepha",
+      "availableBeds": "tindawo tekulala letikhoyo",
+      "capacity": "Silinganiso",
+      "currentOccupancy": "Kugcwala Kwanje",
+      "contactShelter": "Xhumana Nendawo Yekuphepha",
+      "getDirections": "Tfola Tindlela",
+      "locations": {
+        "safeHaven": {
+          "name": "Indawo Yekuphepha ye-Safe Haven",
+          "address": "Likheli Lelifihliwe, Cape Town",
+          "phone": "+27 21 XXX XXXX",
+          "capacity": "50 bomake nabantfwana",
+          "services": "Indlu, kudla, lusekelo lwengcondvo, lusito lwemtsetfo",
+          "description": "Indawo yekuphepha leyi24/7 lebomake labadinga indawo yekuphepha ngekushesha."
+        },
+        "newBeginnings": {
+          "name": "Sikhungo se-New Beginnings",
+          "address": "Likheli Lelifihliwe, Johannesburg",
+          "phone": "+27 11 XXX XXXX",
+          "capacity": "30 bomake nabantfwana",
+          "services": "Indlu yesikhashana, kuceceshwa kwemsebenzi, imfundvo yabantfwana",
+          "description": "Sikhungo lesisita bomake nekwakha kutimela kwabo."
+        },
+        "hopeCentre": {
+          "name": "Sikhungo se-Hope Centre",
+          "address": "Likheli Lelifihliwe, Durban",
+          "phone": "+27 31 XXX XXXX",
+          "capacity": "40 bomake nabantfwana",
+          "services": "Lusekelo lwengcondvo, kuceceshwa kwemtsetfo, lusito lwempilo",
+          "description": "Sikhungo lesiniketela lusekelo loluphelele kubomake labahluphekile."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Tinombolo Tesimo Lesiphuthumayo",
+      "subtitle": "Tinombolo letifanele tekushayela uma udinga lusito ngekushesha",
+      "available247": "Kuyatfolakala 24/7",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "phone": "0800 428 428",
+          "description": "Lusito loluleshesha lwe-GBV lolufanele lonkhe lizwe",
+          "languages": "Tilwimi tonkhe taseNingizimu Afrika"
+        },
+        "lifeline": {
+          "name": "Lifeline",
+          "phone": "0861 322 322",
+          "description": "Kuceceshwa kwengcondvo nekusekela",
+          "languages": "SiNgisi, SiAfrikaans, netilwimi letinyenti"
+        },
+        "childline": {
+          "name": "Childline",
+          "phone": "116",
+          "description": "Lusito lwabantfwana labahluphekile",
+          "languages": "Tilwimi tonkhe taseNingizimu Afrika"
+        },
+        "police": {
+          "name": "Emaphoyisa",
+          "phone": "10111",
+          "description": "Lusito lwemaphoyisa lwesimo lesiphuthumayo",
+          "languages": "Tilwimi tonkhe taseNingizimu Afrika"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Lusekelo Lwemtsetfo",
+      "subtitle": "Tfola lwati ngemalungelo akho nekutsi ungakwati kanjani kusita kwemtsetfo",
+      "resources": {
+        "legalAid": {
+          "title": "Legal Aid South Africa",
+          "description": "Lusito lwemtsetfo lwamahhala kubomake labadinga",
+          "phone": "0800 110 110",
+          "services": "Kuceceshwa kwemtsetfo, kumelwa emakhotini, lusekelo lwemtsetfo"
+        },
+        "wlce": {
+          "title": "Women's Legal Centre",
+          "description": "Sikhungo lesitiniketele kusita bomake ngemtsetfo",
+          "phone": "+27 21 424 5660",
+          "services": "Kuceceshwa kwemtsetfo, imfundvo yemalungelo, kuvikela"
+        },
+        "familyLaw": {
+          "title": "Kuceceshwa Kwemtsetfo Wemndeni",
+          "description": "Lusito lwemtsetfo lwetindaba temndeni",
+          "services": "Kwehlukana, kuphakamisa bantfwana, kuphila ndvwandvwe"
+        }
+      }
+    },
+    "supportGroups": {
+      "title": "Ematilongo Ekusekela",
+      "subtitle": "Xhumana nalabanye bomake labadlule kwetifanako",
+      "groups": {
+        "survivors": {
+          "name": "Lihlangano Labasindvile",
+          "schedule": "NgoLwesibili masonto onkhe ngo-18:00",
+          "location": "Sikhungo Semphakathi",
+          "description": "Lihlangano lelifihliwe labasindvile be-GBV"
+        },
+        "healing": {
+          "name": "Lihlangano Lekuphola",
+          "schedule": "NgoLwesine masonto onkhe ngo-19:00",
+          "location": "Sikhungo Sempilo Yengcondvo",
+          "description": "Lihlangano lelibekene nekuphola kwengcondvo"
+        },
+        "empowerment": {
+          "name": "Lihlangano Lekucinisa",
+          "schedule": "NgoMgcibelo masonto onkhe ngo-10:00",
+          "location": "Sikhungo Sabomake",
+          "description": "Lihlangano lelicinisa bomake nekwakha kutimela"
+        }
+      }
+    },
+    "safetyTips": {
+      "title": "Tincomo Tekuphepha",
+      "personalSafety": {
+        "title": "Kuphepha Kwemuntfu",
+        "tips": {
+          "tip1": "Tshintja indlela yakho yekuhamba njalo",
+          "tip2": "Tshela munye umuntfu lapho uya khona",
+          "tip3": "Gcina inombolo yekushayela yesimo lesiphuthumayo ikulungele",
+          "tip4": "Tshemba imiva yakho - uma kuntjengathi akusiphephile, suka"
+        }
+      },
+      "digitalSafety": {
+        "title": "Kuphepha Kwa-Digital",
+        "tips": {
+          "tip1": "Sebentisa ama-password lamatsite futsi uwashintje njalo",
+          "tip2": "Hlola tinsita takho ta-social media",
+          "tip3": "Yati kutsi ungakwati kanjani kufihla indawo yakho",
+          "tip4": "Sebentisa i-browser ye-private mode uma ufuna kusito"
+        }
+      },
+      "emergencyPreparedness": {
+        "title": "Kulungiselelwa Kwesimo Lesiphuthumayo",
+        "tips": {
+          "tip1": "Yakha luhlelo lwekubaleka olufihliwe",
+          "tip2": "Gcina imali, emadokhumenti, netingubo tindaweni letifihliwe",
+          "tip3": "Yati tinombolo letifanele tekushayela",
+          "tip4": "Hlela indawo yekuphepha lapho ungaya khona"
+        }
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Lumsebenti Lwe-AI",
+    "subtitle": "Buza imibuzo yakho futsi utfole tincomo letilungiselelwe wena",
+    "welcomeMessage": "Sawubona! Ngingumsebenti wakho we-AI. Ngingakusita kanjani namhlanje?",
+    "placeholder": "Bhala umbuzo wakho lapha...",
+    "send": "Thumela",
+    "quickQuestions": {
+      "title": "Imibuzo Lesheshayo:",
+      "questions": {
+        "financialSeminars": "Ngingayithola kanjani lwati ngemahlanganweni etimali?",
+        "safeShelters": "Ngingayithola kuphi tindawo tekuphepha?",
+        "sanitaryProducts": "Ngingayithola kanjani imkhiqizo yekuhlambuluka?",
+        "submitRequest": "Ngingakwenta njani sicelo sekusita?",
+        "availableServices": "Ngutiphi titirelo letikhonakalako?"
+      }
+    },
+    "chatHistory": {
+      "title": "Umlandvo Wekuxoxa",
+      "clear": "Sula Umlandvo",
+      "empty": "Akukho umlandvo wekuxoxa"
+    },
+    "mockResponses": {
+      "response1": "Ngiyakwati! Singakusita ngemahlanganweni etimali lamaningi. Bheka ikhasi lethu le-Finance ukutfola lwati lolugcwele ngemahlanganweni letako.",
+      "response2": "Kuphepha kwakho kubalulekile. Singakusita ngetindawo tekuphepha letiphephile, tinombolo tesimo lesiphuthumayo, nelusekelo lwemtsetfo. Bheka ikhasi lethu le-GBV Support.",
+      "response3": "Sinemabhokisi okupha emkhiqizweni yekuhlambuluka kuyo yonkhe iNingizimu Afrika. Bheka ikhasi lethu le-Sanitary Aid ukutfola indawo lesedvute nawe.",
+      "response4": "Singakuxhumanisa nelusito lwemtsetfo lwamahhala. Legal Aid South Africa iniketa lusito lwamahhala kubomake labadinga. Shayela 0800 110 110.",
+      "response5": "Uma usesimweni lesiphuthumayo, shayela 10111 (emaphoyisa) noma 0800 428 428 (GBV Command Centre) ngekushesha. Kuphepha kwakho kubalulekile."
+    },
+    "footer": {
+      "disclaimer": "Lumsebenti lwe-AI luyasita kodvwa alukhetsi indawo yekuceceshwa kwetinsingati. Uma udinga lusito lwesimo lesiphuthumayo, xhumana netinsingati."
+    }
+  },
+  "about": {
+    "title": "Nge-EmpowerHub",
+    "subtitle": "EmpowerHub icinisa bomake eNingizimu Afrika ngekuniketa tincomo tetimali letilungiselelwe wena kanye nemibono, lusito loluleshesha lwe-GBV kanye netindawo tekuphephela letiphephile, kanye nekufinyelela emabhokisini ekupha awekucoceka. Lesi sisombululo lesihlanganisiwe sibonisa kutinikela kwetfu ekuciniseni kutimela, kuphepha, nesitfunti.",
+    "mission": "Umgomo Wetfu",
+    "missionText": "Kutfutfukisa lipulatifomu lelihlanganisiwe lelicinisa bomake eNingizimu Afrika yonkhe ngekuniketa tinsita tekusekela letiphelele letibhekene nekutimela ngetimali, kuphepha kwemuntfu, kanye netidingo tetinhloko tekucoceka esisombululweni lesinye lesifinyelelekayo.",
+    "coreServices": "Tinsita Tetfu Tetinhloko",
+    "impact": "Umtselela Wetfu",
+    "values": "Timphahla Tetfu",
+    "technologyInnovation": "Buchwepheshe & Kutfutfukisa",
+    "currentFeatures": "Tincumo Tanje",
+    "futureDevelopment": "Kutfutfukisa Kwekusasa",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Kucinisa Ngetimali",
+        "description": "Tincomo tetimali letilungiselelwe wena, tibonano tetimali, kanye netinsita tekwakha kutimela kwemnotfo."
+      },
+      "gbvSupport": {
+        "title": "Lusito lwe-GBV",
+        "description": "Lusito loluleshesha kanye netindawo tekuphephela letiphephile kubomake lababhekene nebudlova lobusekele ebulilini."
+      },
+      "sanitaryAid": {
+        "title": "Lusito Lwekucoceka",
+        "description": "Kufinyelela emkhiqizweni wekucoceka lobalulekile ngemabhokisi ekupha labekwe ngebuchule."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Bomake Labacinisiwe",
+      "seminarsCompleted": "Tibonano Letentiweko",
+      "shelterLocations": "Tindawo Tekuphephela",
+      "donationBins": "Emabhokisi Ekupha"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Kucinisa",
+        "description": "Sikholwa ekuciniseni kutimela kwabomake ngemfundvo, tinsita, kanye nelusito."
+      },
+      "safety": {
+        "title": "Kuphepha",
+        "description": "Kucinisekisa kufinyelela lokuleshesha etindaweni letiphephile kanye nelusito lwabomake etimeni tetinkinga."
+      },
+      "dignity": {
+        "title": "Sitfunti",
+        "description": "Kuniketa tinsita letibalulekile kuyilapho kugcinwa sitfunti kanye nebumfihlo bwemfati ngamunye."
+      },
+      "community": {
+        "title": "Umphakathi",
+        "description": "Kwakha linethiweki lelicinile lwelusito ngetinyatselo letitfutfukiswa umphakathi kanye nekubambisana."
+      }
+    },
+    "techDescription": "EmpowerHub isebentisa buchwepheshe besimanje kuniketa lipulatifomu lwelusito lelihlanganisiwe. Umboniso wetfu wanje ubonisa sikhombimsebentisi kanye nemsebenzi wetinhloko, kanye nemicabango yekuhlanganisa tincumo letitfutfukile letibandakanya:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Sikhombimsebentisi sewebhu lesiphendvulako",
+      "requestSystem": "Luhlelo lwekutfumela ticelo",
+      "resourceMapping": "Mmapa wetindawo tetinsita",
+      "aiInterface": "Sikhombimsebentisi semsiti we-AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Lusito lolutfutfukiswa yi-AI & tincomo",
+      "blockchain": "Kuhlanganisa kwe-blockchain ne-BlockDAG",
+      "database": "Kugcina kwe-database kanye nekuhlalutya",
+      "metamask": "Kuhlanganisa kwe-MetaMask kwekuthengiselana lokuphephile"
+    },
+    "demoNote": "Lolu mboniso ubonisa umcabango wesisombululo lesihlanganisiwe, lesiklanywe kuvumela kutfutfukisa lokutimele kwetincumo kuyilapho kugcinwa lwati lwemuntfu losebentisako loluhambisanako. Kwakha lokuyitincenye kuvumela kutfutfukisa kwekusasa ngaphandle kwekuphatsamisana umsebenzi wetinhloko."
+  },
   "language": {
     "selector": "Lulwimi",
     "languages": {

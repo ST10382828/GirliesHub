@@ -45,6 +45,401 @@
     },
     "learnMore": "Funda Ngakumbi"
   },
+  "requests": {
+    "title": "Izicelo Zenkxaso",
+    "subtitle": "Ngenisa izicelo ezintsha uze ulandelele ezikhoyo",
+    "loading": "Kulayishwa izicelo...",
+    "noRequests": "Azikho izicelo okwangoku",
+    "noRequestsDesc": "Qala ngokungenisa isicelo sakho sokuqala senkxaso",
+    "submitRequest": "Ngenisa Isicelo",
+    "type": "Uhlobo",
+    "name": "Igama",
+    "location": "Indawo",
+    "submitted": "Kungenisiwe",
+    "status": {
+      "completed": "Kugqityiwe",
+      "processing": "Kuyacutshungulwa",
+      "urgent": "Kungxamisekile"
+    },
+    "spotsAvailable": "iindawo ezikhoyo",
+    "types": {
+      "finance": "Ezemali",
+      "gbvSupport": "Inkxaso ye-GBV",
+      "sanitaryAid": "Uncedo Lococeko"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ndikhangela iingcebiso zotyalo-mali zebhizinisi encinci",
+        "location": "eKapa, eNtshona Koloni"
+      },
+      "req002": {
+        "name": "Ongaziwayo",
+        "description": "Ndifuna ulwazi lwendawo yokhuseleko ngokukhawuleza",
+        "location": "eRhawutini, eGauteng"
+      },
+      "req003": {
+        "description": "Ndikhangela iibhokisi zokunikela ezikufutshane zemiveliso yococeko",
+        "location": "eThekwini, eKwaZulu-Natal"
+      }
+    }
+  },
+  "finance": {
+    "title": "Ukuxhobisa Ngezemali",
+    "subtitle": "Fumana iingcebiso zezemali ezilungiselelweyo, ziya kwiinkomfa ezixhobisayo, kwaye wakhe indlela yakho yokuzimela ngezemali",
+    "upcomingSeminars": "Iinkomfa Ezizayo",
+    "financialTips": "Iingcebiso Zezemali",
+    "quickStats": "Imanani Ekhawulezayo",
+    "womenEmpowered": "Abafazi Abaxhobisiweyo",
+    "seminarsCompleted": "Iinkomfa Ezenziwayo",
+    "successRate": "Izinga Lempumelelo",
+    "spotsAvailable": "iindawo ezikhoyo",
+    "seminars": {
+      "seminar1": {
+        "title": "Abafazi Kwishishini: Ukuqala Utyalo-mali Lwakho Lokuqala",
+        "time": "10:00 AM",
+        "location": "Iziko Loluntu LaseKapa",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Funda iziseko zotyalo-mali nokuba ungaqala njani ukwakha ubutyebi bekamva lakho."
+      },
+      "seminar2": {
+        "title": "Iworkshop Yokuzimela Ngezemali",
+        "time": "2:00 PM",
+        "location": "Iziko Leshishini LaseRhawutini",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Amaqhinga asebenzayo okufezekisa ukuzimela ngezemali njengosaziwayo wesifazane."
+      },
+      "seminar3": {
+        "title": "Uhlahlo-lwabiwo Mali Nokonga Koomama Abazimeleyo",
+        "time": "6:00 PM",
+        "location": "Iziko Labafazi LaseThekwini",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Izakhono ezibalulekileyo zohlahlo-lwabiwo mali namaqhinga okonga alungiselelwe oomama abazimeleyo."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Yakha Ingxowa-mali Yongxamiseko",
+        "description": "Qala ngokonga iindleko zeenyanga ezi-3-6 kwiimeko ezingalindelekanga."
+      },
+      "education": {
+        "title": "Tyala Imali Kwimfundo Yezemali",
+        "description": "Ulwazi lunamandla. Funda ngohlahlo-lwabiwo mali, utyalo-mali, kunye nocwangciso lwezemali."
+      },
+      "diversifyIncome": {
+        "title": "Yahlula Ingeniso Yakho",
+        "description": "Yenza imithombo eminingi yengeniso ukwandisa uzinzo lwezemali."
+      },
+      "retirement": {
+        "title": "Cwangcisa Umhlalaphantsi Kwangoko",
+        "description": "Okukhona uqala kwangoko, kokukhona imali yakho inexesha elininzi lokukhula."
+      },
+      "trackExpenses": {
+        "title": "Landela Iindleko Zakho",
+        "description": "Ukuqonda ukuba imali yakho iya phi kuyinyathelo lokuqala ekulawuleni izemali."
+      }
+    },
+    "categories": {
+      "savings": "Ukonga",
+      "education": "Imfundo",
+      "income": "Ingeniso",
+      "planning": "Ucwangciso",
+      "budgeting": "Uhlahlo-lwabiwo Mali"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Uncedo Lococeko & Inkxaso Yococeko",
+    "subtitle": "Fikelela kwiimveliso zococeko zasimahla kunye nezinto ezibalulekileyo zococeko kwiibhokisi zethu zokunikela kulo lonke elaseMzantsi Afrika",
+    "donationBins": {
+      "title": "Iindawo Zeebhokisi Zokunikela",
+      "address": "Idilesi:",
+      "hours": "Iiyure:",
+      "contact": "Qhagamshelana:",
+      "availableItems": "Izinto Ezikhoyo:",
+      "lastRestocked": "Ukugcwalisa Kokugqibela:",
+      "daysAgo": "iintsuku ezidlulileyo",
+      "callLocation": "Biza Indawo",
+      "getDirections": "Fumana Izikhokelo",
+      "status": {
+        "wellStocked": "Kugcwele Kakuhle",
+        "lowStock": "Isitoko Esiphantsi",
+        "outOfStock": "Akukho Sitoko"
+      },
+      "items": {
+        "sanitaryPads": "Amapedi Ococeko",
+        "tampons": "Iitamponi",
+        "menstrualCups": "Iikopi Zexesha Lenyanga",
+        "soap": "Isepha",
+        "underwear": "Iimpahla Zangaphantsi",
+        "toiletPaper": "Iphepha Lendlu Yangasese",
+        "shampoo": "Ishamphu",
+        "toothbrush": "Ibrashi Yamazinyo",
+        "toothpaste": "Iinkcazo Zamazinyo"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Ithala Leencwadi Eliphakathi LaseKapa",
+          "address": "60 Strand Street, Iziko Lesixeko SaseKapa, eNtshona Koloni",
+          "phone": "+27 21 400 3500",
+          "hours": "Mvulo-Lwesihlanu: 8:00 AM - 6:00 PM, Mgqibelo: 9:00 AM - 4:00 PM",
+          "description": "Ikwisango eliphambili. Ukufikelela kwasimahla kwiimveliso zococeko ezibalulekileyo kubafazi abasweleyo.",
+          "contact": "Sarah Mthembu"
+        },
+        "johannesburg": {
+          "name": "Ikliniki Yezempilo Yabafazi YaseRhawutini",
+          "address": "123 Commissioner Street, Iziko LaseRhawutini, eGauteng",
+          "phone": "+27 11 358 0000",
+          "hours": "Mvulo-Lwesihlanu: 7:00 AM - 7:00 PM, Iimpelasonto: 8:00 AM - 2:00 PM",
+          "description": "Iimveliso zococeko zasimahla zifumaneka kwindawo yokwamkela. Akukho mibuzo ibuzwayo.",
+          "contact": "Dr. Nalini Patel"
+        },
+        "durban": {
+          "name": "Iziko Loluntu LaseThekwini",
+          "address": "45 Dr Pixley KaSeme Street, Iziko LaseThekwini, eKwaZulu-Natal",
+          "phone": "+27 31 311 1111",
+          "hours": "Mvulo-Mgqibelo: 8:00 AM - 5:00 PM, Cawe: Kuvaliwe",
+          "description": "Ibhokisi yokunikela exhaswa luluntu. Zincedise ngoko ukufuna.",
+          "contact": "Nomthandazo Dlamini"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Iingcebiso Zococeko",
+      "menstrualHygiene": {
+        "title": "Ococeko Lwexesha Lenyanga",
+        "tips": {
+          "tip1": "Tshintsha iimveliso zococeko rhoqo kwiiyure ezi-4-6",
+          "tip2": "Hlamba izandla ngaphambi nangasemva kokutshintsha iimveliso",
+          "tip3": "Sebenzisa iimveliso ezicocekileyo nezikhuselekileyo kuphela",
+          "tip4": "Gcina iimveliso ezingasetyenziswanga kwindawo eyomileyo, epholileyo"
+        }
+      },
+      "generalHygiene": {
+        "title": "Ococeko Jikelele",
+        "tips": {
+          "tip1": "Hlamba umzimba wonke mihla ngesepha ethambileyo",
+          "tip2": "Nxiba iimpahla ezicocekileyo, ezomileyo",
+          "tip3": "Gcina indawo yakho yabucala icocekile ize yome",
+          "tip4": "Sela amanzi amaninzi uze utye ukutya okunesondlo esifanelekileyo"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Ezinye Iindlela Zongxamiseko",
+        "tips": {
+          "tip1": "Amalaphu acocekileyo angasetyenziswa okwexeshana",
+          "tip2": "Iitii ezishushu zinokunceda ukunciphisa iintlungu zexesha lenyanga",
+          "tip3": "Amanzi ashushu anokunceda ukuphumza izihlunu",
+          "tip4": "Funa uncedo lwezonyango ukuba kukho iingxaki ezingaqhelekanga"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nikela Ngeemveliso",
+      "description": "Samkela izipho zeemveliso zococeko ukunceda abafazi basekuhlaleni. Ezi zinto zibaluleke kakhulu:",
+      "items": {
+        "sanitaryProducts": "Iimveliso zococeko lwexesha lenyanga (amapedi, iitamponi, iikopi)",
+        "hygieneItems": "Izinto zococeko (isepha, ishamphu, ibrashi yamazinyo)",
+        "underwear": "Iimpahla zangaphantsi ezintsha, ezingasetyenziswanga"
+      },
+      "learnMore": "Funda Ngakumbi Malunga Nokunikela"
+    }
+  },
+  "gbvSupport": {
+    "title": "Inkxaso ye-GBV & Iindawo Zokukhusela Ezikhuselekileyo",
+    "subtitle": "Inkxaso ekhawulezayo kunye neendawo zokukhusela ezikhuselekileyo kubafazi abajongene nobundlobongela obusekelwe kwisini",
+    "emergencyAlert": {
+      "title": "Ukwingozi Ekhawulezayo?",
+      "description": "Biza u-0800 428 428 (Iziko Lolawulo lwe-GBV) okanye u-10111 (amaPolisa) ngoko nangoko. Ezi nkonzo zifumaneka i-24/7 kwaye zisimahla ngokupheleleyo."
+    },
+    "safeShelters": {
+      "title": "Iindawo Zokukhusela Ezikhuselekileyo",
+      "address": "Idilesi:",
+      "hours": "Iiyure:",
+      "contactNumbers": "Iinombolo Zoqhagamshelwano:",
+      "general": "Jikelele:",
+      "emergency": "Ungxamiseko:",
+      "servicesAvailable": "Iinkonzo Ezikhoyo:",
+      "emergencyCall": "Umnxeba Wongxamiseko",
+      "generalContact": "Unxibelelwano Jikelele",
+      "capacity": {
+        "available": "Iyafumaneka",
+        "limited": "Ilinganiselwe",
+        "full": "Igcwele"
+      },
+      "locations": {
+        "safeHaven": {
+          "name": "Indawo Yokukhusela Yabafazi i-Safe Haven",
+          "address": "123 Hope Street, eKapa, eNtshona Koloni",
+          "phone": "+27 21 123 4567",
+          "emergency": "+27 21 123 4568",
+          "hours": "Ukufikelela Kwongxamiseko kwe-24/7",
+          "description": "Indawo ekhuselekileyo enikezela ngenkxaso epheleleyo kubafazi nabantwana ababalekela ubundlobongela basekhaya."
+        },
+        "ubuntu": {
+          "name": "Indawo Yokukhusela Yabafazi i-Ubuntu",
+          "address": "456 Freedom Avenue, eRhawutini, eGauteng",
+          "phone": "+27 11 987 6543",
+          "emergency": "+27 11 987 6544",
+          "hours": "Ukufikelela Kwongxamiseko kwe-24/7",
+          "description": "Ukunikezela ngendawo ekhuselekileyo kunye neenkonzo zenkxaso ezipheleleyo kubaphilisi bobundlobongela obusekelwe kwisini."
+        },
+        "themba": {
+          "name": "Indlu ka-Themba",
+          "address": "789 Courage Road, eThekwini, eKwaZulu-Natal",
+          "phone": "+27 31 555 7890",
+          "emergency": "+27 31 555 7891",
+          "hours": "Ukufikelela Kwongxamiseko kwe-24/7",
+          "description": "Indawo yokukhusela esekelwe luluntu enikezela ngokhuseleko olukhawulezayo kunye neenkqubo zokuxhobisa zexesha elide."
+        }
+      },
+      "services": {
+        "emergencyAccommodation": "Indawo Yokuhlala Yongxamiseko",
+        "counseling": "Ukucebisa",
+        "legalSupport": "Inkxaso Yomthetho",
+        "jobTraining": "Uqeqesho Lomsebenzi",
+        "safeHousing": "Indawo Yokuhlala Ekhuselekileyo",
+        "traumaCounseling": "Ukucebisa Ngokwenzakeleyo",
+        "legalAid": "Uncedo Lwasemthethweni",
+        "childrenSupport": "Inkxaso Yabantwana",
+        "emergencyShelter": "Indawo Yokukhusela Yongxamiseko",
+        "medicalSupport": "Inkxaso Yezonyango",
+        "courtSupport": "Inkxaso Yenkundla",
+        "skillsDevelopment": "Uphuhliso Lwezakhono"
+      }
+    },
+    "emergencyContacts": {
+      "title": "Unxibelelwano Lwongxamiseko",
+      "callNow": "Biza Ngoku",
+      "contacts": {
+        "gbvCommand": {
+          "name": "Iziko Lesizwe Lolawulo lwe-GBV",
+          "number": "0800 428 428",
+          "description": "Umgca woncedo we-24/7 osimahla woncedo olukhawulezayo"
+        },
+        "police": {
+          "name": "Inkonzo YamaPolisa OmZantsi Afrika",
+          "number": "10111",
+          "description": "Impendulo yamapolisa yongxamiseko"
+        },
+        "lifeline": {
+          "name": "LifeLine National",
+          "number": "0861 322 322",
+          "description": "Ukucebisa kwe-24/7 kunye nenkxaso yengxaki"
+        },
+        "childline": {
+          "name": "Childline Mzantsi Afrika",
+          "number": "116",
+          "description": "Inkxaso yabantwana abakwingxaki"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Izixhobo Zomthetho",
+      "legalAid": {
+        "name": "Uncedo Lwasemthethweni Mzantsi Afrika",
+        "description": "Uncedo lwasemthethweni lwasimahla: 0800 110 110"
+      },
+      "medicalSupport": {
+        "name": "Inkxaso Yezonyango",
+        "description": "Iyafumaneka kuzo zonke iindawo zokukhusela"
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Umncedisi we-AI",
+    "subtitle": "Fumana iimpendulo ezikhawulezayo nesikhokelo kwinkqubo yethu yenkxaso ekrelekrele",
+    "welcomeMessage": "Molo! Ndingumncedisi wakho we-EmpowerHub. Ndilapha ukukunceda ngembuzo malunga neengcebiso zezemali, inkxaso ye-GBV, uncedo lococeko, kunye nazo naziphi na ezinye iinkonzo zenkxaso. Ndingakunceda njani namhlanje?",
+    "quickQuestions": {
+      "title": "Imibuzo Ekhawulezayo:",
+      "questions": {
+        "financialSeminars": "Ndingayifumana njani iinkomfa zezemali?",
+        "safeShelters": "Ndingayifumana phi iindawo zokukhusela ezikhuselekileyo?",
+        "sanitaryProducts": "Ndingayifikelela njani iimveliso zococeko?",
+        "submitRequest": "Ndingangenisa njani isicelo senkxaso?",
+        "availableServices": "Zeziphi iinkonzo ezikhoyo?"
+      }
+    },
+    "chat": {
+      "assistantName": "Umncedisi we-EmpowerHub",
+      "status": "Ukusebenza • Ukulungele ukunceda",
+      "placeholder": "Chwetheza umyalezo wakho apha...",
+      "sendButton": "Thumela",
+      "clearChat": "Susa Incoko",
+      "typing": "Uchwetheza...",
+      "keyboardHint": "Cofa u-Enter ukuthumela, u-Shift+Enter womgca omtsha"
+    },
+    "footer": "Kwimiba ekhawulezayo, nceda uqhagamshelane nemigca yethu yongxamiseko ngqo",
+    "mockResponses": {
+      "response1": "Ndiyaqonda ukuba ufuna uncedo. Makhe ndikubonelele ngesikhokelo kweso sihloko.",
+      "response2": "Lo ngumbuzo omhle! Ngokwembuzo yakho, ndingacebisa ukuba ujonge amaphepha ethu athile enkxaso ukuze ufumane ulwazi olucacileyo.",
+      "response3": "Ndilapha ukunceda! Ukuze ufumane uncedo olukhawulezayo kwimiba ekhawulezayo, nceda ungalibali ukuqhagamshelana nemigca yethu yongxamiseko.",
+      "response4": "Enkosi ngokufikelela. Ndinganceda ukukudibanisa nezixhobo ezifanelekileyo kunye neenkonzo zenkxaso.",
+      "response5": "Lo ngumbuzo obalulekileyo. Iqonga lethu linikezela ngenkxaso epheleleyo kuzo zonke iinkonzo zezemali, ukhuseleko, kunye nezempilo."
+    }
+  },
+  "about": {
+    "title": "Malunga ne-EmpowerHub",
+    "subtitle": "I-EmpowerHub ixhobisa abafazi eMzantsi Afrika ngokunika iingcebiso zotyalo-mali ezilungiselelweyo neenkomfa, inkxaso ekhawulezayo ye-GBV kunye neendawo zokukhusela ezikhuselekileyo, kunye nokufikelela kwiibhokisi zokunikela zococeko. Esi sisombululo esidibanisiweyo sibonisa ukuzinikela kwethu ekuqiniseni ukuzimela, ukhuseleko, nesidima.",
+    "mission": "Injongo Yethu",
+    "missionText": "Ukudala iqonga elidibanisiweyo elixhobisa abafazi kulo lonke elaseMzantsi Afrika ngokunika iinkonzo zenkxaso ezibanzi ezijongene nokuzimela kwezemali, ukhuseleko lomntu, kunye neemfuno zesiseko zococeko kwisombululo esinye esifikelelekayo.",
+    "coreServices": "Iinkonzo Zethu Eziphambili",
+    "impact": "Impembelelo Yethu",
+    "values": "Amaxabiso Ethu",
+    "technologyInnovation": "Iteknoloji & Ukutsha",
+    "currentFeatures": "Iimpawu Zangoku",
+    "futureDevelopment": "Uphuhliso Lwexesha Elizayo",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Ukuxhobisa Ngezemali",
+        "description": "Iingcebiso zotyalo-mali ezilungiselelweyo, iinkomfa zezemali, kunye nezixhobo zokwakha ukuzimela kwezoqoqosho."
+      },
+      "gbvSupport": {
+        "title": "Inkxaso ye-GBV",
+        "description": "Inkxaso ekhawulezayo kunye neendawo zokukhusela ezikhuselekileyo kubafazi abajongene nobundlobongela obusekelwe kwisini."
+      },
+      "sanitaryAid": {
+        "title": "Uncedo Lococeko",
+        "description": "Ukufikelela kwiimveliso zococeko ezibalulekileyo ngeebhokisi zokunikela ezibekwe ngobuchule."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Abafazi Abaxhobisiweyo",
+      "seminarsCompleted": "Iinkomfa Ezenziwayo",
+      "shelterLocations": "Iindawo Zokukhusela",
+      "donationBins": "Iibhokisi Zokunikela"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Ukuxhobisa",
+        "description": "Sikholelwa ekuqiniseni ukuzimela kwabafazi ngemfundo, izixhobo, kunye nenkxaso."
+      },
+      "safety": {
+        "title": "Ukhuseleko",
+        "description": "Ukuqinisekisa ukufikelela okukhawulezayo kwiindawo ezikhuselekileyo kunye nenkxaso kubafazi kwiimeko zengxaki."
+      },
+      "dignity": {
+        "title": "Isidima",
+        "description": "Ukunika izixhobo ezibalulekileyo ngelixa kugcinwa isidima kunye nobumfihlo bomfazi ngamnye."
+      },
+      "community": {
+        "title": "Uluntu",
+        "description": "Ukwakha uthungelwano oluqinileyo lwenkxaso ngamanyathelo aqhutywa luluntu kunye nobudlelwane."
+      }
+    },
+    "techDescription": "I-EmpowerHub isebenzisa iteknoloji yanamhlanje ukunika iqonga lenkxaso elidibanisiweyo. Umboniso wethu wangoku ubonisa ujongano lomsebenzisi kunye nokusebenza okuphambili, kunye nezicwangciso zokudibanisa iimpawu eziphucukileyo ezibandakanya:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Ujongano lwewebhu oluphendulayo",
+      "requestSystem": "Inkqubo yokungenisa izicelo",
+      "resourceMapping": "Ukumapa kweendawo zezixhobo",
+      "aiInterface": "Ujongano lomncedisi we-AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Inkxaso eqhutywa yi-AI & iingcebiso",
+      "blockchain": "Ukudibanisa kwe-blockchain kunye ne-BlockDAG",
+      "database": "Ukuphila kwedatha kunye nokuhlalutya",
+      "metamask": "Ukudibanisa kwe-MetaMask ukuze kube neentengiselwano ezikhuselekileyo"
+    },
+    "demoNote": "Lo mboniso ubonisa ingcamango yesombululo esidibanisiweyo, eyilelwe ukuvumela uphuhliso oluzimeleyo lweempawu ngelixa kugcinwa amava omsebenzisi ahambelanayo. Ubume bemodyuli buvumela ukuphuculwa kwexesha elizayo ngaphandle kokuphazamisa ukusebenza okuphambili."
+  },
   "language": {
     "selector": "Ulwimi",
     "languages": {

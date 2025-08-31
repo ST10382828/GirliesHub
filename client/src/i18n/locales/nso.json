@@ -45,6 +45,448 @@
     },
     "learnMore": "Ithute go Feta"
   },
+  "requests": {
+    "title": "Dikgopelo tša Thušo",
+    "subtitle": "Romela dikgopelo tše mpsha gomme o latele tšeo di lego gona",
+    "loading": "Go laetša dikgopelo...",
+    "noRequests": "Ga go na dikgopelo bjale",
+    "noRequestsDesc": "Thoma ka go romela kgopelo ya gago ya mathomo ya thušo",
+    "submitRequest": "Romela Kgopelo",
+    "type": "Mohuta",
+    "name": "Leina",
+    "location": "Lefelo",
+    "submitted": "E romelilwe",
+    "status": {
+      "completed": "E phethilwe",
+      "processing": "E a šomišwa",
+      "urgent": "Ya bohlokwa"
+    },
+    "spotsAvailable": "mafelo a lego gona",
+    "types": {
+      "finance": "Tša Tšhelete",
+      "gbvSupport": "Thušo ya GBV",
+      "sanitaryAid": "Thušo ya Bohlweki"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ke nyaka dikeletšo tša go beeletša tšhelete kgwebong ye nnyane",
+        "location": "eThekwini, KwaZulu-Natal"
+      },
+      "req002": {
+        "name": "Ga se tsebege",
+        "description": "Ke hloka tsebo ya lefelo le le bolokegilego ka pela",
+        "location": "Johannesburg, Gauteng"
+      },
+      "req003": {
+        "description": "Ke nyaka mabokose a mpho a kgauswi a dilo tša bohlweki",
+        "location": "Cape Town, Western Cape"
+      }
+    }
+  },
+  "finance": {
+    "title": "Go Maatlafatša ka Tšhelete",
+    "subtitle": "Hwetša dikeletšo tša tšhelete tše di rulagantšwego go wena, tsenela dipuišanong tša tšhelete tše di maatlafatšago, gomme o age tsela ya gago ya ekonomi",
+    "upcomingSeminars": "Dipuišano tše di Tlago",
+    "financialTips": "Dikeletšo tša Tšhelete",
+    "quickStats": "Dipalopalo tša Kapejana",
+    "womenEmpowered": "Basadi ba ba Maatlafaditšwego",
+    "seminarsCompleted": "Dipuišano tše di Phethilwego",
+    "successRate": "Tekanyo ya Katlego",
+    "spotsAvailable": "mafelo a lego gona",
+    "seminars": {
+      "seminar1": {
+        "title": "Basadi Kgwebong: Go Thoma Leeto la Gago la Tšhelete",
+        "time": "10:00 Gosasa",
+        "location": "Senthara ya Setšhaba ya Cape Town",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Ithute motheo wa go beeletša tšhelete le gore o ka thoma bjang go aga leruo la gago la kamoso."
+      },
+      "seminar2": {
+        "title": "Thuto ya go Ikemela ka Tšhelete",
+        "time": "14:00 Mantšiboa",
+        "location": "Senthara ya Kgwebo ya Johannesburg",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Mekgwa ye e šomago ya go fihlelela go ikemela ka tšhelete bjalo ka mosadi yo a ikemelago."
+      },
+      "seminar3": {
+        "title": "Go Bala Tšhelete le go Boloka ga Basadi ba ba Ikemelago",
+        "time": "18:00 Mantšiboa",
+        "location": "Senthara ya Basadi ya Durban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Bokgoni bjo bo bohlokwa bja go bala tšhelete le mekgwa ya go boloka ye e rulagantšwego basadi ba ba ikemelago."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Aga Mokotla wa Maemo a Bohlokwa",
+        "description": "Thoma ka go boloka ditshenyegelo tša dikgwedi tše 3-6 maemong a a sa letelwago."
+      },
+      "education": {
+        "title": "Beeletša Thutong ya Tšhelete",
+        "description": "Tsebo ke maatla. Ithute ka go bala tšhelete, go beeletša, le go rulaganya tšhelete."
+      },
+      "diversifyIncome": {
+        "title": "Fapantšha Letseno la Gago",
+        "description": "Aga methopo ye mentši ya letseno go oketša go tiišega ga tšhelete."
+      },
+      "retirement": {
+        "title": "Rulaganya Boikhurišo ka Pela",
+        "description": "Ge o thoma ka pela, tšhelete ya gago e na le nako ye ntši ya go gola."
+      },
+      "trackExpenses": {
+        "title": "Latela Ditshenyegelo tša Gago",
+        "description": "Go kwešiša gore tšhelete ya gago e ya kae ke kgato ya mathomo ya go laola tšhelete."
+      }
+    },
+    "categories": {
+      "savings": "Go Boloka",
+      "education": "Thuto",
+      "income": "Letseno",
+      "planning": "Go Rulaganya",
+      "budgeting": "Go Bala Tšhelete"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Thušo ya Bohlweki & Thekgo ya Bophelo",
+    "subtitle": "Hwetša dilo tša mahala tša bohlweki le dinyakwa tša bophelo mabokoseng a rena a mpho Afrika Borwa",
+    "donationBins": {
+      "title": "Mabokose a Mpho",
+      "address": "Aterese",
+      "hours": "Diiri tša Mošomo",
+      "contact": "Ikgokaganye",
+      "availableItems": "Dilo tše di Lego gona",
+      "lastRestocked": "Mafelelong go Tlatšwa",
+      "daysAgo": "matšatši a a fetilego",
+      "callLocation": "Letsetsa Lefelo",
+      "getDirections": "Hwetša Ditaelo",
+      "status": {
+        "wellStocked": "Go Tletše Gabotse",
+        "lowStock": "Stock ye Tlase",
+        "outOfStock": "Ga go na Stock"
+      },
+      "items": {
+        "sanitaryPads": "Maphedi a Bohlweki",
+        "tampons": "Ditampon",
+        "menstrualCups": "Dikomiki tša Kgwedi",
+        "soap": "Sesepe",
+        "underwear": "Diaparo tša ka Gare",
+        "toiletPaper": "Pampiri ya Ntlwana",
+        "shampoo": "Shampoo",
+        "toothbrush": "Borašhe ya Meno",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Senthara ya Setšhaba ya Cape Town",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Mošupologo - Labohlano: 8:00 - 17:00",
+          "description": "Senthara ye kgolo ya setšhaba ye e fago dilo tša bohlokwa tša bohlweki go basadi ba lefelo.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Senthara ya Basadi ya Johannesburg",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Mošupologo - Labohlano: 9:00 - 16:00",
+          "description": "Senthara ye e ikgafiditšego go thuša basadi ka dilo tša bohlweki le thušo.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Senthara ya Maphelo ya Durban",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Mošupologo - Labohlano: 8:30 - 16:30",
+          "description": "Senthara ya maphelo ye e fago dilo tša bohlweki le thuto ya maphelo.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Dikeletšo tša Bohlweki",
+      "menstrualHygiene": {
+        "title": "Bohlweki bja Kgwedi",
+        "tips": {
+          "tip1": "Fetola maphedi goba ditampon ka mehla ka diiri tše 4-6",
+          "tip2": "Hlapa matsogo a gago pele le ka morago ga go šomiša dilo tša kgwedi",
+          "tip3": "Šomiša dihlahiswa tše di hlwekilego tše di se nago kotsi",
+          "tip4": "Boloka dihlahiswa tše di sa šomišwago lefelong le le omilego, le le fodilego"
+        }
+      },
+      "generalHygiene": {
+        "title": "Bohlweki bja Tlwaelo",
+        "tips": {
+          "tip1": "Hlapa mmele ka moka letšatši le lengwe le le lengwe ka sesepe se se hlwekilego",
+          "tip2": "Apara diaparo tše di hlwekilego, tše di omilego",
+          "tip3": "Boloka lefelo la gago la sephiri le hlwekile le le omile",
+          "tip4": "Nwa meetse a mantši gomme o je dijo tše di nago le phepo ye botse"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Dikgetho tša Maemo a Bohlokwa",
+        "tips": {
+          "tip1": "Malapeng a hlwekilego a ka šomišwa bjalo ka kgetho ya nakwana",
+          "tip2": "Dijo tše di ruthetšego di ka thuša go fokotša bohloko bja kgwedi",
+          "tip3": "Meetse a a ruthetšego a ka thuša go khutšiša mesifa",
+          "tip4": "Nyaka thušo ya dingaka ge go na le mathata a a sa tlwaelegago"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nea Dilo",
+      "description": "Re amogela dimpho tša dilo tša bohlweki go thuša basadi ba lefelo. Tše ke dilo tše di nyakwago kudu:",
+      "items": {
+        "sanitaryProducts": "Dihlahiswa tša bohlweki bja kgwedi (maphedi, ditampon, dikomiki)",
+        "hygieneItems": "Dilo tša bohlweki (sesepe, shampoo, borašhe ya meno)",
+        "underwear": "Diaparo tša ka gare tše mpsha, tše di sa šomišwago"
+      },
+      "learnMore": "Ithute go Feta ka go Nea"
+    }
+  },
+  "gbvSupport": {
+    "title": "Thušo ya GBV & Mafelo a go Sireletša",
+    "subtitle": "Hwetša thušo ya ka pela, mafelo a go sireletša a bolokegilego, le dikeletšo tša dingaka tša go feta tlhekefetšo ya bong",
+    "emergencyAlert": "Ge o le maemong a bohlokwa, letsetsa 10111 goba 112 ka pela",
+    "safeShelters": {
+      "title": "Mafelo a go Sireletša a Bolokegilego",
+      "subtitle": "Mafelo a sephiri a go sireletša basadi bao ba nyakago lefelo la go sireletša",
+      "availableBeds": "dibethe tše di lego gona",
+      "capacity": "Bokgoni",
+      "currentOccupancy": "go Dula ga Bjale",
+      "contactShelter": "Ikgokaganye le Lefelo la go Sireletša",
+      "getDirections": "Hwetša Ditaelo",
+      "locations": {
+        "safeHaven": {
+          "name": "Lefelo la go Sireletša la Safe Haven",
+          "address": "Aterese ye Sephiri, Cape Town",
+          "phone": "+27 21 XXX XXXX",
+          "capacity": "50 basadi le bana",
+          "services": "Bodulo, dijo, thekgo ya monagano, thušo ya molao",
+          "description": "Lefelo la go sireletša la 24/7 la basadi bao ba nyakago lefelo la go sireletša ka pela."
+        },
+        "newBeginnings": {
+          "name": "Senthara ya New Beginnings",
+          "address": "Aterese ye Sephiri, Johannesburg",
+          "phone": "+27 11 XXX XXXX",
+          "capacity": "30 basadi le bana",
+          "services": "Bodulo bja nakwana, tlhahlo ya mošomo, thuto ya bana",
+          "description": "Senthara ye e thušago basadi le go aga go ikemela."
+        },
+        "hopeCentre": {
+          "name": "Senthara ya Hope Centre",
+          "address": "Aterese ye Sephiri, Durban",
+          "phone": "+27 31 XXX XXXX",
+          "capacity": "40 basadi le bana",
+          "services": "Thekgo ya monagano, tlhahlo ya molao, thušo ya maphelo",
+          "description": "Senthara ye e fago thekgo ye e feletšego go basadi ba ba hutsafetšego."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Ikgokaganyo ya Maemo a Bohlokwa",
+      "subtitle": "Dinomoro tša go letsetsa ge o nyaka thušo ka pela",
+      "available247": "Go hwetšagala 24/7",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "phone": "0800 428 428",
+          "description": "Thušo ya ka pela ya GBV ya naga ka moka",
+          "languages": "Maleme ka moka a Afrika Borwa"
+        },
+        "lifeline": {
+          "name": "Lifeline",
+          "phone": "0861 322 322",
+          "description": "Tlhahlo ya monagano le thekgo",
+          "languages": "Seisemane, Seafrikanse, le maleme a mantši"
+        },
+        "childline": {
+          "name": "Childline",
+          "phone": "116",
+          "description": "Thušo ya bana ba ba hutsafetšego",
+          "languages": "Maleme ka moka a Afrika Borwa"
+        },
+        "police": {
+          "name": "Maphodisa",
+          "phone": "10111",
+          "description": "Thušo ya maphodisa ya maemo a bohlokwa",
+          "languages": "Maleme ka moka a Afrika Borwa"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Thekgo ya Molao",
+      "subtitle": "Hwetša tsebo ka ga ditokelo tša gago le gore o ka hwetša bjang thušo ya molao",
+      "resources": {
+        "legalAid": {
+          "title": "Legal Aid South Africa",
+          "description": "Thušo ya molao ya mahala go basadi bao ba nyakago",
+          "phone": "0800 110 110",
+          "services": "Tlhahlo ya molao, go emetšwa dikgotleng, thekgo ya molao"
+        },
+        "wlce": {
+          "title": "Women's Legal Centre",
+          "description": "Senthara ye e ikgafiditšego go thuša basadi ka molao",
+          "phone": "+27 21 424 5660",
+          "services": "Tlhahlo ya molao, thuto ya ditokelo, tšhireletšo"
+        },
+        "familyLaw": {
+          "title": "Tlhahlo ya Molao wa Lapa",
+          "description": "Thušo ya molao ya ditaba tša lapa",
+          "services": "Kgaogano, go godišetša bana, bophelo bja batho ba babedi"
+        }
+      }
+    },
+    "supportGroups": {
+      "title": "Dihlopha tša Thekgo",
+      "subtitle": "Ikgokaganye le basadi ba bangwe bao ba fetilego dilo tše di swanago",
+      "groups": {
+        "survivors": {
+          "name": "Sehlopha sa Bao ba Pholosegile",
+          "schedule": "Laboraro beke ye nngwe le ye nngwe ka 18:00",
+          "location": "Senthara ya Setšhaba",
+          "description": "Sehlopha se sephiri sa bao ba pholosegile ba GBV"
+        },
+        "healing": {
+          "name": "Sehlopha sa go Phola",
+          "schedule": "Labone beke ye nngwe le ye nngwe ka 19:00",
+          "location": "Senthara ya Maphelo a Monagano",
+          "description": "Sehlopha se se lebantšhego go phola ga monagano"
+        },
+        "empowerment": {
+          "name": "Sehlopha sa go Maatlafatša",
+          "schedule": "Mokibelo beke ye nngwe le ye nngwe ka 10:00",
+          "location": "Senthara ya Basadi",
+          "description": "Sehlopha se se maatlafatšago basadi le go aga go ikemela"
+        }
+      }
+    },
+    "safetyTips": {
+      "title": "Dikeletšo tša Polokego",
+      "personalSafety": {
+        "title": "Polokego ya Motho ka Noši",
+        "tips": {
+          "tip1": "Fetola tsela ya gago ya go sepela ka mehla",
+          "tip2": "Botša motho yo mongwe gore o ya kae",
+          "tip3": "Boloka nomoro ya go letsetsa ya maemo a bohlokwa e lokile",
+          "tip4": "Tshephe maikutlo a gago - ge go bonala go sa bolokege, tšwa"
+        }
+      },
+      "digitalSafety": {
+        "title": "Polokego ya Tša Dijithale",
+        "tips": {
+          "tip1": "Šomiša diphasewete tše matla gomme o di fetoše ka mehla",
+          "tip2": "Hlahloba dipeakanyo tša gago tša social media",
+          "tip3": "Tseba gore o ka pata bjang lefelo la gago",
+          "tip4": "Šomiša browser ya private mode ge o nyaka thušo"
+        }
+      },
+      "emergencyPreparedness": {
+        "title": "go Itokišetša ga Maemo a Bohlokwa",
+        "tips": {
+          "tip1": "Dira leano le sephiri la go baleha",
+          "tip2": "Boloka tšhelete, ditokomane, le diaparo mafelong a sephiri",
+          "tip3": "Tseba dinomoro tše di swanetšego tša go letsetsa",
+          "tip4": "Rulaganya lefelo la go sireletša leo o ka yago go lona"
+        }
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Mothušiši wa AI",
+    "subtitle": "Botšiša dipotšišo tša gago gomme o hwetše dikeletšo tše di rulagantšwego",
+    "welcomeMessage": "Dumela! Ke mothušiši wa gago wa AI. Nka go thuša bjang lehono?",
+    "placeholder": "Ngwala potšišo ya gago mo...",
+    "send": "Romela",
+    "quickQuestions": {
+      "title": "Dipotšišo tša Kapejana:",
+      "questions": {
+        "financialSeminars": "Nka hwetša bjang tsebo ka ga dipuišano tša mali?",
+        "safeShelters": "Nka hwetša kae mafelo a polokego a bolokegilego?",
+        "sanitaryProducts": "Nka hwetša bjang dilo tša bohlweki?",
+        "submitRequest": "Nka romela bjang kgopelo ya thušo?",
+        "availableServices": "Ke ditirelo dife tše di lego gona?"
+      }
+    },
+    "chatHistory": {
+      "title": "Histori ya Poledišano",
+      "clear": "Phumola Histori",
+      "empty": "Ga go na histori ya poledišano"
+    },
+    "mockResponses": {
+      "response1": "Ke a kwešiša! Re ka go thuša ka dipuišano tše di fapafapanego tša mali. Lebelela letlakala la rena la Finance go hwetša tsebo ye e feletšego ka ga dipuišano tše di tlago.",
+      "response2": "Polokego ya gago e bohlokwa. Re ka go thuša ka mafelo a go sireletša a bolokegilego, dinomoro tša maemo a bohlokwa, le thekgo ya molao. Lebelela letlakala la rena la GBV Support.",
+      "response3": "Re na le mabokose a mpho a dilo tša bohlweki go ralala Afrika Borwa. Lebelela letlakala la rena la Sanitary Aid go hwetša lefelo le le gaufi le wena.",
+      "response4": "Re ka go kgokaganya le thušo ya molao ya mahala. Legal Aid South Africa e fa thušo ya mahala go basadi bao ba nyakago. Letsetsa 0800 110 110.",
+      "response5": "Ge o le maemong a bohlokwa, letsetsa 10111 (maphodisa) goba 0800 428 428 (GBV Command Centre) ka pela. Polokego ya gago e bohlokwa."
+    },
+    "footer": {
+      "disclaimer": "Mothušiši wa AI o a thuša fela eupša ga o tšee lefelo la tlhahlo ya dingaka. Ge o nyaka thušo ya maemo a bohlokwa, ikgokaganye le dingaka."
+    }
+  },
+  "about": {
+    "title": "Ka EmpowerHub",
+    "subtitle": "EmpowerHub e maatlafatša basadi ba Afrika Borwa ka go fa dikeletšo tša go beeletša tšhelete tšeo di rulagantšwego le dikopano, thekgo ya ka pela ya GBV le mafelo a polokego a boikhušetšo, le phihlelelo ya mabokose a mpho a bohlweki. Ye ke tharollo ya kopanyo yeo e bontšhago boikgafo bja rena bja go maatlafatša boikemelo, polokego le seriti.",
+    "mission": "Maikemišetšo a Rena",
+    "missionText": "Go hlama sethala sa kopanyo seo se maatlafatšago basadi ba Afrika Borwa ka moka ka go fa ditirelo tša thekgo tše di feletšego tšeo di lebanego le boikemelo bja tšhelete, polokego ya motho, le dinyakwa tša motheo tša bohlweki ka tharong e tee yeo e fihlelelekago.",
+    "coreServices": "Ditirelo tša Rena tša Motheo",
+    "impact": "Khuetšo ya Rena",
+    "values": "Dikgopolo tša Rena",
+    "technologyInnovation": "Theknolotši le Boiqapelo",
+    "currentFeatures": "Dikarolo tša Bjale",
+    "futureDevelopment": "Tlhabollo ya Bokamoso",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Maatlafatšo a Tšhelete",
+        "description": "Dikeletšo tša go beeletša tšhelete tšeo di rulagantšwego, dikopano tša tšhelete, le didirišwa tša go aga boikemelo bja ekonomi."
+      },
+      "gbvSupport": {
+        "title": "Thekgo ya GBV",
+        "description": "Thekgo ya ka pela le mafelo a polokego a boikhušetšo go basadi bao ba lebanego le tlhekefetšo yeo e theilwego godimo ga bong."
+      },
+      "sanitaryAid": {
+        "title": "Thušo ya Bohlweki",
+        "description": "Phihlelelo ya dihlahiswa tša bohlweki tše bohlokwa ka mabokose a mpho ao a beilwego ka bohlale."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Basadi bao ba Maatlafatšitšwego",
+      "seminarsCompleted": "Dikopano tšeo di Dirilwego",
+      "shelterLocations": "Mafelo a Boikhušetšo",
+      "donationBins": "Mabokose a Mpho"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Maatlafatšo",
+        "description": "Re dumela ka go maatlafatša boikemelo bja basadi ka thuto, didirišwa le thekgo."
+      },
+      "safety": {
+        "title": "Polokego",
+        "description": "Go netefatša phihlelelo ya ka pela ya mafelo a polokego le thekgo ya basadi maemong a mathata."
+      },
+      "dignity": {
+        "title": "Seriti",
+        "description": "Go fa didirišwa tše bohlokwa ge go bolokwa seriti le sephiri sa mosadi yo mongwe le yo mongwe."
+      },
+      "community": {
+        "title": "Setšhaba",
+        "description": "Go aga netweke ye maatla ya thekgo ka magato ao a etelwago pele ke setšhaba le tirišanommogo."
+      }
+    },
+    "techDescription": "EmpowerHub e šomiša theknolotši ya sebjalebjale go fa sethala sa thekgo sa kopanyo. Pontšho ya rena ya bjale e bontšha sebereka sa modiriši le mošomo wa motheo, le meralo ya go kopanya dikarolo tše di tšwetšego pele tšeo di akaretšago:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Sebereka sa webo seo se arabago",
+      "requestSystem": "Tshepedišo ya go romela dikgopelo",
+      "resourceMapping": "Mmapa wa mafelo a didirišwa",
+      "aiInterface": "Sebereka sa mothušiši wa AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Thekgo yeo e etelwago pele ke AI le dikeletšo",
+      "blockchain": "Kopanyo ya blockchain le BlockDAG",
+      "database": "Poloko ya database le tshekatsheko",
+      "metamask": "Kopanyo ya MetaMask ya dikgwebišano tše polokego"
+    },
+    "demoNote": "Pontšho ye e bontšha kgopolo ya tharollo ya kopanyo, yeo e rulagantšwego go dumelela tlhabollo ye e ikemetšego ya dikarolo ge go bolokwa maitemogelo a modiriši ao a swanago. Sebopego sa modular se dumelela dikatlego tša bokamoso ntle le go šitiša mošomo wa motheo."
+  },
   "language": {
     "selector": "Polelo",
     "languages": {

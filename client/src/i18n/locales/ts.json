@@ -45,6 +45,448 @@
     },
     "learnMore": "Dyondza Swo Tala"
   },
+  "requests": {
+    "title": "Swikombelo swa Nseketelo",
+    "subtitle": "Rhumela swikombelo swintshwa naswona u landzelela leswi nga kona",
+    "loading": "Ku layixa swikombelo...",
+    "noRequests": "A ku na swikombelo sweswi",
+    "noRequestsDesc": "Sungula hi ku rhumela xikombelo xa wena xa nseketelo xa xo sungula",
+    "submitRequest": "Rhumela Xikombelo",
+    "type": "Muxaka",
+    "name": "Vito",
+    "location": "Ndhawu",
+    "submitted": "Swi rhumelekile",
+    "status": {
+      "completed": "Swi hetisekile",
+      "processing": "Swi tirhiwa",
+      "urgent": "Swa xihatla"
+    },
+    "spotsAvailable": "tindhawu leti nga kona",
+    "types": {
+      "finance": "Swa Mali",
+      "gbvSupport": "Nseketelo wa GBV",
+      "sanitaryAid": "Mpfuno wa Ku Basisa"
+    },
+    "mockData": {
+      "req001": {
+        "description": "Ndzi lava switsundzuxo swa ku nyika mali eka bindzu lerintsongo",
+        "location": "eThekwini, KwaZulu-Natal"
+      },
+      "req002": {
+        "name": "A swi tiveki",
+        "description": "Ndzi lava rungula ra ndhawu yo sirheleka hi xihatla",
+        "location": "Johannesburg, Gauteng"
+      },
+      "req003": {
+        "description": "Ndzi lava mabokisi ya mpfuno lama nga kona ya swilo swa ku basisa",
+        "location": "Cape Town, Western Cape"
+      }
+    }
+  },
+  "finance": {
+    "title": "Ku Tiyisisa hi Mali",
+    "subtitle": "Kuma switsundzuxo swa mali leswi endleriweke wena, nghenelela eka tikhongolose ta mali leti tiyisisaka, naswona u aka ndlela ya wena ya vuxaka bya ikhonomi",
+    "upcomingSeminars": "Tikhongolose leti taka",
+    "financialTips": "Switsundzuxo swa Mali",
+    "quickStats": "Tinhlayo ta Xihatla",
+    "womenEmpowered": "Vanwana lava Tiyisisiweke",
+    "seminarsCompleted": "Tikhongolose leti Hetisiweke",
+    "successRate": "Mpimo wa Ku Humelela",
+    "spotsAvailable": "tindhawu leti nga kona",
+    "seminars": {
+      "seminar1": {
+        "title": "Vanwana eka Bindzu: Ku Sungula Vuxaka bya Mali bya Wena",
+        "time": "10:00 Nimixo",
+        "location": "Senthara ya Vaaki ya Cape Town",
+        "facilitator": "Dr. Nomsa Mbeki",
+        "description": "Dyondza swisekelo swa vuxaka bya mali na ndlela yo sungula ku aka pfumo ra wena ra vumundzuku."
+      },
+      "seminar2": {
+        "title": "Workshop ya Vuxaka bya Mali bya Munhu hi Xiyexe",
+        "time": "14:00 Nindzimana",
+        "location": "Senthara ya Bindzu ya Johannesburg",
+        "facilitator": "Sarah Williams, CFA",
+        "description": "Maendlelo lama tirhaka ya ku fikelela vuxaka bya mali tanihi munwana loyi a tirhaka hi xiyexe."
+      },
+      "seminar3": {
+        "title": "Ku Hlayela Mali na Ku Hlayisa ka Vanwana lava Tirhaka hi Voxe",
+        "time": "18:00 Nindzimana",
+        "location": "Senthara ya Vanwana ya Durban",
+        "facilitator": "Thandiwe Nkomo",
+        "description": "Vuswikoti bya nkoka bya ku hlayela mali na maendlelo ya ku hlayisa lama endleriweke vanwana lava tirhaka hi voxe."
+      }
+    },
+    "tips": {
+      "emergencyFund": {
+        "title": "Aka Xikwama xa Swiyimo swa Xihatla",
+        "description": "Sungula hi ku hlayisa swikalo swa tin'hweti ta 3-6 eka swiyimo leswi nga langutekangiki."
+      },
+      "education": {
+        "title": "Nyika Mali eka Dyondzo ya Mali",
+        "description": "Vutivi i matimba. Dyondza hi ku hlayela mali, vuxaka bya mali, na ku hlela mali."
+      },
+      "diversifyIncome": {
+        "title": "Hambanyisa Mbuyelo wa Wena",
+        "description": "Aka swihlovo swo tala swa mbuyelo ku engetela ku tiyimiseka ka mali."
+      },
+      "retirement": {
+        "title": "Hlela Ku Yima ka Ntirho ri nga si Fiki",
+        "description": "Loko u sungula ri nga si fiki, mali ya wena yi na nkarhi wo tala wa ku kula."
+      },
+      "trackExpenses": {
+        "title": "Landzelela Swikalo swa Wena",
+        "description": "Ku twisisa laha mali ya wena yi yaka kona i goza ro sungula ra ku lawula mali."
+      }
+    },
+    "categories": {
+      "savings": "Ku Hlayisa",
+      "education": "Dyondzo",
+      "income": "Mbuyelo",
+      "planning": "Ku Hlela",
+      "budgeting": "Ku Hlayela Mali"
+    }
+  },
+  "sanitaryAid": {
+    "title": "Mpfuno wa Ku Basisa & Nseketelo wa Vutomi",
+    "subtitle": "Kuma swilo swa mahala swa ku basisa na swilaveko swa vutomi eka mabokisi ya hina ya mpfuno eAfrika Dzonga",
+    "donationBins": {
+      "title": "Mabokisi ya Mpfuno",
+      "address": "Adirese",
+      "hours": "Tiawara ta Ntirho",
+      "contact": "Vuhumelerisi",
+      "availableItems": "Swilo leswi nga Kona",
+      "lastRestocked": "Ku Tlhela ku Teka ka Makumu",
+      "daysAgo": "mahlweni lama hundzeke",
+      "callLocation": "Fonela Ndhawu",
+      "getDirections": "Kuma Swiletelo",
+      "status": {
+        "wellStocked": "Swi Tekile Kahle",
+        "lowStock": "Stock ya le Hansi",
+        "outOfStock": "A ku na Stock"
+      },
+      "items": {
+        "sanitaryPads": "Maphedi ya Ku Basisa",
+        "tampons": "Mathamponi",
+        "menstrualCups": "Tikombe ta N'hweti",
+        "soap": "Sepe",
+        "underwear": "Swambalo swa le Ndzeni",
+        "toiletPaper": "Phepha ra Thoilete",
+        "shampoo": "Shampoo",
+        "toothbrush": "Buroxi ya Meno",
+        "toothpaste": "Toothpaste"
+      },
+      "locations": {
+        "capeTown": {
+          "name": "Senthara ya Vaaki ya Cape Town",
+          "address": "123 Main Street, Cape Town, Western Cape",
+          "phone": "+27 21 123 4567",
+          "hours": "Musumbhuluko - Ravhanu: 8:00 - 17:00",
+          "description": "Senthara leyikulu ya vaaki leyi nyikaka swilo swa nkoka swa ku basisa eka vanwana va ndhawu.",
+          "contact": "Maria Jacobs"
+        },
+        "johannesburg": {
+          "name": "Senthara ya Vanwana ya Johannesburg",
+          "address": "456 Women's Way, Johannesburg, Gauteng",
+          "phone": "+27 11 987 6543",
+          "hours": "Musumbhuluko - Ravhanu: 9:00 - 16:00",
+          "description": "Senthara leyi tirhisiweke ku pfuna vanwana hi swilo swa ku basisa na nseketelo.",
+          "contact": "Nomsa Mthembu"
+        },
+        "durban": {
+          "name": "Senthara ya Rihanyu ra Durban",
+          "address": "789 Health Avenue, Durban, KwaZulu-Natal",
+          "phone": "+27 31 555 0123",
+          "hours": "Musumbhuluko - Ravhanu: 8:30 - 16:30",
+          "description": "Senthara ya rihanyu leyi nyikaka swilo swa ku basisa na dyondzo ya rihanyu.",
+          "contact": "Thandiwe Nkomo"
+        }
+      }
+    },
+    "hygieneTips": {
+      "title": "Switsundzuxo swa Ku Basisa",
+      "menstrualHygiene": {
+        "title": "Ku Basisa ka N'hweti",
+        "tips": {
+          "tip1": "Cinca maphedi kumbe mathamponi nkarhi wun'wana hi tiawara ta 4-6",
+          "tip2": "Hlamba mavoko ya wena ku nga si tirhi na endzhaku ka ku tirhisa swilo swa n'hweti",
+          "tip3": "Tirhisa swilo leswi baseke leswi nga riki na swilo leswi kotekaka",
+          "tip4": "Hlayisa swilo leswi nga si tirhisiwi endhawini leyi omeke, leyi tondeke"
+        }
+      },
+      "generalHygiene": {
+        "title": "Ku Basisa ka Ntolovelo",
+        "tips": {
+          "tip1": "Hlamba miri hinkwawo siku rin'wana na rin'wana hi sepe leyi baseke",
+          "tip2": "Ambala swambalo leswi baseke, leswi omeke",
+          "tip3": "Hlayisa ndhawu ya wena ya le ndzeni yi basile naswona yi oma",
+          "tip4": "Nwa mati yo tala naswona u dya swakudya leswi nga na rihanyu leri kahle"
+        }
+      },
+      "emergencyAlternatives": {
+        "title": "Swinwana swa Swiyimo swa Xihatla",
+        "tips": {
+          "tip1": "Mindzila leyi baseke yi nga tirhisiwa tanihi ncinco wa nkarhi wo koma",
+          "tip2": "Swakudya leswi tondeke swi nga pfuna ku hunguta ku vava ka n'hweti",
+          "tip3": "Mati ya ku fudumala ya nga pfuna ku rhurisa misayina",
+          "tip4": "Lava mpfuno wa vadokodela loko ku ri na swiphiqo leswi nga tolovelekangiki"
+        }
+      }
+    },
+    "donation": {
+      "title": "Nyika Swilo",
+      "description": "Hi amukela mpfuno wa swilo swa ku basisa ku pfuna vanwana va ndhawu. Leswi i swilo leswi lavekaka swinene:",
+      "items": {
+        "sanitaryProducts": "Swilo swa ku basisa ka n'hweti (maphedi, mathamponi, tikombe)",
+        "hygieneItems": "Swilo swa ku basisa (sepe, shampoo, buroxi ya meno)",
+        "underwear": "Swambalo swa le ndzeni leswintshwa, leswi nga tirhisiwangiki"
+      },
+      "learnMore": "Dyondza Swo Tala hi Ku Nyika"
+    }
+  },
+  "gbvSupport": {
+    "title": "Nseketelo wa GBV & Tindhawu to Sirheleka",
+    "subtitle": "Kuma nseketelo wa xihatla, tindhawu to sirheleka leti sirhelekeke, na switsundzuxo swa vadokodela swo hundzula vudyohi bya rixaka",
+    "emergencyAlert": "Loko u ri eka swiyimo swa xihatla, fonela 10111 kumbe 112 hi xihatla",
+    "safeShelters": {
+      "title": "Tindhawu to Sirheleka leti Sirhelekeke",
+      "subtitle": "Tindhawu leti fihliweke to sirheleka vanwana lava lavaka ndhawu yo sirheleka",
+      "availableBeds": "mibedzi leyi nga kona",
+      "capacity": "Vuswikoti",
+      "currentOccupancy": "Ku Tshama ka Sweswi",
+      "contactShelter": "Vuhumelerisi bya Ndhawu yo Sirheleka",
+      "getDirections": "Kuma Swiletelo",
+      "locations": {
+        "safeHaven": {
+          "name": "Ndhawu yo Sirheleka ya Safe Haven",
+          "address": "Adirese leyi Fihliweke, Cape Town",
+          "phone": "+27 21 XXX XXXX",
+          "capacity": "50 vanwana na vana",
+          "services": "Yindlu, swakudya, nseketelo wa miehleketo, nseketelo wa nawu",
+          "description": "Ndhawu yo sirheleka ya 24/7 ya vanwana lava lavaka ndhawu yo sirheleka hi xihatla."
+        },
+        "newBeginnings": {
+          "name": "Senthara ya New Beginnings",
+          "address": "Adirese leyi Fihliweke, Johannesburg",
+          "phone": "+27 11 XXX XXXX",
+          "capacity": "30 vanwana na vana",
+          "services": "Yindlu ya nkarhi wo koma, dyondzo ya ntirho, dyondzo ya vana",
+          "description": "Senthara leyi pfunaka vanwana na ku aka ku tiyimela."
+        },
+        "hopeCentre": {
+          "name": "Senthara ya Hope Centre",
+          "address": "Adirese leyi Fihliweke, Durban",
+          "phone": "+27 31 XXX XXXX",
+          "capacity": "40 vanwana na vana",
+          "services": "Nseketelo wa miehleketo, dyondzo ya nawu, nseketelo wa rihanyu",
+          "description": "Senthara leyi nyikaka nseketelo wo hetiseka eka vanwana lava hluphekeke."
+        }
+      }
+    },
+    "emergencyContacts": {
+      "title": "Vuhumelerisi bya Swiyimo swa Xihatla",
+      "subtitle": "Tinomboro to fonela loko u lava nseketelo hi xihatla",
+      "available247": "Swi kumeka 24/7",
+      "contacts": {
+        "gbvCommand": {
+          "name": "GBV Command Centre",
+          "phone": "0800 428 428",
+          "description": "Nseketelo wa xihatla wa GBV wa rixaka hinkwaro",
+          "languages": "Tindzimi hinkwato ta Afrika Dzonga"
+        },
+        "lifeline": {
+          "name": "Lifeline",
+          "phone": "0861 322 322",
+          "description": "Dyondzo ya miehleketo na nseketelo",
+          "languages": "Xinghezi, Xiafrikaans, na tindzimi to tala"
+        },
+        "childline": {
+          "name": "Childline",
+          "phone": "116",
+          "description": "Nseketelo wa vana lava hluphekeke",
+          "languages": "Tindzimi hinkwato ta Afrika Dzonga"
+        },
+        "police": {
+          "name": "Maphorisa",
+          "phone": "10111",
+          "description": "Nseketelo wa maphorisa wa swiyimo swa xihatla",
+          "languages": "Tindzimi hinkwato ta Afrika Dzonga"
+        }
+      }
+    },
+    "legalResources": {
+      "title": "Nseketelo wa Nawu",
+      "subtitle": "Kuma rungula hi timfanelo ta wena na ndlela yo kuma nseketelo wa nawu",
+      "resources": {
+        "legalAid": {
+          "title": "Legal Aid South Africa",
+          "description": "Nseketelo wa nawu wa mahala eka vanwana lava lavaka",
+          "phone": "0800 110 110",
+          "services": "Dyondzo ya nawu, ku yimeleriwa eka tikhothi, nseketelo wa nawu"
+        },
+        "wlce": {
+          "title": "Women's Legal Centre",
+          "description": "Senthara leyi tikhomeke eka ku pfuna vanwana hi nawu",
+          "phone": "+27 21 424 5660",
+          "services": "Dyondzo ya nawu, dyondzo ya timfanelo, ku sirhelela"
+        },
+        "familyLaw": {
+          "title": "Dyondzo ya Nawu wa Ndyangu",
+          "description": "Nseketelo wa nawu wa timhaka ta ndyangu",
+          "services": "Ku hambana, ku godisa vana, vutomi bya vanhu vaviri"
+        }
+      }
+    },
+    "supportGroups": {
+      "title": "Mintlawa ya Nseketelo",
+      "subtitle": "Vuhumelerisi na vanwana lava hundzeke swilo swo fana",
+      "groups": {
+        "survivors": {
+          "name": "Ntlawa wa Lava Pholeke",
+          "schedule": "Musati vhiki yin'wana na yin'wana hi 18:00",
+          "location": "Senthara ya Vaaki",
+          "description": "Ntlawa wo fihliwa wa lava pholeke va GBV"
+        },
+        "healing": {
+          "name": "Ntlawa wa ku Phola",
+          "schedule": "Ravumundzuku vhiki yin'wana na yin'wana hi 19:00",
+          "location": "Senthara ya Rihanyu ra Miehleketo",
+          "description": "Ntlawa wo kongomisa ku phola ka miehleketo"
+        },
+        "empowerment": {
+          "name": "Ntlawa wa ku Tiyisisa",
+          "schedule": "Mugqivela vhiki yin'wana na yin'wana hi 10:00",
+          "location": "Senthara ya Vanwana",
+          "description": "Ntlawa wo tiyisisa vanwana na ku aka ku tiyimela"
+        }
+      }
+    },
+    "safetyTips": {
+      "title": "Switsundzuxo swa Vuhlayiseki",
+      "personalSafety": {
+        "title": "Vuhlayiseki bya Munhu hi Xiyexe",
+        "tips": {
+          "tip1": "Cinca ndlela ya wena yo famba nkarhi wun'wana na wun'wana",
+          "tip2": "Byela munhu un'wana laha u yaka kona",
+          "tip3": "Hlayisa nomboro yo fonela ya swiyimo swa xihatla yi lulamerile",
+          "tip4": "Tshemba miehleketo ya wena - loko swi vonaka swi nga hlayiseki, suka"
+        }
+      },
+      "digitalSafety": {
+        "title": "Vuhlayiseki bya Digital",
+        "tips": {
+          "tip1": "Tirhisa maphasiwedi ya matimba naswona u ma cinca nkarhi wun'wana na wun'wana",
+          "tip2": "Kambela swiyimo swa wena swa social media",
+          "tip3": "Tiva ndlela yo fihla ndhawu ya wena",
+          "tip4": "Tirhisa browser ya private mode loko u lava nseketelo"
+        }
+      },
+      "emergencyPreparedness": {
+        "title": "Ku Lulamisela ka Swiyimo swa Xihatla",
+        "tips": {
+          "tip1": "Endla pulani yo fihliwa yo baleka",
+          "tip2": "Hlayisa mali, matsalwa, na swambalo etindhawini leti fihliweke",
+          "tip3": "Tiva tinomboro leti faneleke to fonela",
+          "tip4": "Pulana ndhawu yo sirheleka laha u nga yaka kona"
+        }
+      }
+    }
+  },
+  "aiAssistant": {
+    "title": "Mupfuni wa AI",
+    "subtitle": "Vutisa swivutiso swa wena naswona u kuma switsundzuxo leswi endleriweke",
+    "welcomeMessage": "Xewani! Ndzi mupfuni wa wena wa AI. Ndzi nga ku pfuna njhani namuntlha?",
+    "placeholder": "Tsala xivutiso xa wena laha...",
+    "send": "Rhumela",
+    "quickQuestions": {
+      "title": "Swivutiso swa Xihatla:",
+      "questions": {
+        "financialSeminars": "Ndzi nga kuma njhani rungula hi tikhongolose ta mali?",
+        "safeShelters": "Ndzi nga kuma kwihi tindhawu ta vuhlayiseki?",
+        "sanitaryProducts": "Ndzi nga kuma njhani swilo swa ku basisa?",
+        "submitRequest": "Ndzi nga rhumela njhani xikombelo xa nseketelo?",
+        "availableServices": "I swihi switirhelo leswi nga kona?"
+      }
+    },
+    "chatHistory": {
+      "title": "Matimu ya Vulavurisano",
+      "clear": "Susa Matimu",
+      "empty": "A ku na matimu ya vulavurisano"
+    },
+    "mockResponses": {
+      "response1": "Ndzi twisisa! Hi nga ku pfuna hi tikhongolose to hambana ta mali. Languta tluka ra hina ra Finance ku kuma rungula ro hetiseka hi tikhongolose leti taka.",
+      "response2": "Vuhlayiseki bya wena i swa nkoka. Hi nga ku pfuna hi tindhawu to sirheleka leti sirhelekeke, tinomboro ta swiyimo swa xihatla, na nseketelo wa nawu. Languta tluka ra hina ra GBV Support.",
+      "response3": "Hi na mabokisi ya mpfuno ya swilo swa ku basisa eAfrika Dzonga hinkwayo. Languta tluka ra hina ra Sanitary Aid ku kuma ndhawu leyi nga kufupi na wena.",
+      "response4": "Hi nga ku hlanganisa na nseketelo wa nawu wa mahala. Legal Aid South Africa yi nyika nseketelo wa mahala eka vanwana lava lavaka. Fonela 0800 110 110.",
+      "response5": "Loko u ri eka swiyimo swa xihatla, fonela 10111 (maphorisa) kumbe 0800 428 428 (GBV Command Centre) hi xihatla. Vuhlayiseki bya wena i swa nkoka."
+    },
+    "footer": {
+      "disclaimer": "Mupfuni wa AI wu pfuna ntsena kambe a wu tshinyi ndhawu ya dyondzo ya vadokodela. Loko u lava nseketelo wa swiyimo swa xihatla, vuhumelerisi na vadokodela."
+    }
+  },
+  "about": {
+    "title": "Hi EmpowerHub",
+    "subtitle": "EmpowerHub yi tiyimisela vanhu va vukati eAfrika Dzonga hi ku nyika switsundzuxo swa mali leswi endlekiweke na mihlangano, nseketelo wa xihatla wa GBV na tindhawu to sirheleka to hlayiseka, na ku fikelela eka mabokisi ya nyikelo ya ku basisa. Leswi i xitshunxo xa ku hlanganisa lexi kombisaka ku tikhoma ka hina eka ku tiyimisela ku tiyimela, ku sirheleka na xikwembu.",
+    "mission": "Xikongomelo xa Hina",
+    "missionText": "Ku tumbuluxa pulatifomo ya ku hlanganisa leyi tiyimiselaka vanhu va vukati eAfrika Dzonga hinkwayo hi ku nyika vukorhokeri bya nseketelo byo hetiseka lebyi langutanaka na ku tiyimela ka mali, ku sirheleka ka munhu, na swilaveko swa xisekelo xa ku basisa eka xitshunxo xin'we lexi fikelelekaka.",
+    "coreServices": "Vukorhokeri bya Hina bya Xisekelo",
+    "impact": "Nkucetelo wa Hina",
+    "values": "Mimpimo ya Hina",
+    "technologyInnovation": "Theknoloji na Ku Tumbuluxiwa",
+    "currentFeatures": "Swihlawulekisi swa Sweswi",
+    "futureDevelopment": "Nhluvukiso wa Vumundzuku",
+    "features": {
+      "financialEmpowerment": {
+        "title": "Ku Tiyimisela hi Mali",
+        "description": "Switsundzuxo swa mali leswi endlekiweke, mihlangano ya mali, na switirhisiwa swo aka ku tiyimela ka ikhonomi."
+      },
+      "gbvSupport": {
+        "title": "Nseketelo wa GBV",
+        "description": "Nseketelo wa xihatla na tindhawu to sirheleka to hlayiseka eka vanhu va vukati lava langutanaka na nhlamhelo lowu seketeriweke eka buvukati."
+      },
+      "sanitaryAid": {
+        "title": "Mpfuno wa Ku Basisa",
+        "description": "Ku fikelela eka swilo swa ku basisa leswi lavekaka hi mabokisi ya nyikelo lama vekiweke hi vutlhari."
+      }
+    },
+    "stats": {
+      "womenEmpowered": "Vanhu va Vukati lava Tiyimiseleke",
+      "seminarsCompleted": "Mihlangano leyi Endliweke",
+      "shelterLocations": "Tindhawu to Sirheleka",
+      "donationBins": "Mabokisi ya Nyikelo"
+    },
+    "valuesList": {
+      "empowerment": {
+        "title": "Ku Tiyimisela",
+        "description": "Hi tshemba eka ku tiyimisela ku tiyimela ka vanhu va vukati hi dyondzo, switirhisiwa na nseketelo."
+      },
+      "safety": {
+        "title": "Ku Sirheleka",
+        "description": "Ku tiyisisa ku fikelela ka xihatla ka tindhawu to hlayiseka na nseketelo wa vanhu va vukati eka swiyimo swa swiphiqo."
+      },
+      "dignity": {
+        "title": "Xikwembu",
+        "description": "Ku nyika switirhisiwa leswi lavekaka loko ku hlayisiwa xikwembu na ku fihliwa ka munhu wa vukati un'wana na un'wana."
+      },
+      "community": {
+        "title": "Vaaki",
+        "description": "Ku aka netiweke ya matimba ya nseketelo hi migingiriko leyi hoxiweke hi vaaki na vutshamisano."
+      }
+    },
+    "techDescription": "EmpowerHub yi tirhisa theknoloji ya sweswi ku nyika pulatifomo ya nseketelo yo hlanganisa. Kombiso ya hina ya sweswi yi kombisa xifaniso xa mutirhisi na ntirho wa xisekelo, na milawu yo hlanganisa swihlawulekisi leswi hundzukeke leswi katsakanyaka:",
+    "currentFeaturesList": {
+      "responsiveInterface": "Xifaniso xa webusayiti lexi hlamulaka",
+      "requestSystem": "Sisiteme yo rhumela swikombelo",
+      "resourceMapping": "Mapa wa tindhawu ta switirhisiwa",
+      "aiInterface": "Xifaniso xa mupfuni wa AI"
+    },
+    "futureFeaturesList": {
+      "aiSupport": "Nseketelo lowu hoxiweke hi AI na switsundzuxo",
+      "blockchain": "Ku hlanganisa ka blockchain na BlockDAG",
+      "database": "Ku hlayisa ka database na nxopaxopo",
+      "metamask": "Ku hlanganisa ka MetaMask ka mabindzu yo hlayiseka"
+    },
+    "demoNote": "Leyi kombiso yi kombisa miehleketo ya xitshunxo xo hlanganisa, lexi endlekiweke ku pfumelela nhluvukiso wo tiyimela wa swihlawulekisi loko ku hlayisiwa mavonelo ya mutirhisi lama ringanaka. Xivumbeko xa modular xi pfumelela ku antswisiwa ka vumundzuku handle ko khomela ntirho wa xisekelo."
+  },
   "language": {
     "selector": "Ririmi",
     "languages": {
