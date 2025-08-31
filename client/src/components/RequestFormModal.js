@@ -19,9 +19,10 @@ import {
 } from '@mui/material';
 
 import axios from 'axios';
-import { storeRequestOnChain, getWalletStatus } from '../blockchain/contract';
+import { useAuth } from '../contexts/AuthContext';
 
 const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
+  const { currentUser, getAuthToken } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     requestType: '',
@@ -59,48 +60,40 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
       return;
     }
 
-    // Check if wallet is connected
-    const walletStatus = getWalletStatus();
-    if (!walletStatus.isConnected) {
-      alert('Please connect your wallet first to submit a request on the blockchain');
-      return;
-    }
-
     setLoading(true);
     try {
-      // First, submit to backend
-      const response = await axios.post('/api/requests', {
-        name: formData.name || 'Anonymous',
+      // Get fresh ID token if user is authenticated
+      let authToken = null;
+      if (currentUser) {
+        authToken = await getAuthToken();
+      }
+
+      // Prepare request data
+      const requestData = {
+        name: formData.name || (currentUser ? currentUser.displayName || 'Anonymous' : 'Anonymous'),
         requestType: formData.requestType,
         description: formData.description,
         date: formData.date.toISOString(),
         location: formData.location,
-      });
+      };
+
+      // Prepare headers with authentication if available
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+      
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
+      // Submit to backend with authentication
+      const response = await axios.post('/api/requests', requestData, { headers });
 
       console.log('✅ Request submitted to backend:', response.data);
 
-      // Then, store on blockchain
-      try {
-        const blockchainResult = await storeRequestOnChain(response.data);
-        console.log('✅ Request stored on blockchain:', blockchainResult);
-        
-        // Add blockchain info to the response
-        const enhancedRequest = {
-          ...response.data,
-          blockchain: {
-            transactionId: blockchainResult.transactionId,
-            blockNumber: blockchainResult.blockNumber,
-            network: blockchainResult.network,
-            blockExplorerUrl: `https://primordial.bdagscan.com/tx/${blockchainResult.transactionId}`
-          }
-        };
-        
-        setSubmittedRequest(enhancedRequest);
-      } catch (blockchainError) {
-        console.error('❌ Blockchain storage failed:', blockchainError);
-        // Still show success for backend submission
-        setSubmittedRequest(response.data);
-      }
+      // The request is now queued for blockchain processing
+      // The queue worker will handle the blockchain submission
+      setSubmittedRequest(response.data);
 
       setShowConfirmation(true);
       

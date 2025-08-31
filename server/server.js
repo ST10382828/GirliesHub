@@ -5,6 +5,10 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const { storeHashOnBlockchain, getTransactionProof, getRequestsFromBlockchain, getRequestCount } = require('./blockchain');
 const { chatWithAI } = require('./ai');
+const { authMiddleware, optionalAuthMiddleware } = require('./middleware/authFirebase');
+const { createRequest, updateRequest, getRequest, listRequests } = require('./services/firestoreService');
+const { computeCanonicalHash } = require('./utils/hash');
+const { encryptIfEnabled } = require('./utils/crypto');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -68,12 +72,45 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Get all requests (excluding deleted ones)
-app.get('/api/requests', (req, res) => {
+// Get all requests (excluding deleted ones) - optional auth for user-specific filtering
+app.get('/api/requests', optionalAuthMiddleware, async (req, res) => {
   try {
-    console.log('Fetching all requests');
-    const activeRequests = requests.filter(req => !req.deleted);
-    res.json(activeRequests);
+    console.log('Fetching all requests from Firestore');
+    
+    // Get requests from Firestore
+    const firestoreRequests = await listRequests();
+    
+    // If user is authenticated, add user-specific info
+    if (req.user && req.user.uid) {
+      console.log(`User ${req.user.email} (${req.user.uid}) fetching requests`);
+      
+      // Filter requests submitted by this user
+      const myRequests = firestoreRequests.filter(req => req.submittedBy === req.user.uid);
+      
+      // Add user info to response
+      const response = {
+        requests: firestoreRequests,
+        user: {
+          uid: req.user.uid,
+          email: req.user.email,
+          name: req.user.name
+        },
+        userSpecificData: {
+          myRequests: myRequests,
+          myRequestCount: myRequests.length
+        }
+      };
+      
+      res.json(response);
+    } else {
+      // Anonymous user - return basic request list
+      console.log('Anonymous user fetching requests');
+      res.json({
+        requests: firestoreRequests,
+        user: null,
+        message: 'Sign in to see your personal requests and additional features'
+      });
+    }
   } catch (error) {
     console.error('Error fetching requests:', error);
     res.status(500).json({
@@ -83,8 +120,8 @@ app.get('/api/requests', (req, res) => {
   }
 });
 
-// Get all requests including deleted ones (for admin purposes)
-app.get('/api/requests/all', (req, res) => {
+// Get all requests including deleted ones (for admin purposes) - requires auth
+app.get('/api/requests/all', authMiddleware, (req, res) => {
   try {
     console.log('Fetching all requests including deleted');
     res.json(requests);
@@ -97,8 +134,8 @@ app.get('/api/requests/all', (req, res) => {
   }
 });
 
-// Submit new request (plural endpoint)
-app.post('/api/requests', async (req, res) => {
+// Submit new request (plural endpoint) - allows anonymous submits
+app.post('/api/requests', optionalAuthMiddleware, async (req, res) => {
   try {
     const { name, requestType, description, date, location } = req.body;
 
@@ -112,39 +149,110 @@ app.post('/api/requests', async (req, res) => {
       });
     }
 
-    // Create new request
-    const newRequest = {
-      id: generateRequestId(),
-      name: name || 'Anonymous',
+    // Prepare request data for Firestore
+    const requestData = {
+      name: name || (req.user ? req.user.name : 'Anonymous'),
       requestType,
-      description,
+      description: encryptIfEnabled(description), // Encrypt sensitive data
       date: date || new Date().toISOString(),
       location,
-      status: requestType === 'GBV Support' ? 'Urgent' : 'Processing',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      // Add user info if authenticated
+      submittedBy: req.user ? req.user.uid : null,
+      userEmail: req.user ? req.user.email : null,
+      anonymous: !req.user
     };
 
-    // Add to in-memory storage
-    requests.unshift(newRequest);
+    console.log('Creating Firestore document...');
 
-    // Store hash on blockchain (stub function)
-    try {
-      const blockchainResult = await storeHashOnBlockchain(newRequest);
-      console.log('Blockchain storage result:', blockchainResult);
-    } catch (blockchainError) {
-      console.error('Blockchain storage failed:', blockchainError);
-      // Continue anyway - blockchain is optional for demo
+    // STEP 1: Write to Firestore with status 'pending'
+    const firestoreDoc = await createRequest(requestData);
+    console.log('✅ Firestore document created:', firestoreDoc.id);
+
+    // STEP 2: Compute canonical hash
+    const requestHash = computeCanonicalHash(firestoreDoc);
+    console.log('✅ Canonical hash computed:', requestHash.substring(0, 20) + '...');
+
+    // STEP 3: Update Firestore doc with hash
+    await updateRequest(firestoreDoc.id, { requestHash });
+    console.log('✅ Firestore document updated with hash');
+
+    // STEP 4: Handle blockchain processing based on DUAL_WRITE_MODE
+    const dualWriteMode = process.env.DUAL_WRITE_MODE === 'true';
+    let blockchainResult = null;
+
+    if (dualWriteMode) {
+      // Dual-write mode: write to both Firestore and blockchain immediately
+      try {
+        console.log('🔄 Dual-write mode: storing on blockchain immediately...');
+        const { storeHashOnBlockchain } = require('./blockchain');
+        blockchainResult = await storeHashOnBlockchain(requestHash, requestType);
+        
+        // Update Firestore with blockchain result
+        await updateRequest(firestoreDoc.id, {
+          status: 'onchain',
+          txHash: blockchainResult.transactionId,
+          blockNumber: blockchainResult.blockNumber,
+          onchainAt: new Date().toISOString()
+        });
+        
+        console.log(`✅ Dual-write: Request ${firestoreDoc.id} stored on blockchain immediately`);
+      } catch (blockchainError) {
+        console.error('❌ Dual-write blockchain error:', blockchainError);
+        // Fall back to queue processing
+        const queueData = {
+          requestId: firestoreDoc.id,
+          requestHash,
+          requestType,
+          location,
+          submittedBy: req.user ? req.user.uid : null,
+          anonymous: !req.user,
+          timestamp: new Date().toISOString()
+        };
+        const { enqueuePendingChain } = require('./services/firestoreService');
+        await enqueuePendingChain(queueData);
+        console.log('✅ Request enqueued for blockchain processing (fallback)');
+      }
+    } else {
+      // Normal mode: enqueue for blockchain processing
+      const queueData = {
+        requestId: firestoreDoc.id,
+        requestHash,
+        requestType,
+        location,
+        submittedBy: req.user ? req.user.uid : null,
+        anonymous: !req.user,
+        timestamp: new Date().toISOString()
+      };
+      const { enqueuePendingChain } = require('./services/firestoreService');
+      await enqueuePendingChain(queueData);
+      console.log('✅ Request enqueued for blockchain processing');
     }
 
-    console.log('Created new request:', newRequest);
+    // Also add to in-memory storage for backward compatibility
+    const inMemoryRequest = {
+      id: firestoreDoc.id,
+      ...requestData,
+      status: blockchainResult ? 'onchain' : 'pending',
+      requestHash
+    };
+    requests.unshift(inMemoryRequest);
+
+    console.log('✅ Request submitted successfully');
 
     res.status(201).json({
-      ...newRequest,
-      message: 'Request submitted successfully'
+      id: firestoreDoc.id,
+      ...requestData,
+      status: blockchainResult ? 'onchain' : 'pending',
+      requestHash: requestHash.substring(0, 20) + '...',
+      txHash: blockchainResult?.transactionId || null,
+      message: blockchainResult ? 
+        'Request submitted successfully and stored on blockchain immediately' : 
+        'Request submitted successfully and queued for blockchain processing'
     });
 
   } catch (error) {
-    console.error('Error creating request:', error);
+    console.error('❌ Error creating request:', error);
     res.status(500).json({
       error: 'Failed to create request',
       message: error.message
@@ -152,8 +260,8 @@ app.post('/api/requests', async (req, res) => {
   }
 });
 
-// Submit new request (singular endpoint for backward compatibility)
-app.post('/api/request', async (req, res) => {
+// Submit new request (singular endpoint for backward compatibility) - allows anonymous submits
+app.post('/api/request', optionalAuthMiddleware, async (req, res) => {
   try {
     const { name, requestType, description, date, location } = req.body;
 
@@ -167,39 +275,71 @@ app.post('/api/request', async (req, res) => {
       });
     }
 
-    // Create new request
-    const newRequest = {
-      id: generateRequestId(),
-      name: name || 'Anonymous',
+    // Prepare request data for Firestore
+    const requestData = {
+      name: name || (req.user ? req.user.name : 'Anonymous'),
       requestType,
-      description,
+      description: encryptIfEnabled(description), // Encrypt sensitive data
       date: date || new Date().toISOString(),
       location,
-      status: requestType === 'GBV Support' ? 'Urgent' : 'Processing',
+      timestamp: new Date().toISOString(),
+      // Add user info if authenticated
+      submittedBy: req.user ? req.user.uid : null,
+      userEmail: req.user ? req.user.email : null,
+      anonymous: !req.user
+    };
+
+    console.log('Creating Firestore document...');
+
+    // STEP 1: Write to Firestore with status 'pending'
+    const firestoreDoc = await createRequest(requestData);
+    console.log('✅ Firestore document created:', firestoreDoc.id);
+
+    // STEP 2: Compute canonical hash
+    const requestHash = computeCanonicalHash(firestoreDoc);
+    console.log('✅ Canonical hash computed:', requestHash.substring(0, 20) + '...');
+
+    // STEP 3: Update Firestore doc with hash
+    await updateRequest(firestoreDoc.id, { requestHash });
+    console.log('✅ Firestore document updated with hash');
+
+    // STEP 4: Enqueue for blockchain processing
+    const queueData = {
+      requestId: firestoreDoc.id,
+      requestHash,
+      requestType,
+      location,
+      submittedBy: req.user ? req.user.uid : null,
+      anonymous: !req.user,
       timestamp: new Date().toISOString()
     };
 
-    // Add to in-memory storage
-    requests.unshift(newRequest);
+    // Import queue service
+    const { enqueuePendingChain } = require('./services/firestoreService');
+    await enqueuePendingChain(queueData);
+    console.log('✅ Request enqueued for blockchain processing');
 
-    // Store hash on blockchain (stub function)
-    try {
-      const blockchainResult = await storeHashOnBlockchain(newRequest);
-      console.log('Blockchain storage result:', blockchainResult);
-    } catch (blockchainError) {
-      console.error('Blockchain storage failed:', blockchainError);
-      // Continue anyway - blockchain is optional for demo
-    }
+    // Also add to in-memory storage for backward compatibility
+    const inMemoryRequest = {
+      id: firestoreDoc.id,
+      ...requestData,
+      status: 'pending',
+      requestHash
+    };
+    requests.unshift(inMemoryRequest);
 
-    console.log('Created new request:', newRequest);
+    console.log('✅ Request submitted successfully');
 
     res.status(201).json({
-      ...newRequest,
-      message: 'Request submitted successfully'
+      id: firestoreDoc.id,
+      ...requestData,
+      status: 'pending',
+      requestHash: requestHash.substring(0, 20) + '...',
+      message: 'Request submitted successfully and queued for blockchain processing'
     });
 
   } catch (error) {
-    console.error('Error creating request:', error);
+    console.error('❌ Error creating request:', error);
     res.status(500).json({
       error: 'Failed to create request',
       message: error.message
@@ -208,7 +348,7 @@ app.post('/api/request', async (req, res) => {
 });
 
 // Delete request by ID (soft delete - marks as deleted but keeps for audit)
-app.delete('/api/requests/:id', (req, res) => {
+app.delete('/api/requests/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
     const requestIndex = requests.findIndex(req => req.id === id);
@@ -241,11 +381,13 @@ app.delete('/api/requests/:id', (req, res) => {
   }
 });
 
-// Get specific request by ID
-app.get('/api/request/:id', (req, res) => {
+// Get specific request by ID - optional auth for additional user info
+app.get('/api/request/:id', optionalAuthMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
-    const request = requests.find(req => req.id === id);
+    
+    // Read from Firestore instead of in-memory array
+    const request = await getRequest(id);
 
     if (!request) {
       return res.status(404).json({
@@ -254,7 +396,29 @@ app.get('/api/request/:id', (req, res) => {
       });
     }
 
-    res.json(request);
+    // Add user context if authenticated
+    if (req.user && req.user.uid) {
+      const response = {
+        ...request,
+        user: {
+          uid: req.user.uid,
+          email: req.user.email,
+          name: req.user.name
+        },
+        canEdit: request.submittedBy === req.user.uid,
+        canDelete: request.submittedBy === req.user.uid
+      };
+      res.json(response);
+    } else {
+      // Anonymous user - return basic request info
+      res.json({
+        ...request,
+        user: null,
+        canEdit: false,
+        canDelete: false,
+        message: 'Sign in to see additional options and manage your requests'
+      });
+    }
   } catch (error) {
     console.error('Error fetching request:', error);
     res.status(500).json({
@@ -264,8 +428,8 @@ app.get('/api/request/:id', (req, res) => {
   }
 });
 
-// AI Chat endpoint
-app.post('/api/ai/chat', async (req, res) => {
+// AI Chat endpoint - requires auth for user context
+app.post('/api/ai/chat', authMiddleware, async (req, res) => {
   try {
     const { message } = req.body;
 
@@ -295,7 +459,7 @@ app.post('/api/ai/chat', async (req, res) => {
 });
 
 // Blockchain verification endpoint
-app.get('/api/blockchain/verify/:id', async (req, res) => {
+app.get('/api/blockchain/verify/:id', authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -319,7 +483,7 @@ app.get('/api/blockchain/verify/:id', async (req, res) => {
 });
 
 // Get requests from blockchain
-app.get('/api/blockchain/requests', async (req, res) => {
+app.get('/api/blockchain/requests', authMiddleware, async (req, res) => {
   try {
     console.log('Fetching requests from blockchain...');
     const blockchainRequests = await getRequestsFromBlockchain();
@@ -339,8 +503,8 @@ app.get('/api/blockchain/requests', async (req, res) => {
   }
 });
 
-// Get blockchain request count
-app.get('/api/blockchain/count', async (req, res) => {
+// Get blockchain request count - requires auth
+app.get('/api/blockchain/count', authMiddleware, async (req, res) => {
   try {
     console.log('Fetching blockchain request count...');
     const count = await getRequestCount();
@@ -360,7 +524,7 @@ app.get('/api/blockchain/count', async (req, res) => {
 });
 
 // Statistics endpoint
-app.get('/api/stats', (req, res) => {
+app.get('/api/stats', authMiddleware, (req, res) => {
   try {
     const stats = {
       totalRequests: requests.length,

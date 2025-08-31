@@ -72,15 +72,47 @@ GilriesHub/
 - **Web3Modal** - Wallet connection interface
 - **BlockDAG** - Target blockchain network
 
+### Firebase Integration
+- **Firebase Auth** - User authentication and ID token verification
+- **Firestore** - Persistent database with encryption
+- **Blockchain Sync** - Automatic reconciliation with blockchain events
+- **Queue Processing** - Background blockchain transaction processing
+- **Migration Tools** - Data export/import capabilities
+- **Dual-Write Mode** - Optional immediate blockchain writes
+
 ### Planned Integrations
 - **AI API** - Intelligent assistant capabilities
-- **Database** - Data persistence layer
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v16 or higher)
 - npm or yarn package manager
+- Firebase project with Firestore database enabled
+
+### Firebase Setup
+
+1. **Create a Firebase project:**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project or use existing one
+   - Enable Firestore database in test mode
+
+2. **Generate Service Account:**
+   - Go to Project Settings → Service Accounts
+   - Click "Generate new private key"
+   - Download the JSON file
+   - Save as `server/secrets/firebase-service-account.json`
+
+3. **Configure Environment Variables:**
+   ```bash
+   # Copy the example environment file
+   cp env.example .env
+   
+   # Edit .env with your Firebase project details
+   FIREBASE_PROJECT_ID=your-project-id
+   FIREBASE_SERVICE_ACCOUNT_PATH=./server/secrets/firebase-service-account.json
+   ENCRYPTION_KEY=your-64-hex-characters-32-bytes
+   ```
 
 ### Installation
 
@@ -102,7 +134,28 @@ GilriesHub/
    npm run dev
    ```
 
-   This will start both the React frontend (port 3000) and Node.js backend (port 5000) concurrently.
+   This will start both the React frontend (port 3000) and Node.js backend (port 5001) concurrently.
+
+### Additional Services
+
+**Start Queue Worker (for blockchain processing):**
+```bash
+cd server && npm run queue:worker
+```
+
+**Run Blockchain Sync (one-time):**
+```bash
+cd server && npm run sync:blockchain
+```
+
+**Export/Import Data:**
+```bash
+# Export current data
+npm run migrate:export
+
+# Import data to Firestore
+cd server && node ../scripts/importData.js ../scripts/exports/your-export-file.json
+```
 
 ### Individual Commands
 

@@ -11,6 +11,7 @@ import {
   Chip,
   IconButton,
   Button,
+  Link,
 } from '@mui/material';
 import {
   Add as AddIcon,
@@ -20,12 +21,15 @@ import {
   Security,
   LocalHospital,
   Delete as DeleteIcon,
+  Link as LinkIcon,
 } from '@mui/icons-material';
 import RequestFormModal from '../components/RequestFormModal';
+import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 
 const RequestsPage = () => {
   const { t } = useTranslation();
+  const { currentUser, getAuthToken } = useAuth();
   const [requests, setRequests] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -68,9 +72,24 @@ const RequestsPage = () => {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      // Fetch from backend first (this has the full request details and supports CRUD)
-      const backendResponse = await axios.get('/api/requests');
+      // Get fresh ID token if user is authenticated
+      let authToken = null;
+      if (currentUser) {
+        authToken = await getAuthToken();
+      }
+
+      // Prepare headers with authentication if available
+      const headers = {};
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
+      // Fetch from backend with authentication
+      const backendResponse = await axios.get('/api/requests', { headers });
       console.log('Backend requests:', backendResponse.data);
+      
+      // Extract the requests array from the response
+      const backendRequests = backendResponse.data.requests || [];
       
       // Also fetch from blockchain for verification data
       try {
@@ -88,7 +107,7 @@ const RequestsPage = () => {
         });
         
         // Enhance backend requests with blockchain data when available
-        const enhancedRequests = backendResponse.data.map(backendReq => {
+        const enhancedRequests = backendRequests.map(backendReq => {
           const backendTimestamp = new Date(backendReq.timestamp).getTime();
           
           // Find the closest matching blockchain request (within 5 minutes)
@@ -115,7 +134,7 @@ const RequestsPage = () => {
       } catch (blockchainError) {
         console.error('Blockchain fetch failed:', blockchainError);
         // Continue with backend data only
-        setRequests(backendResponse.data);
+        setRequests(backendRequests);
       }
     } catch (error) {
       console.error('Error fetching requests:', error);
@@ -127,14 +146,14 @@ const RequestsPage = () => {
   };
 
   const handleRequestSubmitted = (newRequest) => {
-    setRequests([newRequest, ...requests]);
+    setRequests([newRequest, ...(requests || [])]);
   };
 
   const handleDeleteRequest = async (requestId) => {
     if (window.confirm('Are you sure you want to delete this request?')) {
       try {
         await axios.delete(`/api/requests/${requestId}`);
-        setRequests(requests.filter(request => request.id !== requestId));
+        setRequests((requests || []).filter(request => request.id !== requestId));
         console.log('Request deleted successfully:', requestId);
       } catch (error) {
         console.error('Error deleting request:', error);
@@ -224,7 +243,7 @@ const RequestsPage = () => {
               {t('requests.loading')}
             </Typography>
           </Box>
-        ) : requests.length === 0 ? (
+        ) : (requests || []).length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Assignment sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }} />
             <Typography variant="h6" gutterBottom color="text.secondary">
@@ -244,7 +263,7 @@ const RequestsPage = () => {
           </Box>
         ) : (
           <Grid container spacing={3}>
-            {requests.map((request) => (
+            {(requests || []).map((request) => (
               <Grid item xs={12} md={6} lg={4} key={request.id}>
                 <Card
                   sx={{
@@ -299,19 +318,43 @@ const RequestsPage = () => {
                     </Typography>
                     
                     {/* Blockchain Information */}
-                    {request.blockchainVerified && (
+                    {request.txHash && (
                       <Box sx={{ mt: 2, p: 1, bgcolor: 'success.50', borderRadius: 1, border: '1px solid', borderColor: 'success.200' }}>
                         <Typography variant="caption" color="success.main" display="block" sx={{ fontWeight: 'bold', mb: 1 }}>
-                          ✓ Blockchain Verified
+                          ✓ On Blockchain
                         </Typography>
                         <Typography variant="caption" color="text.secondary" display="block">
-                          <strong>Hash:</strong> {request.requestHash?.slice(0, 20)}...
+                          <strong>Block:</strong> {request.blockNumber}
                         </Typography>
-                        {request.requester && (
-                          <Typography variant="caption" color="text.secondary" display="block">
-                            <strong>Requester:</strong> {request.requester.slice(0, 10)}...{request.requester.slice(-8)}
+                        <Typography variant="caption" color="text.secondary" display="block">
+                          <strong>Hash:</strong> {request.txHash?.slice(0, 20)}...
+                        </Typography>
+                        <Link
+                          href={`https://primordial.bdagscan.com/tx/${request.txHash}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: 0.5, 
+                            color: 'primary.main',
+                            textDecoration: 'none',
+                            '&:hover': { textDecoration: 'underline' }
+                          }}
+                        >
+                          <LinkIcon fontSize="small" />
+                          <Typography variant="caption">
+                            View on BlockDAG Explorer
                           </Typography>
-                        )}
+                        </Link>
+                      </Box>
+                    )}
+                    
+                    {request.status === 'pending' && (
+                      <Box sx={{ mt: 2, p: 1, bgcolor: 'warning.50', borderRadius: 1, border: '1px solid', borderColor: 'warning.200' }}>
+                        <Typography variant="caption" color="warning.main" display="block" sx={{ fontWeight: 'bold' }}>
+                          ⏳ Processing on Blockchain
+                        </Typography>
                       </Box>
                     )}
                     

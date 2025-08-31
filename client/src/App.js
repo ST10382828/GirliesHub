@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Box } from '@mui/material';
+import { AuthProvider } from './contexts/AuthContext';
 import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import RequestsPage from './pages/RequestsPage';
@@ -55,22 +56,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <NavBar />
-          <Box component="main" sx={{ flexGrow: 1, pt: 2 }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/requests" element={<RequestsPage />} />
-              <Route path="/finance" element={<FinancePage />} />
-              <Route path="/gbv-support" element={<GBVSupportPage />} />
-              <Route path="/sanitary-aid" element={<SanitaryAidPage />} />
-              <Route path="/ai-assistant" element={<AIAssistantPage />} />
-              <Route path="/about" element={<AboutPage />} />
-            </Routes>
+      <AuthProvider>
+        <Router>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <NavBar />
+            <Box component="main" sx={{ flexGrow: 1, pt: 2 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/requests" element={<RequestsPage />} />
+                <Route path="/finance" element={<FinancePage />} />
+                <Route path="/gbv-support" element={<GBVSupportPage />} />
+                <Route path="/sanitary-aid" element={<SanitaryAidPage />} />
+                <Route path="/ai-assistant" element={<AIAssistantPage />} />
+                <Route path="/about" element={<AboutPage />} />
+              </Routes>
+            </Box>
           </Box>
-        </Box>
-      </Router>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

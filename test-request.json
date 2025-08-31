@@ -1,0 +1,6 @@
+{
+  "requestType": "finance",
+  "description": "test request for queue worker",
+  "location": "Cape Town"
+}
+

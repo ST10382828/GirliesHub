@@ -84,3 +84,7 @@ coverage.json
 # Temporary files
 tmp/
 temp/
+
+# Firebase secrets
+server/secrets/
+server/secrets/*.json
