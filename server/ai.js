@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'your-api-key-here');
+// Initialize Gemini AI - using the valid API key directly
+const genAI = new GoogleGenerativeAI('AIzaSyCca7_4PZMY9uBa5BLvNLWaGR_kiQFMoCA');
 
 // Configure the model
 const model = genAI.getGenerativeModel({ 
@@ -15,7 +15,7 @@ const model = genAI.getGenerativeModel({
 });
 
 // Simple system prompt for basic chatbot
-const SYSTEM_PROMPT = `You are an AI assistant for EmpowerHub, a comprehensive support platform for women in South Africa. Your role is to provide helpful, empathetic, and accurate information about our services.
+const SYSTEM_PROMPT = `You are an AI assistant for GirliesHub, a comprehensive support platform for women in South Africa. Your role is to provide helpful, empathetic, and accurate information about our services.
 
 Our platform offers three main areas of support:
 
@@ -57,7 +57,7 @@ async function chatWithAI(message) {
         },
         {
           role: "model",
-          parts: [{ text: "I understand my role as an EmpowerHub AI assistant. I'm ready to help women in South Africa with financial empowerment, GBV support, and sanitary aid. How can I assist you today?" }],
+          parts: [{ text: "I understand my role as a GirliesHub AI assistant. I'm ready to help women in South Africa with financial empowerment, GBV support, and sanitary aid. How can I assist you today?" }],
         },
       ],
     });

@@ -9,9 +9,9 @@
     "about": "About"
   },
   "home": {
-    "title": "EmpowerHub",
+    "title": "GirliesHub",
     "subtitle": "Empowering Women with Integrated Support",
-    "tagline": "Strengthening independence, safety, and dignity.",
+    "tagline": "Challenges into change",
     "features": {
       "financialSupport": {
         "title": "Financial Support",
@@ -147,8 +147,8 @@
     }
   },
   "about": {
-    "title": "About EmpowerHub",
-    "subtitle": "EmpowerHub empowers women in South Africa by offering tailored investment advice and seminars, immediate GBV support with safe shelter locations, and access to sanitary donation bins. This integrated solution demonstrates our commitment to strengthening independence, safety, and dignity.",
+    "title": "About GirliesHub",
+    "subtitle": "GirliesHub empowers women in South Africa by offering tailored investment advice and seminars, immediate GBV support with safe shelter locations, and access to sanitary donation bins. This integrated solution demonstrates our commitment to strengthening independence, safety, and dignity.",
     "mission": "Our Mission",
     "missionText": "To create an integrated platform that empowers women across South Africa by providing comprehensive support services that address financial independence, personal safety, and basic hygiene needs in one accessible solution.",
     "coreServices": "Our Core Services",
@@ -195,7 +195,7 @@
         "description": "Building a strong network of support through community-driven initiatives and partnerships."
       }
     },
-    "techDescription": "EmpowerHub leverages modern technology to provide an integrated support platform. Our current demo showcases the user interface and core functionality, with plans to integrate advanced features including:",
+    "techDescription": "GirliesHub leverages modern technology to provide an integrated support platform. Our current demo showcases the user interface and core functionality, with plans to integrate advanced features including:",
     "currentFeaturesList": {
       "responsiveInterface": "Responsive web interface",
       "requestSystem": "Request submission system",
@@ -213,7 +213,7 @@
   "aiAssistant": {
     "title": "AI Assistant",
     "subtitle": "Get instant answers and guidance from our intelligent support system",
-    "welcomeMessage": "Hello! I'm your EmpowerHub assistant. I'm here to help you with questions about financial advice, GBV support, sanitary aid, and any other support services. How can I assist you today?",
+    "welcomeMessage": "Hello! I'm your GirliesHub assistant. I'm here to help you with questions about financial advice, GBV support, sanitary aid, and any other support services. How can I assist you today?",
     "quickQuestions": {
       "title": "Quick Questions:",
       "questions": {
@@ -225,7 +225,7 @@
       }
     },
     "chat": {
-      "assistantName": "EmpowerHub Assistant",
+      "assistantName": "GirliesHub Assistant",
       "status": "Online • Ready to help",
       "placeholder": "Type your message here...",
       "sendButton": "Send",

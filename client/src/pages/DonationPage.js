@@ -136,51 +136,51 @@ const DonationPage = () => {
       console.error('Error fetching donation stats:', error);
       // Fallback to static data if API fails
       setCauses([
-        {
-          id: 'general',
-          title: 'General Support',
-          description: 'Support all our initiatives for women empowerment',
-          icon: <VolunteerActivism />,
-          raised: 45000,
-          goal: 100000,
-          color: '#E91E63',
-        },
-        {
-          id: 'education',
-          title: 'Education & Skills',
-          description: 'Fund educational programs and skill development',
-          icon: <School />,
-          raised: 28000,
-          goal: 50000,
-          color: '#2196F3',
-        },
-        {
-          id: 'health',
-          title: 'Health & Sanitary Aid',
-          description: 'Provide sanitary products and healthcare support',
-          icon: <LocalHospital />,
-          raised: 15000,
-          goal: 30000,
-          color: '#4CAF50',
-        },
-        {
-          id: 'gbv',
-          title: 'GBV Support',
-          description: 'Support survivors of gender-based violence',
-          icon: <Security />,
-          raised: 22000,
-          goal: 40000,
-          color: '#FF9800',
-        },
-        {
-          id: 'finance',
-          title: 'Financial Literacy',
-          description: 'Teach financial skills and provide microloans',
-          icon: <AccountBalance />,
-          raised: 18000,
-          goal: 35000,
-          color: '#9C27B0',
-        },
+    {
+      id: 'general',
+      title: 'General Support',
+      description: 'Support all our initiatives for women empowerment',
+      icon: <VolunteerActivism />,
+      raised: 45000,
+      goal: 100000,
+      color: '#E91E63',
+    },
+    {
+      id: 'education',
+      title: 'Education & Skills',
+      description: 'Fund educational programs and skill development',
+      icon: <School />,
+      raised: 28000,
+      goal: 50000,
+      color: '#2196F3',
+    },
+    {
+      id: 'health',
+      title: 'Health & Sanitary Aid',
+      description: 'Provide sanitary products and healthcare support',
+      icon: <LocalHospital />,
+      raised: 15000,
+      goal: 30000,
+      color: '#4CAF50',
+    },
+    {
+      id: 'gbv',
+      title: 'GBV Support',
+      description: 'Support survivors of gender-based violence',
+      icon: <Security />,
+      raised: 22000,
+      goal: 40000,
+      color: '#FF9800',
+    },
+    {
+      id: 'finance',
+      title: 'Financial Literacy',
+      description: 'Teach financial skills and provide microloans',
+      icon: <AccountBalance />,
+      raised: 18000,
+      goal: 35000,
+      color: '#9C27B0',
+    },
       ]);
     } finally {
       setLoading(false);
@@ -569,9 +569,9 @@ const DonationPage = () => {
 
               {paymentMethod === 'blockdag' && blockdagTxHash && (
                 <Box mb={2} p={2} sx={{ bgcolor: 'success.light', borderRadius: 1 }}>
-                                     <Typography variant="body2" color="success.dark" fontWeight="bold" mb={1}>
+                  <Typography variant="body2" color="success.dark" fontWeight="bold" mb={1}>
                      Blockchain Transaction Created
-                   </Typography>
+                  </Typography>
                   <Typography variant="body2" color="success.dark" sx={{ wordBreak: 'break-all' }}>
                     TX Hash: {blockdagTxHash}
                   </Typography>
@@ -579,10 +579,10 @@ const DonationPage = () => {
               )}
 
               <Typography variant="body2" color="text.secondary" textAlign="center">
-                                 {paymentMethod === 'blockdag' 
+                {paymentMethod === 'blockdag' 
                    ? 'Your donation will be processed through our secure blockchain network, ensuring transparency and immutability.'
-                   : 'Your donation is secure and helps us continue our mission of empowering women across South Africa.'
-                 }
+                  : 'Your donation is secure and helps us continue our mission of empowering women across South Africa.'
+                }
               </Typography>
             </CardContent>
           </Card>
@@ -741,7 +741,7 @@ const DonationPage = () => {
             <Box sx={{ p: 2, bgcolor: 'info.light', borderRadius: 1 }}>
               <Typography variant="body2" color="info.dark">
                                  <strong>Note:</strong> Your donation will be processed through our secure blockchain network, 
-                 ensuring transparency and immutability. The transaction will be recorded on the blockchain 
+                ensuring transparency and immutability. The transaction will be recorded on the blockchain 
                  and you&apos;ll receive a transaction hash for verification.
               </Typography>
             </Box>

@@ -16,6 +16,7 @@ import {
   Box,
   useTheme,
   useMediaQuery,
+  Avatar,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -56,9 +57,12 @@ const NavBar = () => {
 
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation">
-      <Typography variant="h6" sx={{ p: 2, color: 'primary.main', fontWeight: 'bold' }}>
-        EmpowerHub
-      </Typography>
+      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Avatar src="/logo.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
+        <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 'bold' }}>
+          GirliesHub
+        </Typography>
+      </Box>
       
       {/* Wallet Connect Button for Mobile */}
       <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
@@ -113,8 +117,7 @@ const NavBar = () => {
             </IconButton>
           )}
           
-          <Typography
-            variant="h6"
+          <Box
             component={Link}
             to="/"
             sx={{
@@ -122,11 +125,21 @@ const NavBar = () => {
               mr: isMobile ? 0 : 4,
               textDecoration: 'none',
               color: 'inherit',
-              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
             }}
           >
-            EmpowerHub
-          </Typography>
+            <Avatar src="/logo.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 'bold',
+              }}
+            >
+              GirliesHub
+            </Typography>
+          </Box>
 
           {!isMobile && (
             <>

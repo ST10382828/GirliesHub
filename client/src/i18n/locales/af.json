@@ -9,9 +9,9 @@
     "about": "Oor Ons"
   },
   "home": {
-    "title": "EmpowerHub",
+    "title": "GirliesHub",
     "subtitle": "Bemagtiging van Vroue met Geïntegreerde Ondersteuning",
-    "tagline": "Versterking van onafhanklikheid, veiligheid en waardigheid.",
+    "tagline": "Uitdagings in verandering",
     "features": {
       "financialSupport": {
         "title": "Finansiële Ondersteuning",
@@ -147,8 +147,8 @@
     }
   },
   "about": {
-    "title": "Oor EmpowerHub",
-    "subtitle": "EmpowerHub bemagtig vroue in Suid-Afrika deur pasgemaakte beleggingsadvies en seminare aan te bied, onmiddellike GBV-ondersteuning met veilige skuilingplekke, en toegang tot sanitêre skenkingsbakke. Hierdie geïntegreerde oplossing toon ons toewyding aan die versterking van onafhanklikheid, veiligheid en waardigheid.",
+    "title": "Oor GirliesHub",
+    "subtitle": "GirliesHub bemagtig vroue in Suid-Afrika deur pasgemaakte beleggingsadvies en seminare aan te bied, onmiddellike GBV-ondersteuning met veilige skuilingplekke, en toegang tot sanitêre skenkingsbakke. Hierdie geïntegreerde oplossing toon ons toewyding aan die versterking van onafhanklikheid, veiligheid en waardigheid.",
     "mission": "Ons Missie",
     "missionText": "Om 'n geïntegreerde platform te skep wat vroue regoor Suid-Afrika bemagtig deur omvattende ondersteuningsdienste te verskaf wat finansiële onafhanklikheid, persoonlike veiligheid en basiese higiënebehoeftes in een toeganklike oplossing aanspreek.",
     "coreServices": "Ons Kerndienste",
@@ -195,7 +195,7 @@
         "description": "Bou 'n sterk ondersteuningsnetwerk deur gemeenskapgedrewe inisiatiewe en vennootskappe."
       }
     },
-    "techDescription": "EmpowerHub benut moderne tegnologie om 'n geïntegreerde ondersteuningsplatform te verskaf. Ons huidige demo toon die gebruikerskoppelvlak en kernfunksionaliteit, met planne om gevorderde kenmerke te integreer insluitend:",
+    "techDescription": "GirliesHub benut moderne tegnologie om 'n geïntegreerde ondersteuningsplatform te verskaf. Ons huidige demo toon die gebruikerskoppelvlak en kernfunksionaliteit, met planne om gevorderde kenmerke te integreer insluitend:",
     "currentFeaturesList": {
       "responsiveInterface": "Responsiewe webkoppelvlak",
       "requestSystem": "Versoek indieningstelsel",
@@ -213,7 +213,7 @@
   "aiAssistant": {
     "title": "KI Assistent",
     "subtitle": "Kry onmiddellike antwoorde en leiding van ons intelligente ondersteuningstelsel",
-    "welcomeMessage": "Hallo! Ek is jou EmpowerHub assistent. Ek is hier om jou te help met vrae oor finansiële advies, GBV ondersteuning, sanitêre hulp, en enige ander ondersteuningsdienste. Hoe kan ek jou vandag help?",
+    "welcomeMessage": "Hallo! Ek is jou GirliesHub assistent. Ek is hier om jou te help met vrae oor finansiële advies, GBV ondersteuning, sanitêre hulp, en enige ander ondersteuningsdienste. Hoe kan ek jou vandag help?",
     "quickQuestions": {
       "title": "Vinnige Vrae:",
       "questions": {
@@ -225,7 +225,7 @@
       }
     },
     "chat": {
-      "assistantName": "EmpowerHub Assistent",
+      "assistantName": "GirliesHub Assistent",
       "status": "Aanlyn • Gereed om te help",
       "placeholder": "Tik jou boodskap hier...",
       "sendButton": "Stuur",

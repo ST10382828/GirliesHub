@@ -31,7 +31,7 @@ const AIAssistantPage = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: t('aiAssistant.welcomeMessage') || "Hello! I'm your EmpowerHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
+              text: t('aiAssistant.welcomeMessage') || "Hello! I'm your GirliesHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date(),
       suggestions: [
@@ -144,7 +144,7 @@ const AIAssistantPage = () => {
     setMessages([
       {
         id: 1,
-        text: t('aiAssistant.welcomeMessage') || "Hello! I'm your EmpowerHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
+        text: t('aiAssistant.welcomeMessage') || "Hello! I'm your GirliesHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
         sender: 'bot',
         timestamp: new Date(),
         suggestions: [
