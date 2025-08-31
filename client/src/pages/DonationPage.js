@@ -15,6 +15,12 @@ import {
   Alert,
   Snackbar,
   Divider,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
+  MenuItem,
 } from '@mui/material';
 import {
   Favorite,
@@ -27,6 +33,7 @@ import {
   Payment,
   AccountBalanceWallet,
   Hub,
+  Close,
 } from '@mui/icons-material';
 
 const DonationPage = () => {
@@ -40,8 +47,20 @@ const DonationPage = () => {
     email: '',
     message: '',
   });
+  const [paymentDetails, setPaymentDetails] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardholderName: '',
+    walletAddress: '',
+    cryptoType: 'bitcoin',
+    cryptoAddress: ''
+  });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showCardModal, setShowCardModal] = useState(false);
+  const [showBlockdagModal, setShowBlockdagModal] = useState(false);
+  const [showCryptoModal, setShowCryptoModal] = useState(false);
 
   const predefinedAmounts = [50, 100, 250, 500, 1000, 2500];
 
@@ -95,7 +114,6 @@ const DonationPage = () => {
 
   const paymentMethods = [
     { id: 'card', label: 'Credit/Debit Card', icon: <CreditCard /> },
-    { id: 'paypal', label: 'PayPal', icon: <Payment /> },
     { id: 'crypto', label: 'Cryptocurrency', icon: <AccountBalanceWallet /> },
     { id: 'blockdag', label: 'BlockDAG Network', icon: <Hub /> },
   ];
@@ -112,6 +130,13 @@ const DonationPage = () => {
 
   const handleInputChange = (field) => (e) => {
     setDonorInfo(prev => ({
+      ...prev,
+      [field]: e.target.value
+    }));
+  };
+
+  const handlePaymentDetailsChange = (field) => (e) => {
+    setPaymentDetails(prev => ({
       ...prev,
       [field]: e.target.value
     }));
@@ -183,6 +208,10 @@ const DonationPage = () => {
       setSelectedAmount('');
       setCustomAmount('');
       setDonorInfo({ name: '', email: '', message: '' });
+      setPaymentDetails({ cardNumber: '', expiryDate: '', cvv: '', cardholderName: '', walletAddress: '', cryptoType: 'bitcoin', cryptoAddress: '' });
+      setShowCardModal(false);
+      setShowCryptoModal(false);
+      setShowBlockdagModal(false);
       
     } catch (error) {
       console.error('Donation error:', error);
@@ -317,11 +346,19 @@ const DonationPage = () => {
               
               <Grid container spacing={2}>
                 {paymentMethods.map((method) => (
-                  <Grid item xs={12} sm={4} key={method.id}>
+                  <Grid item xs={12} sm={6} key={method.id}>
                     <Button
                       fullWidth
                       variant={paymentMethod === method.id ? 'contained' : 'outlined'}
-                      onClick={() => setPaymentMethod(method.id)}
+                      onClick={() => {
+                        if (method.id === 'card') {
+                          setShowCardModal(true);
+                        } else if (method.id === 'crypto') {
+                          setShowCryptoModal(true);
+                        } else if (method.id === 'blockdag') {
+                          setShowBlockdagModal(true);
+                        }
+                      }}
                       startIcon={method.icon}
                       sx={{ py: 1.5, justifyContent: 'flex-start' }}
                     >
@@ -330,6 +367,7 @@ const DonationPage = () => {
                   </Grid>
                 ))}
               </Grid>
+
             </CardContent>
           </Card>
 
@@ -509,6 +547,209 @@ const DonationPage = () => {
           Thank you for your generous donation! You're making a real difference.
         </Alert>
       </Snackbar>
+
+      {/* Credit Card Details Modal */}
+      <Dialog 
+        open={showCardModal} 
+        onClose={() => setShowCardModal(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Typography variant="h6">Credit Card Details</Typography>
+            <IconButton onClick={() => setShowCardModal(false)}>
+              <Close />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Cardholder Name"
+                value={paymentDetails.cardholderName}
+                onChange={handlePaymentDetailsChange('cardholderName')}
+                placeholder="John Doe"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Card Number"
+                value={paymentDetails.cardNumber}
+                onChange={handlePaymentDetailsChange('cardNumber')}
+                placeholder="1234 5678 9012 3456"
+                inputProps={{ maxLength: 19 }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                label="Expiry Date"
+                value={paymentDetails.expiryDate}
+                onChange={handlePaymentDetailsChange('expiryDate')}
+                placeholder="MM/YY"
+                inputProps={{ maxLength: 5 }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                label="CVV"
+                value={paymentDetails.cvv}
+                onChange={handlePaymentDetailsChange('cvv')}
+                placeholder="123"
+                inputProps={{ maxLength: 4 }}
+                type="password"
+              />
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowCardModal(false)} color="secondary">
+            Cancel
+          </Button>
+          <Button 
+            onClick={() => {
+              setPaymentMethod('card');
+              setShowCardModal(false);
+            }}
+            variant="contained"
+            disabled={!paymentDetails.cardholderName || !paymentDetails.cardNumber || !paymentDetails.expiryDate || !paymentDetails.cvv}
+          >
+            Save Card Details
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* BlockDAG Details Modal */}
+      <Dialog 
+        open={showBlockdagModal} 
+        onClose={() => setShowBlockdagModal(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Typography variant="h6">BlockDAG Wallet Details</Typography>
+            <IconButton onClick={() => setShowBlockdagModal(false)}>
+              <Close />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 1 }}>
+            <TextField
+              fullWidth
+              label="Your Wallet Address"
+              value={paymentDetails.walletAddress}
+              onChange={handlePaymentDetailsChange('walletAddress')}
+              placeholder="0x1234567890abcdef..."
+              helperText="Enter your BlockDAG wallet address to process the donation"
+              sx={{ mb: 3 }}
+            />
+            <Box sx={{ p: 2, bgcolor: 'info.light', borderRadius: 1 }}>
+              <Typography variant="body2" color="info.dark">
+                <strong>Note:</strong> Your donation will be processed through the BlockDAG network, 
+                ensuring transparency and immutability. The transaction will be recorded on the blockchain 
+                and you'll receive a transaction hash for verification.
+              </Typography>
+            </Box>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowBlockdagModal(false)} color="secondary">
+            Cancel
+          </Button>
+          <Button 
+            onClick={() => {
+              setPaymentMethod('blockdag');
+              setShowBlockdagModal(false);
+            }}
+            variant="contained"
+            disabled={!paymentDetails.walletAddress}
+          >
+            Save Wallet Details
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Cryptocurrency Details Modal */}
+      <Dialog 
+        open={showCryptoModal} 
+        onClose={() => setShowCryptoModal(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Typography variant="h6">Cryptocurrency Payment</Typography>
+            <IconButton onClick={() => setShowCryptoModal(false)}>
+              <Close />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 1 }}>
+            <TextField
+              fullWidth
+              select
+              label="Select Cryptocurrency"
+              value={paymentDetails.cryptoType}
+              onChange={handlePaymentDetailsChange('cryptoType')}
+              sx={{ mb: 3 }}
+            >
+              <MenuItem value="bitcoin">Bitcoin (BTC)</MenuItem>
+              <MenuItem value="ethereum">Ethereum (ETH)</MenuItem>
+              <MenuItem value="litecoin">Litecoin (LTC)</MenuItem>
+              <MenuItem value="dogecoin">Dogecoin (DOGE)</MenuItem>
+              <MenuItem value="cardano">Cardano (ADA)</MenuItem>
+              <MenuItem value="polkadot">Polkadot (DOT)</MenuItem>
+              <MenuItem value="chainlink">Chainlink (LINK)</MenuItem>
+              <MenuItem value="stellar">Stellar (XLM)</MenuItem>
+              <MenuItem value="ripple">Ripple (XRP)</MenuItem>
+              <MenuItem value="polygon">Polygon (MATIC)</MenuItem>
+              <MenuItem value="solana">Solana (SOL)</MenuItem>
+              <MenuItem value="avalanche">Avalanche (AVAX)</MenuItem>
+              <MenuItem value="binancecoin">Binance Coin (BNB)</MenuItem>
+              <MenuItem value="usdcoin">USD Coin (USDC)</MenuItem>
+              <MenuItem value="tether">Tether (USDT)</MenuItem>
+            </TextField>
+            <TextField
+              fullWidth
+              label="Your Wallet Address"
+              value={paymentDetails.cryptoAddress}
+              onChange={handlePaymentDetailsChange('cryptoAddress')}
+              placeholder="Enter your cryptocurrency wallet address"
+              helperText="Enter your wallet address for the selected cryptocurrency"
+              sx={{ mb: 3 }}
+            />
+            <Box sx={{ p: 2, bgcolor: 'warning.light', borderRadius: 1 }}>
+              <Typography variant="body2" color="warning.dark">
+                <strong>Important:</strong> Please ensure you enter the correct wallet address for the selected cryptocurrency. 
+                Transactions are irreversible and funds sent to incorrect addresses cannot be recovered.
+              </Typography>
+            </Box>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowCryptoModal(false)} color="secondary">
+            Cancel
+          </Button>
+          <Button 
+            onClick={() => {
+              setPaymentMethod('crypto');
+              setShowCryptoModal(false);
+            }}
+            variant="contained"
+            disabled={!paymentDetails.cryptoAddress}
+          >
+            Save Crypto Details
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
