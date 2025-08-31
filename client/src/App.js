@@ -9,6 +9,7 @@ import FinancePage from './pages/FinancePage';
 import GBVSupportPage from './pages/GBVSupportPage';
 import SanitaryAidPage from './pages/SanitaryAidPage';
 import AIAssistantPage from './pages/AIAssistantPage';
+import DonationPage from './pages/DonationPage';
 import AboutPage from './pages/AboutPage';
 
 // Material UI Theme with pink primary color
@@ -66,6 +67,7 @@ function App() {
               <Route path="/gbv-support" element={<GBVSupportPage />} />
               <Route path="/sanitary-aid" element={<SanitaryAidPage />} />
               <Route path="/ai-assistant" element={<AIAssistantPage />} />
+              <Route path="/donate" element={<DonationPage />} />
               <Route path="/about" element={<AboutPage />} />
             </Routes>
           </Box>

@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { storeHashOnBlockchain, getTransactionProof } = require('./blockchain');
+const { BlockDAG, Transaction } = require('./blockdag/core');
 const { chatWithAI } = require('./ai');
 
 const app = express();
@@ -15,7 +16,11 @@ app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Initialize BlockDAG instance
+const blockdag = new BlockDAG();
+
 // In-memory storage for demo (replace with database later)
+let donations = [];
 let requests = [
   {
     id: 'REQ001',
@@ -54,6 +59,13 @@ function generateRequestId() {
   const timestamp = Date.now();
   const random = Math.floor(Math.random() * 1000);
   return `REQ${timestamp}${random}`.substring(0, 10).toUpperCase();
+}
+
+// Generate unique donation ID
+function generateDonationId() {
+  const timestamp = Date.now();
+  const random = Math.floor(Math.random() * 1000);
+  return `DON${timestamp}${random}`.substring(0, 10).toUpperCase();
 }
 
 // Routes
@@ -242,9 +254,156 @@ app.get('/api/blockchain/verify/:id', async (req, res) => {
   }
 });
 
+// BlockDAG transaction endpoint for donations
+app.post('/api/blockdag/transaction', async (req, res) => {
+  try {
+    const { type, amount, cause, donor, message } = req.body;
+
+    console.log('Creating BlockDAG transaction:', req.body);
+
+    // Create a new transaction for the donation
+    const transaction = new Transaction(
+      'donation_pool', // from address (donation pool)
+      'empowerhub_treasury', // to address (EmpowerHub treasury)
+      amount,
+      { type, cause, donor, message, timestamp: new Date().toISOString() }
+    );
+
+    // Add transaction to BlockDAG
+    const result = await blockdag.addTransaction(transaction);
+    
+    // Mine a new block with this transaction
+    const block = await blockdag.mineBlock([transaction]);
+
+    console.log('BlockDAG transaction created:', {
+      transactionHash: transaction.hash,
+      blockHash: block.hash,
+      amount,
+      cause
+    });
+
+    res.status(201).json({
+      success: true,
+      transactionHash: transaction.hash,
+      blockHash: block.hash,
+      amount,
+      cause,
+      donor,
+      timestamp: new Date().toISOString(),
+      confirmationScore: block.confirmationScore || 0
+    });
+
+  } catch (error) {
+    console.error('Error creating BlockDAG transaction:', error);
+    res.status(500).json({
+      error: 'Failed to create BlockDAG transaction',
+      message: error.message
+    });
+  }
+});
+
+// Process donation endpoint
+app.post('/api/donations', async (req, res) => {
+  try {
+    const { amount, cause, paymentMethod, donorInfo, blockdagTxHash } = req.body;
+
+    console.log('Received donation:', req.body);
+
+    // Validate required fields
+    if (!amount || amount <= 0) {
+      return res.status(400).json({
+        error: 'Invalid donation amount',
+        message: 'Amount must be greater than 0'
+      });
+    }
+
+    // Create new donation record
+    const newDonation = {
+      id: generateDonationId(),
+      amount: parseFloat(amount),
+      cause: cause || 'general',
+      paymentMethod: paymentMethod || 'card',
+      donorInfo: {
+        name: donorInfo?.name || 'Anonymous',
+        email: donorInfo?.email || '',
+        message: donorInfo?.message || ''
+      },
+      status: 'completed',
+      timestamp: new Date().toISOString(),
+      transactionHash: blockdagTxHash || `0x${Math.random().toString(16).substr(2, 64)}`, // Use BlockDAG hash if available
+      blockdagTxHash: blockdagTxHash || null
+    };
+
+    // Add to in-memory storage
+    donations.unshift(newDonation);
+
+    // Store on blockchain (using existing infrastructure)
+    try {
+      const blockchainResult = await storeHashOnBlockchain({
+        type: 'donation',
+        ...newDonation
+      });
+      console.log('Donation blockchain storage result:', blockchainResult);
+    } catch (blockchainError) {
+      console.error('Donation blockchain storage failed:', blockchainError);
+      // Continue anyway - blockchain is optional for demo
+    }
+
+    console.log('Processed donation:', newDonation);
+
+    res.status(201).json({
+      ...newDonation,
+      message: 'Donation processed successfully'
+    });
+
+  } catch (error) {
+    console.error('Error processing donation:', error);
+    res.status(500).json({
+      error: 'Failed to process donation',
+      message: error.message
+    });
+  }
+});
+
+// Get donation statistics
+app.get('/api/donations/stats', (req, res) => {
+  try {
+    const totalDonations = donations.reduce((sum, d) => sum + d.amount, 0);
+    const donationsByCause = donations.reduce((acc, d) => {
+      acc[d.cause] = (acc[d.cause] || 0) + d.amount;
+      return acc;
+    }, {});
+
+    const stats = {
+      totalDonations,
+      totalDonors: donations.length,
+      donationsByCause,
+      averageDonation: donations.length > 0 ? totalDonations / donations.length : 0,
+      recentDonations: donations.slice(0, 5).map(d => ({
+        id: d.id,
+        amount: d.amount,
+        cause: d.cause,
+        donor: d.donorInfo.name,
+        timestamp: d.timestamp
+      })),
+      lastUpdated: new Date().toISOString()
+    };
+
+    res.json(stats);
+  } catch (error) {
+    console.error('Error fetching donation stats:', error);
+    res.status(500).json({
+      error: 'Failed to fetch donation statistics',
+      message: error.message
+    });
+  }
+});
+
 // Statistics endpoint
 app.get('/api/stats', (req, res) => {
   try {
+    const totalDonations = donations.reduce((sum, d) => sum + d.amount, 0);
+    
     const stats = {
       totalRequests: requests.length,
       requestsByType: {
@@ -256,6 +415,10 @@ app.get('/api/stats', (req, res) => {
         'Processing': requests.filter(r => r.status === 'Processing').length,
         'Urgent': requests.filter(r => r.status === 'Urgent').length,
         'Completed': requests.filter(r => r.status === 'Completed').length
+      },
+      donations: {
+        total: totalDonations,
+        count: donations.length
       },
       lastUpdated: new Date().toISOString()
     };
@@ -300,6 +463,9 @@ app.listen(PORT, () => {
   console.log(`   GET  /api/request/:id`);
   console.log(`   POST /api/ai/chat`);
   console.log(`   GET  /api/blockchain/verify/:id`);
+  console.log(`   POST /api/blockdag/transaction`);
+  console.log(`   POST /api/donations`);
+  console.log(`   GET  /api/donations/stats`);
   console.log(`   GET  /api/stats`);
 });
 

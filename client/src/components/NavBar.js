@@ -24,6 +24,7 @@ import {
   Security,
   LocalHospital,
   SmartToy,
+  VolunteerActivism,
   Info,
 } from '@mui/icons-material';
 
@@ -34,6 +35,7 @@ const navigationItems = [
   { path: '/gbv-support', label: 'GBV Support', icon: <Security /> },
   { path: '/sanitary-aid', label: 'Sanitary Aid', icon: <LocalHospital /> },
   { path: '/ai-assistant', label: 'AI Assistant', icon: <SmartToy /> },
+  { path: '/donate', label: 'Donate', icon: <VolunteerActivism /> },
   { path: '/about', label: 'About', icon: <Info /> },
 ];
 
