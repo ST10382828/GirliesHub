@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { storeHashOnBlockchain, getTransactionProof, getRequestsFromBlockchain, getRequestCount } = require('./blockchain');
-const { chatWithAI } = require('./ai');
+const { chatWithAI, chatWithSuggestions } = require('./ai');
 const { authMiddleware, optionalAuthMiddleware } = require('./middleware/authFirebase');
 const { createRequest, updateRequest, getRequest, listRequests } = require('./services/firestoreService');
 const { computeCanonicalHash } = require('./utils/hash');
@@ -536,7 +536,7 @@ app.post('/api/ai/chat', authMiddleware, async (req, res) => {
 
     console.log('AI Chat request:', message);
 
-    // Call AI service (stub function)
+    // Use simple AI chat
     const aiResponse = await chatWithAI(message);
 
     res.json({
@@ -552,6 +552,35 @@ app.post('/api/ai/chat', authMiddleware, async (req, res) => {
     });
   }
 });
+
+// Enhanced AI Chat endpoint with suggestions
+app.post('/api/ai/chat/enhanced', async (req, res) => {
+  try {
+    const { message } = req.body;
+    
+    if (!message) {
+      return res.status(400).json({
+        error: 'Message is required'
+      });
+    }
+
+    console.log('AI Enhanced Chat request:', message);
+
+    // Use enhanced chat with suggestions
+    const aiResponse = await chatWithSuggestions(message);
+    
+    res.json(aiResponse);
+
+  } catch (error) {
+    console.error('Error in AI enhanced chat:', error);
+    res.status(500).json({ 
+      error: 'AI service temporarily unavailable',
+      message: error.message 
+    });
+  }
+});
+
+
 
 // Blockchain verification endpoint
 app.get('/api/blockchain/verify/:id', authMiddleware, async (req, res) => {
@@ -825,6 +854,7 @@ app.listen(PORT, () => {
   console.log(`   DELETE /api/requests/:id`);
   console.log(`   GET  /api/request/:id`);
   console.log(`   POST /api/ai/chat`);
+  console.log(`   POST /api/ai/chat/enhanced`);
   console.log(`   GET  /api/blockchain/verify/:id`);
   console.log(`   GET  /api/blockchain/requests`);
   console.log(`   GET  /api/blockchain/count`);

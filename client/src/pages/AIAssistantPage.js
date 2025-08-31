@@ -12,6 +12,8 @@ import {
   Paper,
   IconButton,
   Chip,
+  Alert,
+  Snackbar,
 } from '@mui/material';
 import {
   SmartToy,
@@ -19,6 +21,7 @@ import {
   Person,
   Clear,
   QuestionAnswer,
+  Lightbulb,
 } from '@mui/icons-material';
 import axios from 'axios';
 
@@ -28,21 +31,33 @@ const AIAssistantPage = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: t('aiAssistant.welcomeMessage'),
+      text: t('aiAssistant.welcomeMessage') || "Hello! I'm your EmpowerHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
       sender: 'bot',
       timestamp: new Date(),
+      suggestions: [
+        'How can I find financial seminars?',
+        'I need safe shelter information',
+        'Where are sanitary product donation bins?',
+        'How do I submit a support request?'
+      ]
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const messagesEndRef = useRef(null);
 
   const quickQuestions = [
-    t('aiAssistant.quickQuestions.questions.financialSeminars'),
-    t('aiAssistant.quickQuestions.questions.safeShelters'),
-    t('aiAssistant.quickQuestions.questions.sanitaryProducts'),
-    t('aiAssistant.quickQuestions.questions.submitRequest'),
-    t('aiAssistant.quickQuestions.questions.availableServices'),
+    t('aiAssistant.quickQuestions.questions.financialSeminars') || 'How can I find financial seminars?',
+    t('aiAssistant.quickQuestions.questions.safeShelters') || 'I need safe shelter information',
+    t('aiAssistant.quickQuestions.questions.sanitaryProducts') || 'Where are sanitary product donation bins?',
+    t('aiAssistant.quickQuestions.questions.submitRequest') || 'How do I submit a support request?',
+    t('aiAssistant.quickQuestions.questions.availableServices') || 'What services are available?',
+    'What emergency numbers should I call?',
+    'I need immediate help - what do I do first?',
+    'Who can I contact for immediate support?',
+    'What should I do if I feel unsafe?',
+    'How do I get emergency transportation?'
   ];
 
   const scrollToBottom = () => {
@@ -78,11 +93,12 @@ const AIAssistantPage = () => {
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
     setIsLoading(true);
+    setError('');
 
     try {
-      // Call the AI API (using mock response for now)
-      const response = await axios.post('/api/ai/chat', {
-        message: inputMessage,
+      // Use enhanced AI chat with suggestions
+      const response = await axios.post('/api/ai/chat/enhanced', {
+        message: inputMessage
       });
 
       const botMessage = {
@@ -90,28 +106,24 @@ const AIAssistantPage = () => {
         text: response.data.response,
         sender: 'bot',
         timestamp: new Date(),
+        suggestions: response.data.suggestions || []
       };
 
       setMessages(prev => [...prev, botMessage]);
+
     } catch (error) {
       console.error('Error calling AI API:', error);
+      setError('Failed to get AI response. Please try again.');
       
-      // Fallback mock response
-      const mockResponses = [
-        t('aiAssistant.mockResponses.response1'),
-        t('aiAssistant.mockResponses.response2'),
-        t('aiAssistant.mockResponses.response3'),
-        t('aiAssistant.mockResponses.response4'),
-        t('aiAssistant.mockResponses.response5')
-      ];
-
-      const randomResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)];
+      // Fallback response with translation support
+      const fallbackText = t('aiAssistant.errorMessage') || "I apologize, but I'm experiencing technical difficulties right now. Please try again in a moment, or contact our support team if you need immediate assistance.";
       
       const botMessage = {
         id: Date.now() + 1,
-        text: randomResponse,
+        text: fallbackText,
         sender: 'bot',
         timestamp: new Date(),
+        suggestions: ['Try again', 'Contact support', 'Check our help pages']
       };
 
       setMessages(prev => [...prev, botMessage]);
@@ -124,13 +136,23 @@ const AIAssistantPage = () => {
     setInputMessage(question);
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    setInputMessage(suggestion);
+  };
+
   const clearChat = () => {
     setMessages([
       {
         id: 1,
-        text: t('aiAssistant.welcomeMessage'),
+        text: t('aiAssistant.welcomeMessage') || "Hello! I'm your EmpowerHub AI assistant. I'm here to help you with financial empowerment, GBV support, sanitary aid, and general platform guidance. How can I assist you today?",
         sender: 'bot',
         timestamp: new Date(),
+        suggestions: [
+          'How can I find financial seminars?',
+          'I need safe shelter information',
+          'Where are sanitary product donation bins?',
+          'How do I submit a support request?'
+        ]
       }
     ]);
   };
@@ -142,26 +164,30 @@ const AIAssistantPage = () => {
     }
   };
 
+  const closeError = () => {
+    setError('');
+  };
+
   return (
     <Container maxWidth="md">
-      <Box sx={{ py: 4, height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ py: 2, height: '100vh', display: 'flex', flexDirection: 'column' }}>
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 3 }}>
-          <SmartToy sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+        <Box sx={{ textAlign: 'center', mb: 2 }}>
+          <SmartToy sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-            {t('aiAssistant.title')}
+            {t('aiAssistant.title') || 'AI Assistant'}
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            {t('aiAssistant.subtitle')}
+            {t('aiAssistant.subtitle') || 'Get help with financial empowerment, GBV support, sanitary aid, and platform guidance powered by Gemini AI'}
           </Typography>
         </Box>
 
         {/* Quick Questions */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold' }}>
-            {t('aiAssistant.quickQuestions.title')}
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold', fontSize: '0.9rem' }}>
+            {t('aiAssistant.quickQuestions.title') || 'Quick Questions:'}
           </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
             {quickQuestions.map((question, index) => (
               <Chip
                 key={index}
@@ -170,6 +196,7 @@ const AIAssistantPage = () => {
                 onClick={() => handleQuickQuestion(question)}
                 sx={{ 
                   cursor: 'pointer',
+                  fontSize: '0.75rem',
                   '&:hover': {
                     backgroundColor: 'primary.light',
                     color: 'white',
@@ -181,9 +208,9 @@ const AIAssistantPage = () => {
         </Box>
 
         {/* Chat Container */}
-        <Card sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', maxHeight: '60vh' }}>
+        <Card sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: '70vh', maxHeight: '90vh' }}>
           {/* Chat Header */}
-          <CardContent sx={{ pb: 1, borderBottom: 1, borderColor: 'divider' }}>
+          <CardContent sx={{ pb: 1, borderBottom: 1, borderColor: 'divider', backgroundColor: 'background.paper' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
@@ -191,10 +218,10 @@ const AIAssistantPage = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                    {t('aiAssistant.chat.assistantName')}
+                    {t('aiAssistant.chat.assistantName') || 'AI Assistant'}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {t('aiAssistant.chat.status')}
+                    {t('aiAssistant.chat.status') || 'Powered by Gemini AI • Available 24/7'}
                   </Typography>
                 </Box>
               </Box>
@@ -252,6 +279,36 @@ const AIAssistantPage = () => {
                   <Typography variant="body1" sx={{ lineHeight: 1.5 }}>
                     {message.text}
                   </Typography>
+                  
+                  {/* Show suggestions if available */}
+                  {message.suggestions && message.suggestions.length > 0 && (
+                    <Box sx={{ mt: 2 }}>
+                      <Typography variant="caption" sx={{ display: 'block', mb: 1, color: 'text.secondary' }}>
+                        <Lightbulb sx={{ fontSize: 14, mr: 0.5, verticalAlign: 'middle' }} />
+                        Suggested follow-ups:
+                      </Typography>
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {message.suggestions.map((suggestion, index) => (
+                          <Chip
+                            key={index}
+                            label={suggestion}
+                            size="small"
+                            variant="outlined"
+                            onClick={() => handleSuggestionClick(suggestion)}
+                            sx={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.7rem',
+                              '&:hover': {
+                                backgroundColor: 'primary.light',
+                                color: 'white',
+                              }
+                            }}
+                          />
+                        ))}
+                      </Box>
+                    </Box>
+                  )}
+                  
                   <Typography 
                     variant="caption" 
                     sx={{ 
@@ -293,7 +350,7 @@ const AIAssistantPage = () => {
                     height: 32 
                   }}
                 >
-                  <SmartToy fontSize="small" />
+                  <SmartToy />
                 </Avatar>
                 <Paper
                   elevation={1}
@@ -305,7 +362,7 @@ const AIAssistantPage = () => {
                   }}
                 >
                   <Typography variant="body1">
-                    {t('aiAssistant.chat.typing')}
+                    {t('aiAssistant.chat.typing') || 'Thinking...'}
                   </Typography>
                 </Paper>
               </Box>
@@ -353,10 +410,22 @@ const AIAssistantPage = () => {
         <Box sx={{ mt: 2, textAlign: 'center' }}>
           <Typography variant="body2" color="text.secondary">
             <QuestionAnswer sx={{ fontSize: 16, mr: 1, verticalAlign: 'middle' }} />
-            {t('aiAssistant.footer')}
+            {t('aiAssistant.footer') || 'For immediate emergency assistance, call 0800 428 428 (GBV Command Centre) or 10111 (Police)'}
           </Typography>
         </Box>
       </Box>
+
+      {/* Error Snackbar */}
+      <Snackbar 
+        open={!!error} 
+        autoHideDuration={6000} 
+        onClose={closeError}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={closeError} severity="error" sx={{ width: '100%' }}>
+          {error}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

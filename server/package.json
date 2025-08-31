@@ -12,14 +12,12 @@
     "migrate:import": "node scripts/importData.js"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^7.11.3",
+    "@google/generative-ai": "^0.24.1",
     "@openzeppelin/contracts": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "ethers": "^6.7.0",
     "express": "^4.18.2",
-    "firebase": "^12.2.1",
-    "firebase-admin": "^13.5.0",
     "hardhat": "^2.19.0",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0"
