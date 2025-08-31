@@ -31,6 +31,7 @@ import {
 import WalletConnectButton from './WalletConnectButton';
 import LanguageSelector from './LanguageSelector';
 
+<<<<<<< HEAD
 const getNavigationItems = (t) => [
   { path: '/', label: t('nav.home'), icon: <Home /> },
   { path: '/requests', label: t('nav.requests'), icon: <Assignment /> },
@@ -38,8 +39,18 @@ const getNavigationItems = (t) => [
   { path: '/gbv-support', label: t('nav.gbvSupport'), icon: <Security /> },
   { path: '/sanitary-aid', label: t('nav.sanitaryAid'), icon: <LocalHospital /> },
   { path: '/ai-assistant', label: t('nav.aiAssistant'), icon: <SmartToy /> },
-  { path: '/donate', label: 'Donate', icon: <VolunteerActivism /> },
   { path: '/about', label: t('nav.about'), icon: <Info /> },
+=======
+const navigationItems = [
+  { path: '/', label: 'Home', icon: <Home /> },
+  { path: '/requests', label: 'Requests', icon: <Assignment /> },
+  { path: '/finance', label: 'Finance', icon: <AccountBalance /> },
+  { path: '/gbv-support', label: 'GBV Support', icon: <Security /> },
+  { path: '/sanitary-aid', label: 'Sanitary Aid', icon: <LocalHospital /> },
+  { path: '/ai-assistant', label: 'AI Assistant', icon: <SmartToy /> },
+  { path: '/donate', label: 'Donate', icon: <VolunteerActivism /> },
+  { path: '/about', label: 'About', icon: <Info /> },
+>>>>>>> origin/Broghan
 ];
 
 const NavBar = () => {

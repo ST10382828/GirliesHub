@@ -8,12 +8,20 @@ pragma solidity ^0.8.0;
 contract EmpowerHubRequests {
     struct Request {
         uint256 id;
+<<<<<<< HEAD
         string requestHash;
         uint256 timestamp;
         string requestType; // "finance", "gbv", "sanitary"
         address requester;
+=======
+        string description;
+        address requester;
+        uint256 timestamp;
+        bytes32 dataHash;
         RequestStatus status;
         uint256 confirmationScore;
+        bytes32[] parentBlocks;
+>>>>>>> origin/Broghan
     }
 
     enum RequestStatus {
@@ -32,15 +40,9 @@ contract EmpowerHubRequests {
 
     // State variables
     Request[] public requests;
+<<<<<<< HEAD
     mapping(address => uint256[]) public userRequests;
-    mapping(bytes32 => bool) public processedHashes;
     
-    uint256 public totalRequests;
-    uint256 public confirmedRequests;
-    address public owner;
-    uint256 public constant CONFIRMATION_THRESHOLD = 60; // 60% threshold
-
-    // Events
     event RequestStored(
         uint256 id, 
         string requestHash, 
@@ -48,23 +50,6 @@ contract EmpowerHubRequests {
         string requestType, 
         address requester
     );
-    event RequestConfirmed(uint256 indexed id, uint256 confirmationScore);
-    event RequestFinalized(uint256 indexed id);
-    event HashProcessed(bytes32 indexed dataHash, uint256 indexed requestId);
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can call this function");
-        _;
-    }
-
-    modifier validRequest(uint256 _id) {
-        require(_id < requests.length, "Request does not exist");
-        _;
-    }
-
-    constructor() {
-        owner = msg.sender;
-    }
 
     function storeRequest(
         string memory requestHash, 
@@ -78,16 +63,39 @@ contract EmpowerHubRequests {
             requestHash: requestHash,
             timestamp: timestamp,
             requestType: requestType,
-            requester: msg.sender,
-            status: RequestStatus.Pending,
-            confirmationScore: 0
+            requester: msg.sender
         });
         
         requests.push(newRequest);
         userRequests[msg.sender].push(newId);
-        totalRequests++;
         
         emit RequestStored(newId, requestHash, timestamp, requestType, msg.sender);
+=======
+    mapping(bytes32 => DAGBlock) public dagBlocks;
+    mapping(address => uint256[]) public userRequests;
+    mapping(bytes32 => bool) public processedHashes;
+    
+    uint256 public totalRequests;
+    uint256 public confirmedRequests;
+    address public owner;
+    uint256 public constant CONFIRMATION_THRESHOLD = 60; // 60% threshold
+
+    // Events
+    event RequestStored(uint256 indexed id, address indexed requester, string description, bytes32 dataHash);
+    event RequestConfirmed(uint256 indexed id, uint256 confirmationScore);
+    event RequestFinalized(uint256 indexed id);
+    event DAGBlockAdded(bytes32 indexed blockHash, bytes32[] parentHashes, uint256 cumulativeWeight);
+    event HashProcessed(bytes32 indexed dataHash, uint256 indexed requestId);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call this function");
+        _;
+>>>>>>> origin/Broghan
+    }
+
+    modifier validRequest(uint256 _id) {
+        require(_id < requests.length, "Request does not exist");
+        _;
     }
 
     constructor() {
@@ -97,28 +105,66 @@ contract EmpowerHubRequests {
     }
 
     /**
-     * Get all requests
+     * Store a new empowerment request with BlockDAG integration
      */
-    function getRequests() public view returns (Request[] memory) {
-        return requests;
+    function storeRequest(
+        string memory _description,
+        bytes32 _dataHash,
+        bytes32[] memory _parentBlocks
+    ) public returns (uint256) {
+        require(bytes(_description).length > 0, "Description cannot be empty");
+        require(_dataHash != bytes32(0), "Data hash cannot be empty");
+        require(!processedHashes[_dataHash], "Hash already processed");
+
+        uint256 newId = requests.length;
+        
+        Request memory newRequest = Request({
+            id: newId,
+            description: _description,
+            requester: msg.sender,
+            timestamp: block.timestamp,
+            dataHash: _dataHash,
+            status: RequestStatus.Pending,
+            confirmationScore: 0,
+            parentBlocks: _parentBlocks
+        });
+
+        requests.push(newRequest);
+        userRequests[msg.sender].push(newId);
+        processedHashes[_dataHash] = true;
+        totalRequests++;
+
+        emit RequestStored(newId, msg.sender, _description, _dataHash);
+        emit HashProcessed(_dataHash, newId);
+
+        return newId;
     }
 
     /**
-     * Get request count
+     * Add a DAG block with parent references
      */
-    function getRequestCount() public view returns (uint256) {
-        return requests.length;
+    function addDAGBlock(
+        bytes32 _blockHash,
+        bytes32[] memory _parentHashes,
+        uint256 _cumulativeWeight
+    ) public onlyOwner {
+        require(_blockHash != bytes32(0), "Block hash cannot be empty");
+        require(!dagBlocks[_blockHash].confirmed, "Block already exists");
+
+        DAGBlock memory newBlock = DAGBlock({
+            blockHash: _blockHash,
+            parentHashes: _parentHashes,
+            timestamp: block.timestamp,
+            cumulativeWeight: _cumulativeWeight,
+            confirmed: _cumulativeWeight >= CONFIRMATION_THRESHOLD
+        });
+
+        dagBlocks[_blockHash] = newBlock;
+        emit DAGBlockAdded(_blockHash, _parentHashes, _cumulativeWeight);
     }
 
     /**
-     * Get requests by user
-     */
-    function getUserRequests(address _user) public view returns (uint256[] memory) {
-        return userRequests[_user];
-    }
-
-    /**
-     * Update request confirmation
+     * Update request confirmation based on BlockDAG consensus
      */
     function updateRequestConfirmation(
         uint256 _requestId,
@@ -126,6 +172,7 @@ contract EmpowerHubRequests {
     ) public onlyOwner validRequest(_requestId) {
         Request storage request = requests[_requestId];
         
+        uint256 oldScore = request.confirmationScore;
         request.confirmationScore = _confirmationScore;
 
         // Update status based on confirmation score
