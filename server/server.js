@@ -23,7 +23,92 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Initialize blockchain connection
 
 // In-memory storage for demo (replace with database later)
-let donations = [];
+let donations = [
+  // General Support - R45,000 raised (45 donations of R1000 each)
+  ...Array(45).fill().map((_, i) => ({
+    id: `DON_GEN_${i + 1}`,
+    amount: 1000,
+    cause: 'general',
+    paymentMethod: 'card',
+    donorInfo: {
+      name: `Initial Donor ${i + 1}`,
+      email: `donor${i + 1}@example.com`,
+      message: 'Initial population donation'
+    },
+    status: 'completed',
+    timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    transactionHash: `INIT_TX_${i + 1}`,
+    blockchainTxHash: null
+  })),
+
+  // Education & Skills - R28,000 raised (28 donations of R1000 each)
+  ...Array(28).fill().map((_, i) => ({
+    id: `DON_EDU_${i + 1}`,
+    amount: 1000,
+    cause: 'education',
+    paymentMethod: 'card',
+    donorInfo: {
+      name: `Education Donor ${i + 1}`,
+      email: `education${i + 1}@example.com`,
+      message: 'Supporting education initiatives'
+    },
+    status: 'completed',
+    timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    transactionHash: `EDU_TX_${i + 1}`,
+    blockchainTxHash: null
+  })),
+
+  // Health & Sanitary Aid - R15,000 raised (15 donations of R1000 each)
+  ...Array(15).fill().map((_, i) => ({
+    id: `DON_HEALTH_${i + 1}`,
+    amount: 1000,
+    cause: 'health',
+    paymentMethod: 'card',
+    donorInfo: {
+      name: `Health Donor ${i + 1}`,
+      email: `health${i + 1}@example.com`,
+      message: 'Supporting health initiatives'
+    },
+    status: 'completed',
+    timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    transactionHash: `HEALTH_TX_${i + 1}`,
+    blockchainTxHash: null
+  })),
+
+  // GBV Support - R22,000 raised (22 donations of R1000 each)
+  ...Array(22).fill().map((_, i) => ({
+    id: `DON_GBV_${i + 1}`,
+    amount: 1000,
+    cause: 'gbv',
+    paymentMethod: 'card',
+    donorInfo: {
+      name: `GBV Donor ${i + 1}`,
+      email: `gbv${i + 1}@example.com`,
+      message: 'Supporting GBV initiatives'
+    },
+    status: 'completed',
+    timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    transactionHash: `GBV_TX_${i + 1}`,
+    blockchainTxHash: null
+  })),
+
+  // Financial Literacy - R18,000 raised (18 donations of R1000 each)
+  ...Array(18).fill().map((_, i) => ({
+    id: `DON_FINANCE_${i + 1}`,
+    amount: 1000,
+    cause: 'finance',
+    paymentMethod: 'card',
+    donorInfo: {
+      name: `Finance Donor ${i + 1}`,
+      email: `finance${i + 1}@example.com`,
+      message: 'Supporting financial literacy'
+    },
+    status: 'completed',
+    timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    transactionHash: `FINANCE_TX_${i + 1}`,
+    blockchainTxHash: null
+  }))
+];
 let requests = [
   {
     id: 'REQ001',

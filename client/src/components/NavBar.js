@@ -31,7 +31,7 @@ import {
 import WalletConnectButton from './WalletConnectButton';
 import LanguageSelector from './LanguageSelector';
 
-const getNavigationItems = (t) => [
+  const getNavigationItems = (t) => [
   { path: '/', label: t('nav.home'), icon: <Home /> },
   { path: '/requests', label: t('nav.requests'), icon: <Assignment /> },
   { path: '/finance', label: t('nav.finance'), icon: <AccountBalance /> },

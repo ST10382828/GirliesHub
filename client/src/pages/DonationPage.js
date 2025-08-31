@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -30,7 +30,6 @@ import {
   Security,
   AccountBalance,
   CreditCard,
-  Payment,
   AccountBalanceWallet,
   Hub,
   Close,
@@ -61,61 +60,137 @@ const DonationPage = () => {
   const [showCardModal, setShowCardModal] = useState(false);
   const [showBlockdagModal, setShowBlockdagModal] = useState(false);
   const [showCryptoModal, setShowCryptoModal] = useState(false);
+  
+  // New state for real data
+  const [donationStats, setDonationStats] = useState(null);
+  const [causes, setCauses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const predefinedAmounts = [50, 100, 250, 500, 1000, 2500];
 
-  const causes = [
-    {
-      id: 'general',
-      title: 'General Support',
-      description: 'Support all our initiatives for women empowerment',
-      icon: <VolunteerActivism />,
-      raised: 45000,
-      goal: 100000,
-      color: '#E91E63',
-    },
-    {
-      id: 'education',
-      title: 'Education & Skills',
-      description: 'Fund educational programs and skill development',
-      icon: <School />,
-      raised: 28000,
-      goal: 50000,
-      color: '#2196F3',
-    },
-    {
-      id: 'health',
-      title: 'Health & Sanitary Aid',
-      description: 'Provide sanitary products and healthcare support',
-      icon: <LocalHospital />,
-      raised: 15000,
-      goal: 30000,
-      color: '#4CAF50',
-    },
-    {
-      id: 'gbv',
-      title: 'GBV Support',
-      description: 'Support survivors of gender-based violence',
-      icon: <Security />,
-      raised: 22000,
-      goal: 40000,
-      color: '#FF9800',
-    },
-    {
-      id: 'finance',
-      title: 'Financial Literacy',
-      description: 'Teach financial skills and provide microloans',
-      icon: <AccountBalance />,
-      raised: 18000,
-      goal: 35000,
-      color: '#9C27B0',
-    },
-  ];
+  // Fetch donation statistics on component mount
+  useEffect(() => {
+    fetchDonationStats();
+  }, []);
+
+  const fetchDonationStats = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/donations/stats');
+      if (response.ok) {
+        const stats = await response.json();
+        setDonationStats(stats);
+        
+        // Create dynamic causes based on real data
+        const dynamicCauses = [
+          {
+            id: 'general',
+            title: 'General Support',
+            description: 'Support all our initiatives for women empowerment',
+            icon: <VolunteerActivism />,
+            raised: stats.donationsByCause.general || 0,
+            goal: 100000,
+            color: '#E91E63',
+          },
+          {
+            id: 'education',
+            title: 'Education & Skills',
+            description: 'Fund educational programs and skill development',
+            icon: <School />,
+            raised: stats.donationsByCause.education || 0,
+            goal: 50000,
+            color: '#2196F3',
+          },
+          {
+            id: 'health',
+            title: 'Health & Sanitary Aid',
+            description: 'Provide sanitary products and healthcare support',
+            icon: <LocalHospital />,
+            raised: stats.donationsByCause.health || 0,
+            goal: 30000,
+            color: '#4CAF50',
+          },
+          {
+            id: 'gbv',
+            title: 'GBV Support',
+            description: 'Support survivors of gender-based violence',
+            icon: <Security />,
+            raised: stats.donationsByCause.gbv || 0,
+            goal: 40000,
+            color: '#FF9800',
+          },
+          {
+            id: 'finance',
+            title: 'Financial Literacy',
+            description: 'Teach financial skills and provide microloans',
+            icon: <AccountBalance />,
+            raised: stats.donationsByCause.finance || 0,
+            goal: 35000,
+            color: '#9C27B0',
+          },
+        ];
+        
+        setCauses(dynamicCauses);
+      }
+    } catch (error) {
+      console.error('Error fetching donation stats:', error);
+      // Fallback to static data if API fails
+      setCauses([
+        {
+          id: 'general',
+          title: 'General Support',
+          description: 'Support all our initiatives for women empowerment',
+          icon: <VolunteerActivism />,
+          raised: 45000,
+          goal: 100000,
+          color: '#E91E63',
+        },
+        {
+          id: 'education',
+          title: 'Education & Skills',
+          description: 'Fund educational programs and skill development',
+          icon: <School />,
+          raised: 28000,
+          goal: 50000,
+          color: '#2196F3',
+        },
+        {
+          id: 'health',
+          title: 'Health & Sanitary Aid',
+          description: 'Provide sanitary products and healthcare support',
+          icon: <LocalHospital />,
+          raised: 15000,
+          goal: 30000,
+          color: '#4CAF50',
+        },
+        {
+          id: 'gbv',
+          title: 'GBV Support',
+          description: 'Support survivors of gender-based violence',
+          icon: <Security />,
+          raised: 22000,
+          goal: 40000,
+          color: '#FF9800',
+        },
+        {
+          id: 'finance',
+          title: 'Financial Literacy',
+          description: 'Teach financial skills and provide microloans',
+          icon: <AccountBalance />,
+          raised: 18000,
+          goal: 35000,
+          color: '#9C27B0',
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const paymentMethods = [
     { id: 'card', label: 'Credit/Debit Card', icon: <CreditCard /> },
     { id: 'crypto', label: 'Cryptocurrency', icon: <AccountBalanceWallet /> },
-    { id: 'blockdag', label: 'BlockDAG Network', icon: <Hub /> },
+    { id: 'blockdag', label: 'Blockchain Network', icon: <Hub /> },
   ];
 
   const handleAmountSelect = (amount) => {
@@ -159,10 +234,10 @@ const DonationPage = () => {
         donorInfo
       };
 
-      // If BlockDAG payment method is selected, process through BlockDAG network
+      // If BlockDAG payment method is selected, process through blockchain
       if (paymentMethod === 'blockdag') {
-        // First create a BlockDAG transaction
-        const blockdagResponse = await fetch('/api/blockdag/transaction', {
+        // Create blockchain transaction using our working system
+        const blockchainResponse = await fetch('/api/blockchain/donation', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -176,13 +251,13 @@ const DonationPage = () => {
           }),
         });
 
-        if (!blockdagResponse.ok) {
-          throw new Error('Failed to process BlockDAG transaction');
+        if (!blockchainResponse.ok) {
+          throw new Error('Failed to process blockchain transaction');
         }
 
-        const blockdagResult = await blockdagResponse.json();
-        setBlockdagTxHash(blockdagResult.transactionHash);
-        donationData.blockdagTxHash = blockdagResult.transactionHash;
+        const blockchainResult = await blockchainResponse.json();
+        setBlockdagTxHash(blockchainResult.transactionHash);
+        donationData.blockchainTxHash = blockchainResult.transactionHash;
       }
 
       // Send donation to backend API
@@ -200,6 +275,9 @@ const DonationPage = () => {
 
       const result = await response.json();
       console.log('Donation processed:', result);
+
+      // Refresh donation stats after successful donation
+      await fetchDonationStats();
 
       setIsProcessing(false);
       setShowSuccess(true);
@@ -223,12 +301,22 @@ const DonationPage = () => {
   const selectedCauseData = causes.find(cause => cause.id === selectedCause);
   const donationAmount = selectedAmount || customAmount;
 
+  if (loading) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+          <LinearProgress sx={{ width: '100%', maxWidth: 400 }} />
+        </Box>
+      </Container>
+    );
+  }
+
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header Section */}
       <Box textAlign="center" mb={4}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-          Support Women's Empowerment
+          Support Women&apos;s Empowerment
         </Typography>
         <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
           Your donation helps us provide essential support, education, and resources to women across South Africa
@@ -481,9 +569,9 @@ const DonationPage = () => {
 
               {paymentMethod === 'blockdag' && blockdagTxHash && (
                 <Box mb={2} p={2} sx={{ bgcolor: 'success.light', borderRadius: 1 }}>
-                  <Typography variant="body2" color="success.dark" fontWeight="bold" mb={1}>
-                    BlockDAG Transaction Created
-                  </Typography>
+                                     <Typography variant="body2" color="success.dark" fontWeight="bold" mb={1}>
+                     Blockchain Transaction Created
+                   </Typography>
                   <Typography variant="body2" color="success.dark" sx={{ wordBreak: 'break-all' }}>
                     TX Hash: {blockdagTxHash}
                   </Typography>
@@ -491,10 +579,10 @@ const DonationPage = () => {
               )}
 
               <Typography variant="body2" color="text.secondary" textAlign="center">
-                {paymentMethod === 'blockdag' 
-                  ? 'Your donation will be processed through our secure BlockDAG network, ensuring transparency and immutability.'
-                  : 'Your donation is secure and helps us continue our mission of empowering women across South Africa.'
-                }
+                                 {paymentMethod === 'blockdag' 
+                   ? 'Your donation will be processed through our secure blockchain network, ensuring transparency and immutability.'
+                   : 'Your donation is secure and helps us continue our mission of empowering women across South Africa.'
+                 }
               </Typography>
             </CardContent>
           </Card>
@@ -511,21 +599,21 @@ const DonationPage = () => {
                   Total donations this month:
                 </Typography>
                 <Typography variant="h5" color="primary.main" fontWeight="bold">
-                  R128,000
+                  R{donationStats ? donationStats.totalDonations.toLocaleString() : '128,000'}
                 </Typography>
               </Box>
 
               <Box mb={2}>
                 <Typography variant="body2" color="text.secondary">
-                  Women helped this year:
+                  Total donors:
                 </Typography>
                 <Typography variant="h5" color="primary.main" fontWeight="bold">
-                  2,847
+                  {donationStats ? donationStats.totalDonors.toLocaleString() : '2,847'}
                 </Typography>
               </Box>
 
               <Typography variant="body2" color="text.secondary">
-                Every donation, no matter the size, makes a real difference in someone's life.
+                Every donation, no matter the size, makes a real difference in someone&apos;s life.
               </Typography>
             </CardContent>
           </Card>
@@ -544,7 +632,7 @@ const DonationPage = () => {
           severity="success"
           sx={{ width: '100%' }}
         >
-          Thank you for your generous donation! You're making a real difference.
+          Thank you for your generous donation! You&apos;re making a real difference.
         </Alert>
       </Snackbar>
 
@@ -633,7 +721,7 @@ const DonationPage = () => {
       >
         <DialogTitle>
           <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Typography variant="h6">BlockDAG Wallet Details</Typography>
+                         <Typography variant="h6">Blockchain Wallet Details</Typography>
             <IconButton onClick={() => setShowBlockdagModal(false)}>
               <Close />
             </IconButton>
@@ -647,14 +735,14 @@ const DonationPage = () => {
               value={paymentDetails.walletAddress}
               onChange={handlePaymentDetailsChange('walletAddress')}
               placeholder="0x1234567890abcdef..."
-              helperText="Enter your BlockDAG wallet address to process the donation"
+                             helperText="Enter your blockchain wallet address to process the donation"
               sx={{ mb: 3 }}
             />
             <Box sx={{ p: 2, bgcolor: 'info.light', borderRadius: 1 }}>
               <Typography variant="body2" color="info.dark">
-                <strong>Note:</strong> Your donation will be processed through the BlockDAG network, 
-                ensuring transparency and immutability. The transaction will be recorded on the blockchain 
-                and you'll receive a transaction hash for verification.
+                                 <strong>Note:</strong> Your donation will be processed through our secure blockchain network, 
+                 ensuring transparency and immutability. The transaction will be recorded on the blockchain 
+                 and you&apos;ll receive a transaction hash for verification.
               </Typography>
             </Box>
           </Box>
