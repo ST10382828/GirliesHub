@@ -40,20 +40,106 @@ for (const testPath of possiblePaths) {
 
 if (!contractPath) {
   console.log('⚠️  [BLOCKCHAIN] Contract file not found in any expected location');
-  console.log('⚠️  [BLOCKCHAIN] Attempting to use fallback ABI...');
+  console.log('✅ [BLOCKCHAIN] Using embedded complete contract ABI...');
   
-  // Fallback: Use a minimal contract ABI for basic functionality
-  // This ensures the server can start even if the full artifact is missing
+  // Complete contract ABI embedded directly in the code
+  // This ensures 100% blockchain functionality even without artifacts directory
   contractArtifact = {
     abi: [
       {
+        "anonymous": false,
         "inputs": [
-          {"internalType": "bytes32", "name": "requestHash", "type": "bytes32"},
-          {"internalType": "string", "name": "requestType", "type": "string"}
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "requestHash",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "requestType",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "requester",
+            "type": "address"
+          }
         ],
-        "name": "storeRequest",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "name": "RequestStored",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          }
+        ],
+        "name": "getRequestById",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "requestHash",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "requestType",
+                "type": "string"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              }
+            ],
+            "internalType": "struct EmpowerHubRequests.Request",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getRequestCount",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -62,11 +148,31 @@ if (!contractPath) {
         "outputs": [
           {
             "components": [
-              {"internalType": "uint256", "name": "id", "type": "uint256"},
-              {"internalType": "bytes32", "name": "requestHash", "type": "bytes32"},
-              {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
-              {"internalType": "string", "name": "requestType", "type": "string"},
-              {"internalType": "address", "name": "requester", "type": "address"}
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "requestHash",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "requestType",
+                "type": "string"
+              },
+              {
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+              }
             ],
             "internalType": "struct EmpowerHubRequests.Request[]",
             "name": "",
@@ -77,15 +183,108 @@ if (!contractPath) {
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "getRequestCount",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          }
+        ],
+        "name": "getUserRequests",
+        "outputs": [
+          {
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "requests",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "requestHash",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "requestType",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "requester",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "requestHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "requestType",
+            "type": "string"
+          }
+        ],
+        "name": "storeRequest",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "userRequests",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
         "stateMutability": "view",
         "type": "function"
       }
     ]
   };
-  console.log('⚠️  [BLOCKCHAIN] Using fallback ABI - some features may be limited');
+  console.log('✅ [BLOCKCHAIN] Complete embedded ABI loaded - full functionality available');
 } else {
   try {
     contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
