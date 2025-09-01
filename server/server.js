@@ -879,12 +879,11 @@ app.use((error, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`🚀 GirliesHub API server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
   console.log(`📊 API endpoints available:`);
   console.log(`   GET  /api/health`);
-  console.log(`   GET  /api/requests`);
   console.log(`   POST /api/requests`);
   console.log(`   DELETE /api/requests/:id`);
   console.log(`   GET  /api/request/:id`);
@@ -897,6 +896,45 @@ app.listen(PORT, () => {
   console.log(`   POST /api/donations`);
   console.log(`   GET  /api/donations/stats`);
   console.log(`   GET  /api/stats`);
+  
+  // Start the blockchain queue worker
+  try {
+    const queueWorker = require('./services/dbToChainQueue');
+    console.log('🔄 Starting blockchain queue worker...');
+    queueWorker.start();
+    console.log('✅ Blockchain queue worker started successfully');
+    
+    // Store reference for graceful shutdown
+    server.queueWorker = queueWorker;
+  } catch (error) {
+    console.error('❌ Failed to start blockchain queue worker:', error);
+    console.log('⚠️  Blockchain writes may not work properly without the queue worker');
+  }
+});
+
+// Graceful shutdown handling
+process.on('SIGTERM', () => {
+  console.log('🛑 SIGTERM received, shutting down gracefully...');
+  if (server.queueWorker) {
+    server.queueWorker.stop();
+    console.log('✅ Queue worker stopped');
+  }
+  server.close(() => {
+    console.log('✅ Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('🛑 SIGINT received, shutting down gracefully...');
+  if (server.queueWorker) {
+    server.queueWorker.stop();
+    console.log('✅ Queue worker stopped');
+  }
+  server.close(() => {
+    console.log('✅ Server closed');
+    process.exit(0);
+  });
 });
 
 module.exports = app;
