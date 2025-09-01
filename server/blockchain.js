@@ -3,7 +3,7 @@ const { ethers } = require('ethers');
 const path = require('path');
 const fs = require('fs');
 
-// Load contract ABI - try multiple paths for different environments
+// Load contract ABI - try multiple paths for different environments              
 let contractPath;
 let contractArtifact;
 
@@ -13,32 +13,86 @@ const possiblePaths = [
   path.join(__dirname, 'artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json'),
   // Local development path
   path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json'),
-  // Alternative Railway path
-  path.join(__dirname, '../server/artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json')
+  // Alternative Railway path (root level)
+  path.join(__dirname, '../../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json'),
+  // Railway root level
+  path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json')
 ];
 
 // Find the first path that exists
+console.log('🔍 [BLOCKCHAIN] Searching for contract file...');
+console.log('🔍 [BLOCKCHAIN] Current directory:', __dirname);
+
 for (const testPath of possiblePaths) {
   try {
+    console.log(`🔍 [BLOCKCHAIN] Checking path: ${testPath}`);
     if (fs.existsSync(testPath)) {
       contractPath = testPath;
-      console.log(`✅ Found contract at: ${testPath}`);
+      console.log(`✅ [BLOCKCHAIN] Found contract at: ${testPath}`);
       break;
+    } else {
+      console.log(`❌ [BLOCKCHAIN] Path does not exist: ${testPath}`);
     }
   } catch (error) {
-    console.log(`⚠️  Path check failed for: ${testPath}`);
+    console.log(`⚠️  [BLOCKCHAIN] Path check failed for: ${testPath}`, error.message);
   }
 }
 
 if (!contractPath) {
-  throw new Error(`Contract file not found. Tried paths: ${possiblePaths.join(', ')}`);
-}
-
-try {
-  contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
-  console.log(`✅ Contract ABI loaded successfully from: ${contractPath}`);
-} catch (error) {
-  throw new Error(`Failed to parse contract file at ${contractPath}: ${error.message}`);
+  console.log('⚠️  [BLOCKCHAIN] Contract file not found in any expected location');
+  console.log('⚠️  [BLOCKCHAIN] Attempting to use fallback ABI...');
+  
+  // Fallback: Use a minimal contract ABI for basic functionality
+  // This ensures the server can start even if the full artifact is missing
+  contractArtifact = {
+    abi: [
+      {
+        "inputs": [
+          {"internalType": "bytes32", "name": "requestHash", "type": "bytes32"},
+          {"internalType": "string", "name": "requestType", "type": "string"}
+        ],
+        "name": "storeRequest",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getRequests",
+        "outputs": [
+          {
+            "components": [
+              {"internalType": "uint256", "name": "id", "type": "uint256"},
+              {"internalType": "bytes32", "name": "requestHash", "type": "bytes32"},
+              {"internalType": "uint256", "name": "timestamp", "type": "uint256"},
+              {"internalType": "string", "name": "requestType", "type": "string"},
+              {"internalType": "address", "name": "requester", "type": "address"}
+            ],
+            "internalType": "struct EmpowerHubRequests.Request[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getRequestCount",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  };
+  console.log('⚠️  [BLOCKCHAIN] Using fallback ABI - some features may be limited');
+} else {
+  try {
+    contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
+    console.log(`✅ [BLOCKCHAIN] Contract ABI loaded successfully from: ${contractPath}`);
+  } catch (error) {
+    throw new Error(`Failed to parse contract file at ${contractPath}: ${error.message}`);
+  }
 }
 
 // Initialize provider and contract
