@@ -79,7 +79,21 @@ const GBVSupportPage = () => {
     }
   ];
 
+  // Debounce utility function
+  const debounce = useCallback((func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }, []);
+
   // Debounced location search
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedLocationSearch = useCallback(
     debounce(async (query) => {
       if (!query || query.length < 3) {
@@ -98,7 +112,7 @@ const GBVSupportPage = () => {
         setSuggestionsLoading(false);
       }
     }, 300),
-    []
+    [debounce]
   );
 
   // Handle address input change
@@ -235,18 +249,7 @@ const GBVSupportPage = () => {
     setFilteredShelters(filtered);
   }, [sortBy, emergencyMode, allShelters]);
 
-  // Debounce utility function
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
+
 
   return (
     <Container maxWidth="lg">

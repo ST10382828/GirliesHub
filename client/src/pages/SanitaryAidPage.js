@@ -64,7 +64,21 @@ const SanitaryAidPage = () => {
   const [suggestionsLoading, setSuggestionsLoading] = useState(false);
   const [allBins, setAllBins] = useState([]);
 
+  // Debounce utility function
+  const debounce = useCallback((func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }, []);
+
   // Debounced location search
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedLocationSearch = useCallback(
     debounce(async (query) => {
       if (!query || query.length < 3) {
@@ -83,7 +97,7 @@ const SanitaryAidPage = () => {
         setSuggestionsLoading(false);
       }
     }, 300),
-    []
+    [debounce]
   );
 
   // Handle address input change
@@ -149,18 +163,7 @@ const SanitaryAidPage = () => {
     }
   };
 
-  // Debounce utility function
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
+
 
   // Enhanced donation bin data with coordinates and real-time stock
   const getMockDonationBins = () => [
@@ -403,6 +406,7 @@ const SanitaryAidPage = () => {
     setAllBins(mockBins);
     setFilteredBins(mockBins);
     checkStockAlerts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Enhanced filtering and sorting system

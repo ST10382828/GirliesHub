@@ -103,6 +103,7 @@ const FinancePage = () => {
   // Update seminars when language changes
   useEffect(() => {
     setSeminars(getUpcomingSeminars());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t]);
 
   // Filter seminars based on search and category
