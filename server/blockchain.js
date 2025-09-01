@@ -3,20 +3,43 @@ const { ethers } = require('ethers');
 const path = require('path');
 const fs = require('fs');
 
-// Load contract ABI - try both local and Railway paths
+// Load contract ABI - try multiple paths for different environments
 let contractPath;
-try {
-  // First try the Railway path (artifacts in server directory)
-  contractPath = path.join(__dirname, 'artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
-  if (!fs.existsSync(contractPath)) {
-    // Fallback to local development path
-    contractPath = path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
+let contractArtifact;
+
+// Try multiple possible paths
+const possiblePaths = [
+  // Railway path (artifacts copied to server directory)
+  path.join(__dirname, 'artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json'),
+  // Local development path
+  path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json'),
+  // Alternative Railway path
+  path.join(__dirname, '../server/artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json')
+];
+
+// Find the first path that exists
+for (const testPath of possiblePaths) {
+  try {
+    if (fs.existsSync(testPath)) {
+      contractPath = testPath;
+      console.log(`✅ Found contract at: ${testPath}`);
+      break;
+    }
+  } catch (error) {
+    console.log(`⚠️  Path check failed for: ${testPath}`);
   }
-} catch (error) {
-  // Final fallback to local path
-  contractPath = path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
 }
-const contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
+
+if (!contractPath) {
+  throw new Error(`Contract file not found. Tried paths: ${possiblePaths.join(', ')}`);
+}
+
+try {
+  contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
+  console.log(`✅ Contract ABI loaded successfully from: ${contractPath}`);
+} catch (error) {
+  throw new Error(`Failed to parse contract file at ${contractPath}: ${error.message}`);
+}
 
 // Initialize provider and contract
 const provider = new ethers.JsonRpcProvider(process.env.BDAG_RPC_URL || 'https://rpc.primordial.bdagscan.com');
