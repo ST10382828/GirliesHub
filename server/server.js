@@ -9,6 +9,7 @@ const { authMiddleware, optionalAuthMiddleware } = require('./middleware/authFir
 const { createRequest, updateRequest, getRequest, listRequests } = require('./services/firestoreService');
 const { computeCanonicalHash } = require('./utils/hash');
 const { encryptIfEnabled } = require('./utils/crypto');
+const shelterRoutes = require('./routes/shelters');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -166,6 +167,9 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Shelter routes
+app.use('/api/shelters', shelterRoutes);
 
 // Get all requests (excluding deleted ones) - optional auth for user-specific filtering
 app.get('/api/requests', optionalAuthMiddleware, async (req, res) => {
@@ -609,14 +613,14 @@ app.get('/api/blockchain/verify/:id', optionalAuthMiddleware, async (req, res) =
       });
     } else {
       // Try to get transaction proof for regular requests
-      const proof = await getTransactionProof(id);
-      res.json({
-        requestId: id,
-        verified: true,
+    const proof = await getTransactionProof(id);
+    res.json({
+      requestId: id,
+      verified: true,
         exists: true,
-        proof: proof,
-        timestamp: new Date().toISOString()
-      });
+      proof: proof,
+      timestamp: new Date().toISOString()
+    });
     }
 
   } catch (error) {

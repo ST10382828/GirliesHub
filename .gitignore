@@ -88,3 +88,6 @@ temp/
 # Firebase secrets
 server/secrets/
 server/secrets/*.json
+
+# Local Netlify folder
+.netlify

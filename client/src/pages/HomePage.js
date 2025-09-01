@@ -9,6 +9,7 @@ import {
   Grid,
   Button,
   useTheme,
+  Avatar,
 } from '@mui/material';
 import {
   AccountBalance,
@@ -80,6 +81,17 @@ const HomePage = () => {
           mb: 4,
         }}
       >
+        <Avatar 
+          src="/logo-full.png" 
+          alt="GirliesHub Logo" 
+          sx={{ 
+            width: { xs: 80, md: 120 }, 
+            height: { xs: 80, md: 120 }, 
+            mx: 'auto', 
+            mb: 3,
+            boxShadow: 3
+          }} 
+        />
         <Typography
           variant="h2"
           component="h1"

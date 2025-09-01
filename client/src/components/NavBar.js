@@ -58,7 +58,7 @@ const NavBar = () => {
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation">
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Avatar src="/logo.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
+        <Avatar src="/logo-full.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
         <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 'bold' }}>
           GirliesHub
         </Typography>
@@ -130,7 +130,7 @@ const NavBar = () => {
               gap: 1,
             }}
           >
-            <Avatar src="/logo.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
+            <Avatar src="/logo-full.png" alt="GirliesHub Logo" sx={{ width: 32, height: 32 }} />
             <Typography
               variant="h6"
               sx={{
