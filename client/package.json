@@ -47,7 +47,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://your-app-name.railway.app",
+  "proxy": "https://girlieshub.railway.app",
   "devDependencies": {
     "typescript": "^4.9.5"
   }
