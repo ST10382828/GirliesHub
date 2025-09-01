@@ -3,8 +3,19 @@ const { ethers } = require('ethers');
 const path = require('path');
 const fs = require('fs');
 
-// Load contract ABI
-const contractPath = path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
+// Load contract ABI - try both local and Railway paths
+let contractPath;
+try {
+  // First try the Railway path (artifacts in server directory)
+  contractPath = path.join(__dirname, 'artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
+  if (!fs.existsSync(contractPath)) {
+    // Fallback to local development path
+    contractPath = path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
+  }
+} catch (error) {
+  // Final fallback to local path
+  contractPath = path.join(__dirname, '../artifacts/contracts/EmpowerHubRequests.sol/EmpowerHubRequests.json');
+}
 const contractArtifact = JSON.parse(fs.readFileSync(contractPath, 'utf8'));
 
 // Initialize provider and contract
