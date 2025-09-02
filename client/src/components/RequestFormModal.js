@@ -20,6 +20,7 @@ import {
 
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import { getApiUrl, API_CONFIG } from '../config/api';
 
 const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
   const { currentUser, getAuthToken } = useAuth();
@@ -87,7 +88,7 @@ const RequestFormModal = ({ open, onClose, onRequestSubmitted }) => {
       }
 
       // Submit to backend with authentication
-      const response = await axios.post('/api/requests', requestData, { headers });
+      const response = await axios.post(getApiUrl(API_CONFIG.ENDPOINTS.REQUESTS), requestData, { headers });
 
       console.log('✅ Request submitted to backend:', response.data);
 

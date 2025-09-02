@@ -24,6 +24,7 @@ import {
   Lightbulb,
 } from '@mui/icons-material';
 import axios from 'axios';
+import { getApiUrl, API_CONFIG } from '../config/api';
 
 const AIAssistantPage = () => {
   const { t } = useTranslation();
@@ -97,7 +98,7 @@ const AIAssistantPage = () => {
 
     try {
       // Use enhanced AI chat with suggestions
-      const response = await axios.post('/api/ai/chat/enhanced', {
+      const response = await axios.post(getApiUrl(API_CONFIG.ENDPOINTS.AI_CHAT_ENHANCED), {
         message: inputMessage
       });
 

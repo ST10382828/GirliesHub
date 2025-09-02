@@ -34,6 +34,7 @@ import {
   Hub,
   Close,
 } from '@mui/icons-material';
+import { getApiUrl, API_CONFIG } from '../config/api';
 
 const DonationPage = () => {
   const [selectedAmount, setSelectedAmount] = useState('');
@@ -76,7 +77,7 @@ const DonationPage = () => {
   const fetchDonationStats = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/donations/stats');
+      const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.DONATIONS_STATS));
       if (response.ok) {
         const stats = await response.json();
         setDonationStats(stats);
@@ -237,7 +238,7 @@ const DonationPage = () => {
       // If BlockDAG payment method is selected, process through blockchain
       if (paymentMethod === 'blockdag') {
         // Create blockchain transaction using our working system
-        const blockchainResponse = await fetch('/api/blockchain/donation', {
+        const blockchainResponse = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.BLOCKCHAIN.DONATION), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -261,7 +262,7 @@ const DonationPage = () => {
       }
 
       // Send donation to backend API
-      const response = await fetch('/api/donations', {
+      const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.DONATIONS), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

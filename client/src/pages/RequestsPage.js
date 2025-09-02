@@ -26,6 +26,7 @@ import {
 import RequestFormModal from '../components/RequestFormModal';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
+import { getApiUrl, API_CONFIG } from '../config/api';
 
 const RequestsPage = () => {
   const { t } = useTranslation();
@@ -85,7 +86,7 @@ const RequestsPage = () => {
       }
 
       // Fetch from backend with authentication
-      const backendResponse = await axios.get('/api/requests', { headers });
+      const backendResponse = await axios.get(getApiUrl(API_CONFIG.ENDPOINTS.REQUESTS), { headers });
       console.log('Backend requests:', backendResponse.data);
       
       // Extract the requests array from the response
@@ -93,7 +94,7 @@ const RequestsPage = () => {
       
       // Also fetch from blockchain for verification data
       try {
-        const blockchainResponse = await axios.get('/api/blockchain/requests');
+        const blockchainResponse = await axios.get(getApiUrl(API_CONFIG.ENDPOINTS.BLOCKCHAIN.REQUESTS));
         console.log('Blockchain requests:', blockchainResponse.data);
         
         const blockchainRequests = blockchainResponse.data.requests || blockchainResponse.data;
@@ -152,7 +153,7 @@ const RequestsPage = () => {
   const handleDeleteRequest = async (requestId) => {
     if (window.confirm('Are you sure you want to delete this request?')) {
       try {
-        await axios.delete(`/api/requests/${requestId}`);
+        await axios.delete(getApiUrl(`${API_CONFIG.ENDPOINTS.REQUESTS}/${requestId}`));
         setRequests((requests || []).filter(request => request.id !== requestId));
         console.log('Request deleted successfully:', requestId);
       } catch (error) {
