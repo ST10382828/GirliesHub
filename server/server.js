@@ -17,12 +17,24 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(helmet());
 // Configure CORS to allow your Netlify domain
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://girlieshub.netlify.app',
+  process.env.ALLOWED_ORIGIN
+].filter(Boolean);
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000', // Local development
-    'https://your-netlify-app.netlify.app', // Replace with your actual Netlify URL
-    'https://*.netlify.app' // Allow all Netlify subdomains
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // Allow non-browser or same-origin requests
+
+    // Allow explicit list or any Netlify subdomain
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/[^.]+\.netlify\.app$/.test(origin);
+
+    if (isAllowed) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
