@@ -344,6 +344,9 @@ Click here to watch the GirliesHub application demo video
 
 [![Watch the demo](https://img.youtube.com/vi/Xop4gMLgbiw/0.jpg)](https://www.youtube.com/watch?v=Xop4gMLgbiw)
 
+## Presentation 📑
+[View Presentation (PDF)](./GirliesHub.pdf)
+
 ---
 
 **Built with ❤️ for women's empowerment in South Africa**
