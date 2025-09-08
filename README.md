@@ -1,6 +1,6 @@
-# EmpowerHub Hackathon Project
+# GirliesHub Project
 
-**EmpowerHub** - A comprehensive platform empowering South African women through integrated financial, safety, and hygiene support services with blockchain integration.
+**GirliesHub** - A comprehensive platform empowering South African women through integrated financial, safety, and hygiene support services with blockchain integration.
 
 ## 🚀 Project Overview
 
@@ -16,38 +16,70 @@ GirliesHub is a hackathon project that provides an integrated solution for women
 
 ```
 GilriesHub/
-├── client/                 # React frontend application
+├── client/                      # React frontend application
+│   ├── public/
 │   ├── src/
-│   │   ├── components/     # Reusable React components
+│   │   ├── blockchain/          # Frontend contract helpers
+│   │   │   └── contract.js
+│   │   ├── components/
+│   │   │   ├── LanguageSelector.js
 │   │   │   ├── NavBar.js
 │   │   │   ├── RequestFormModal.js
 │   │   │   └── WalletConnectButton.js
-│   │   ├── pages/          # Page components
-│   │   │   ├── HomePage.js
-│   │   │   ├── RequestsPage.js
+│   │   ├── config/
+│   │   │   └── api.js
+│   │   ├── contexts/
+│   │   │   └── AuthContext.js
+│   │   ├── i18n/
+│   │   │   ├── index.js
+│   │   │   └── locales/*.json
+│   │   ├── pages/
+│   │   │   ├── AboutPage.js
+│   │   │   ├── AIAssistantPage.js
+│   │   │   ├── DonationPage.js
 │   │   │   ├── FinancePage.js
 │   │   │   ├── GBVSupportPage.js
-│   │   │   ├── SanitaryAidPage.js
-│   │   │   ├── AIAssistantPage.js
-│   │   │   └── AboutPage.js
-│   │   ├── blockchain/     # Blockchain integration
-│   │   │   └── contract.js
-│   │   ├── App.js          # Main app component with routing
-│   │   └── index.js        # React entry point
-│   └── package.json        # Frontend dependencies
-├── server/                 # Node.js backend API
-│   ├── server.js          # Express server with API routes
-│   ├── blockchain.js      # Blockchain integration stubs
-│   ├── ai.js             # AI assistant integration stubs
-│   └── package.json       # Backend dependencies
-├── contracts/             # Solidity smart contracts
+│   │   │   ├── HomePage.js
+│   │   │   └── RequestsPage.js
+│   │   ├── App.js
+│   │   ├── index.css
+│   │   └── index.js
+│   └── package.json
+├── server/                      # Node.js backend API
+│   ├── blockdag/
+│   │   ├── consensus.js
+│   │   ├── core.js
+│   │   └── network.js
+│   ├── middleware/
+│   │   └── authFirebase.js
+│   ├── routes/
+│   │   └── shelters.js
+│   ├── services/
+│   │   ├── blockchainSync.js
+│   │   ├── dbToChainQueue.js
+│   │   └── firestoreService.js
+│   ├── utils/
+│   │   ├── crypto.js
+│   │   ├── fireAuthHelpers.js
+│   │   └── hash.js
+│   ├── ai.js
+│   ├── blockchain.js
+│   ├── firebase.js
+│   ├── server.js
+│   └── package.json
+├── contracts/
 │   └── EmpowerHubRequests.sol
-├── scripts/               # Contract deployment scripts
-│   └── deploy.js
-├── test/                  # Smart contract tests
+├── scripts/                    # Repo-level scripts
+│   ├── deploy.js
+│   ├── deploy-blockdag.js
+│   ├── exportData.js
+│   └── importData.js
+├── test/
+│   ├── blockdag-test.js
 │   └── EmpowerHubRequests.js
-├── hardhat.config.js      # Hardhat configuration
-└── package.json           # Root package.json for scripts
+├── hardhat.config.js
+├── env.example
+└── package.json                # Root scripts
 ```
 
 ## 🛠️ Technology Stack
@@ -80,8 +112,8 @@ GilriesHub/
 - **Migration Tools** - Data export/import capabilities
 - **Dual-Write Mode** - Optional immediate blockchain writes
 
-### Planned Integrations
-- **AI API** - Intelligent assistant capabilities
+### Status of Integrations
+- **AI API** - Basic endpoints implemented (`/api/ai/chat`, `/api/ai/chat/enhanced`)
 
 ## 🚀 Getting Started
 
@@ -148,13 +180,13 @@ cd server && npm run queue:worker
 cd server && npm run sync:blockchain
 ```
 
-**Export/Import Data:**
+**Export/Import Data (run from repo root):**
 ```bash
 # Export current data
-npm run migrate:export
+node scripts/exportData.js
 
 # Import data to Firestore
-cd server && node ../scripts/importData.js ../scripts/exports/your-export-file.json
+node scripts/importData.js scripts/exports/your-export-file.json
 ```
 
 ### Individual Commands
@@ -227,20 +259,37 @@ cd server && npm install
 
 ## 🔧 API Endpoints
 
-### Request Management
-- `GET /api/requests` - Fetch all requests
-- `POST /api/request` - Submit new request
+Base URL defaults to `http://localhost:5001`.
+
+### Health
+- `GET /api/health` - API health check
+- `GET /health` - Service health check
+
+### Requests
+- `GET /api/requests` - Fetch requests (Firestore-backed; optional auth for user context)
+- `GET /api/requests/all` - Fetch all including deleted (auth required)
+- `POST /api/requests` - Submit new request (preferred)
+- `POST /api/request` - Submit new request (legacy endpoint)
 - `GET /api/request/:id` - Get specific request
+- `DELETE /api/requests/:id` - Soft-delete a request (auth required)
 
 ### AI Assistant
-- `POST /api/ai/chat` - Chat with AI assistant
+- `POST /api/ai/chat` - Basic AI chat (auth required)
+- `POST /api/ai/chat/enhanced` - AI chat with suggestions
 
-### Blockchain Integration
-- `GET /api/blockchain/verify/:id` - Verify blockchain transaction
+### Blockchain
+- `GET /api/blockchain/verify/:id` - Verify a request or donation transaction
+- `GET /api/blockchain/requests` - List on-chain requests (mock/provider-backed)
+- `GET /api/blockchain/count` - Count of on-chain requests
+- `POST /api/blockchain/donation` - Store donation tx on chain
 
-### Statistics
-- `GET /api/stats` - Platform usage statistics
-- `GET /api/health` - API health check
+### Donations
+- `POST /api/donations` - Record a donation
+- `GET /api/donations/stats` - Donation statistics
+
+### Other
+- `GET /api/shelters` - Shelter resources
+- `GET /api/stats` - Platform statistics (auth required)
 
 ## 🎨 Design System
 
@@ -260,25 +309,20 @@ cd server && npm install
 - **Responsive navigation** (drawer on mobile)
 - **Material Design** principles
 
-## 🔮 Future Development
+## 🔮 Current Status & Roadmap
 
-### Phase 1 (Current Demo)
-- ✅ UI scaffold and navigation
-- ✅ Mock data and API stubs
-- ✅ Responsive design
-- ✅ Request submission flow
+### Implemented
+- ✅ UI scaffold, navigation, multi-language i18n
+- ✅ Firestore-backed requests with optional encryption and hashing
+- ✅ AI endpoints wired with `@google/generative-ai`
+- ✅ Donation flow and statistics
+- ✅ Queue worker and blockchain sync scaffolding
 
-### Phase 2 (Planned)
-- 🔄 Database integration
-- 🔄 Real AI API integration
-- 🔄 User authentication
-- 🔄 Advanced search and filtering
-
-### Phase 3 (Advanced)
-- 🔄 BlockDAG blockchain integration
-- 🔄 MetaMask wallet connection
-- 🔄 Smart contract deployment
-- 🔄 Decentralized data storage
+### In Progress / Planned
+- 🔄 Authentication-first UX in client
+- 🔄 Enhanced AI grounding and context
+- 🔄 BlockDAG end-to-end on-chain writes and reads in production
+- 🔄 Contract deployment and wallet UX polish
 
 ## 🚀 Deployment
 - **Frontend** → Vercel/Netlify/IPFS
@@ -293,9 +337,9 @@ cd server && npm install
 ## 🤝 Development Workflow
 
 ### Teammate Workflow
-- **UI teammates**: Only work in `/client/src/components` for your feature.
-- Use `blockchain/contract.js` functions (mocked now).
-- Do not edit blockchain code. Lead dev will replace stubs later.
+- **UI teammates**: Work in `/client/src/pages` and `/client/src/components`.
+- Use `client/src/blockchain/contract.js` helpers.
+- Avoid editing server blockchain internals unless assigned.
 
 ### Blockchain Developer Workflow
 - Implement contracts in `/contracts`
@@ -304,20 +348,19 @@ cd server && npm install
 
 ### For Team Members
 
-1. **Frontend Developers**: Work in `/client/src/pages` and `/client/src/components`
-2. **Backend Developers**: Implement real logic in `/server/` stub functions
-3. **Blockchain Developers**: Replace stub functions in `/server/blockchain.js`
-4. **AI Developers**: Implement real AI logic in `/server/ai.js`
+1. **Frontend Developers**: `/client/src/pages`, `/client/src/components`, i18n under `/client/src/i18n`
+2. **Backend Developers**: Implement logic in `/server/services`, routes in `/server/routes`
+3. **Blockchain Developers**: Work in `/contracts`, `/server/blockdag`, `/server/blockchain.js`
+4. **AI Developers**: Enhance `/server/ai.js` and client UX in `AIAssistantPage.js`
 
-### Current Stub Functions
+### Current Stub/Scaffolded Areas
 
-**Blockchain (`/server/blockchain.js`):**
-- `storeHashOnBlockchain()` - Currently returns mock transaction
-- `getTransactionProof()` - Currently returns mock proof
+**Blockchain (`/server/blockchain.js` and `/server/blockdag/*`):**
+- `storeHashOnBlockchain()` - Returns provider-backed/mock transaction depending on env
+- `getTransactionProof()` - Returns proof based on stored data/mocks
 
 **AI (`/server/ai.js`):**
-- `chatWithAI()` - Currently returns contextual mock responses
-- `analyzeSentiment()` - Currently returns mock sentiment analysis
+- `chatWithAI()` and `chatWithSuggestions()` - Minimal logic; extend as needed
 
 ## 🧪 Testing
 
