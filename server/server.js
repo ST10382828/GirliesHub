@@ -17,10 +17,15 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(helmet());
 // Configure CORS to allow your Netlify domain
+const envAllowedOriginRaw = process.env.ALLOWED_ORIGIN || process.env.CORS_ORIGIN;
+const envAllowedOrigin = envAllowedOriginRaw
+  ? envAllowedOriginRaw.trim().replace(/\/$/, '') // prevent trailing-slash mismatches
+  : null;
+
 const allowedOrigins = [
   'http://localhost:3000',
   'https://girlieshub.netlify.app',
-  process.env.ALLOWED_ORIGIN
+  envAllowedOrigin
 ].filter(Boolean);
 
 app.use(cors({
@@ -920,17 +925,21 @@ const server = app.listen(PORT, () => {
   console.log(`   GET  /api/stats`);
   
   // Start the blockchain queue worker
-  try {
-    const queueWorker = require('./services/dbToChainQueue');
-    console.log('🔄 Starting blockchain queue worker...');
-    queueWorker.start();
-    console.log('✅ Blockchain queue worker started successfully');
-    
-    // Store reference for graceful shutdown
-    server.queueWorker = queueWorker;
-  } catch (error) {
-    console.error('❌ Failed to start blockchain queue worker:', error);
-    console.log('⚠️  Blockchain writes may not work properly without the queue worker');
+  if (process.env.RUN_QUEUE_WORKER === 'true') {
+    try {
+      const queueWorker = require('./services/dbToChainQueue');
+      console.log('🔄 Starting blockchain queue worker...');
+      queueWorker.start();
+      console.log('✅ Blockchain queue worker started successfully');
+
+      // Store reference for graceful shutdown
+      server.queueWorker = queueWorker;
+    } catch (error) {
+      console.error('❌ Failed to start blockchain queue worker:', error);
+      console.log('⚠️  Blockchain writes may not work properly without the queue worker');
+    }
+  } else {
+    console.log('ℹ️  Blockchain queue worker not started (set RUN_QUEUE_WORKER=true to enable)');
   }
 });
 

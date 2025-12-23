@@ -331,7 +331,7 @@ const RequestsPage = () => {
                           <strong>Hash:</strong> {request.txHash?.slice(0, 20)}...
                         </Typography>
                         <Link
-                          href={`https://primordial.bdagscan.com/tx/${request.txHash}`}
+                          href={`https://bdagscan.com/awakening/tx/${request.txHash}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           sx={{ 

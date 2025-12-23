@@ -7,7 +7,7 @@ async function main() {
   }
 
   console.log("🚀 Deploying EmpowerHubRequests to BlockDAG testnet...");
-  console.log("Network:", process.env.BDAG_RPC_URL || "https://rpc.primordial.bdagscan.com");
+  console.log("Network:", process.env.BDAG_RPC_URL || "https://rpc.awakening.bdagscan.com");
   console.log("Chain ID: 1043");
   
   // Get deployer account
@@ -26,7 +26,7 @@ async function main() {
   
   console.log("✅ Contract deployed successfully!");
   console.log("📄 Contract Address:", contractAddress);
-  console.log("🔗 BlockDAG Explorer: https://primordial.bdagscan.com/address/" + contractAddress);
+  console.log("🔗 BlockDAG Explorer: https://bdagscan.com/awakening/address/" + contractAddress);
   console.log("");
   console.log("📝 Add this to your .env file:");
   console.log("CONTRACT_ADDRESS=" + contractAddress);

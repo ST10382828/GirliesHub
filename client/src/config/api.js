@@ -1,7 +1,7 @@
 // API Configuration for GirliesHub
 export const API_CONFIG = {
   // Backend URL - use environment variable in production, fallback to proxy in development
-  BASE_URL: process.env.REACT_APP_API_URL || '',
+  BASE_URL: (process.env.REACT_APP_API_URL || '').replace(/\/$/, ''),
   
   // API endpoints
   ENDPOINTS: {

@@ -295,7 +295,7 @@ if (!contractPath) {
 }
 
 // Initialize provider and contract
-const provider = new ethers.JsonRpcProvider(process.env.BDAG_RPC_URL || 'https://rpc.primordial.bdagscan.com');
+const provider = new ethers.JsonRpcProvider(process.env.BDAG_RPC_URL || 'https://rpc.awakening.bdagscan.com');
 const contractAddress = process.env.CONTRACT_ADDRESS;
 
 if (!contractAddress) {

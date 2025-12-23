@@ -1,9 +1,10 @@
 import { ethers } from 'ethers';
 
-// BlockDAG Testnet Configuration
-const BLOCKDAG_RPC_URL = 'https://rpc.primordial.bdagscan.com';
-const BLOCKDAG_CHAIN_ID = 1043;
-const CONTRACT_ADDRESS = '0x0b3CeBf2B0c6E09159E886958791e0eD762CE6CC';
+// BlockDAG Configuration (Awakening by default)
+const BLOCKDAG_RPC_URL = (process.env.REACT_APP_BDAG_RPC_URL || 'https://rpc.awakening.bdagscan.com').replace(/\/$/, '');
+const BLOCKDAG_CHAIN_ID = Number(process.env.REACT_APP_BDAG_CHAIN_ID || 1043);
+const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
+const BLOCKDAG_EXPLORER = (process.env.REACT_APP_BLOCKDAG_EXPLORER || 'https://bdagscan.com/awakening').replace(/\/$/, '');
 
 // Contract ABI (simplified for the functions we need)
 const CONTRACT_ABI = [
@@ -32,6 +33,10 @@ export async function connectWallet() {
       throw new Error('MetaMask is not installed');
     }
 
+    if (!CONTRACT_ADDRESS) {
+      throw new Error('Missing REACT_APP_CONTRACT_ADDRESS (set it in Netlify env vars)');
+    }
+
     // Request account access
     const accounts = await provider.send("eth_requestAccounts", []);
     const account = accounts[0];
@@ -58,14 +63,14 @@ export async function connectWallet() {
             method: 'wallet_addEthereumChain',
             params: [{
               chainId: `0x${BLOCKDAG_CHAIN_ID.toString(16)}`,
-              chainName: 'BlockDAG Testnet',
+              chainName: 'BlockDAG Awakening Testnet',
               nativeCurrency: {
                 name: 'BDAG',
                 symbol: 'BDAG',
                 decimals: 18
               },
               rpcUrls: [BLOCKDAG_RPC_URL],
-              blockExplorerUrls: ['https://primordial.bdagscan.com']
+              blockExplorerUrls: [BLOCKDAG_EXPLORER]
             }],
           });
         }
@@ -121,7 +126,7 @@ export async function storeRequestOnChain(requestData) {
       blockHash: receipt.blockHash,
       blockNumber: receipt.blockNumber,
       gasUsed: receipt.gasUsed.toString(),
-      network: 'BlockDAG Testnet',
+      network: 'BlockDAG Awakening Testnet',
       message: 'Request successfully stored on blockchain',
       requestHash: requestHash,
       requestType: requestType
