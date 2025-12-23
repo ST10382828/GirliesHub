@@ -327,8 +327,20 @@ module.exports = {
         throw new Error('No wallet configured - PRIVATE_KEY required for transactions');
       }
 
-      // Create request hash from request data
-      const requestHash = ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify(requestData)));
+      // Prefer canonical hash if provided (computed in server/utils/hash.js)
+      const isKeccakHash =
+        typeof requestData?.requestHash === 'string' &&
+        /^0x[0-9a-fA-F]{64}$/.test(requestData.requestHash);
+
+      // Back-compat: allow passing a raw hash string directly
+      const directHash =
+        typeof requestData === 'string' && /^0x[0-9a-fA-F]{64}$/.test(requestData)
+          ? requestData
+          : null;
+
+      const requestHash =
+        directHash ||
+        (isKeccakHash ? requestData.requestHash : ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify(requestData))));
       
       // Map request type to contract format
       const requestTypeMap = {
@@ -337,7 +349,9 @@ module.exports = {
         'Sanitary Aid': 'sanitary'
       };
       
-      const requestType = requestTypeMap[requestData.requestType] || 'finance';
+      const incomingType =
+        typeof requestData === 'object' && requestData !== null ? requestData.requestType : undefined;
+      const requestType = requestTypeMap[incomingType] || incomingType || 'finance';
       
       // Store on blockchain
       const contractWithSigner = contract.connect(wallet);
@@ -350,12 +364,12 @@ module.exports = {
         success: true,
         transactionId: receipt.hash,
         blockHash: receipt.blockHash,
-        requestId: requestData.id,
+        requestId: typeof requestData === 'object' && requestData !== null ? requestData.id : undefined,
         timestamp: new Date().toISOString(),
         gasUsed: receipt.gasUsed.toString(),
         blockNumber: receipt.blockNumber,
         confirmations: receipt.confirmations,
-        network: 'BlockDAG Testnet',
+        network: 'BlockDAG Awakening Testnet',
         message: 'Request successfully stored on blockchain',
         requestHash: requestHash,
         requestType: requestType
@@ -386,7 +400,14 @@ module.exports = {
   },
 
   async storeHashOnBlockchain(requestData) {
-    // Alias for storeRequestOnBlockchain for backward compatibility
+    // Backward compatibility:
+    // - storeHashOnBlockchain(hash, type)
+    // - storeHashOnBlockchain({ requestHash, requestType, ... })
+    if (typeof requestData === 'string') {
+      const requestHash = requestData;
+      const requestType = arguments.length > 1 ? arguments[1] : undefined;
+      return await module.exports.storeRequestOnBlockchain({ requestHash, requestType });
+    }
     return await module.exports.storeRequestOnBlockchain(requestData);
   },
 
