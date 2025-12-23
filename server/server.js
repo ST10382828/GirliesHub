@@ -25,6 +25,7 @@ const envAllowedOrigin = envAllowedOriginRaw
 const allowedOrigins = [
   'http://localhost:3000',
   'https://girlieshub.netlify.app',
+  'https://grilieshub.netlify.app',
   envAllowedOrigin
 ].filter(Boolean);
 
