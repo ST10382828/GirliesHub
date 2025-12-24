@@ -927,6 +927,18 @@ const server = app.listen(PORT, () => {
   
   // Start the blockchain queue worker
   if (process.env.RUN_QUEUE_WORKER === 'true') {
+    // Only start worker if PRIVATE_KEY looks valid; otherwise we'd mark queue items failed.
+    const pkRaw = process.env.PRIVATE_KEY ? String(process.env.PRIVATE_KEY) : '';
+    const pkClean = pkRaw.trim().replace(/^['"]|['"]$/g, '').replace(/\s+/g, '');
+    const pkNormalized = pkClean ? (pkClean.startsWith('0x') ? pkClean : `0x${pkClean}`) : '';
+    const hasValidPrivateKey = /^0x[0-9a-fA-F]{64}$/.test(pkNormalized);
+
+    if (!hasValidPrivateKey) {
+      console.error('❌ RUN_QUEUE_WORKER=true but PRIVATE_KEY is missing/invalid. Queue worker will NOT start.');
+      console.error('   Fix: set PRIVATE_KEY to 64 hex chars (optionally prefixed with 0x), no quotes/spaces.');
+      return;
+    }
+
     try {
       const queueWorker = require('./services/dbToChainQueue');
       console.log('🔄 Starting blockchain queue worker...');

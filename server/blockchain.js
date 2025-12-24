@@ -307,8 +307,22 @@ const contract = new ethers.Contract(contractAddress, contractArtifact.abi, prov
 // Create wallet instance for transactions (using private key from env)
 let wallet;
 if (process.env.PRIVATE_KEY) {
-  wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-  const contractWithSigner = contract.connect(wallet);
+  try {
+    let pk = String(process.env.PRIVATE_KEY);
+    // Render/CI sometimes includes quotes or whitespace; normalize defensively.
+    pk = pk.trim().replace(/^['"]|['"]$/g, '').replace(/\s+/g, '');
+    if (!pk.startsWith('0x')) pk = `0x${pk}`;
+
+    if (!/^0x[0-9a-fA-F]{64}$/.test(pk)) {
+      throw new Error('PRIVATE_KEY must be 64 hex chars (optionally prefixed with 0x)');
+    }
+
+    wallet = new ethers.Wallet(pk, provider);
+    console.log('✅ [BLOCKCHAIN] Wallet connected:', wallet.address);
+  } catch (error) {
+    wallet = null;
+    console.error('❌ [BLOCKCHAIN] Invalid PRIVATE_KEY. Blockchain writes disabled.', error.message);
+  }
 }
 
 module.exports = {
