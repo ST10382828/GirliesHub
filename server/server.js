@@ -889,6 +889,17 @@ app.get('/api/stats', authMiddleware, (req, res) => {
 });
 
 // 404 handler
+// Friendly root route (Render users often click the service URL)
+app.get('/', (req, res) => {
+  res.status(200).json({
+    service: 'GirliesHub API',
+    status: 'ok',
+    health: '/health',
+    apiHealth: '/api/health',
+    note: 'This is the backend API. Use the Netlify site for the frontend UI.'
+  });
+});
+
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint not found',
