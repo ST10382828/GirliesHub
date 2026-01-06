@@ -578,7 +578,7 @@ app.post('/api/ai/chat', authMiddleware, async (req, res) => {
     console.log('AI Chat request:', message);
 
     // Use simple AI chat
-    const aiResponse = await chatWithAI(message);
+    const aiResponse = await chatWithAI(message, req.user ? req.user.uid : 'anonymous');
 
     res.json({
       response: aiResponse,
@@ -608,7 +608,7 @@ app.post('/api/ai/chat/enhanced', async (req, res) => {
     console.log('AI Enhanced Chat request:', message);
 
     // Use enhanced chat with suggestions
-    const aiResponse = await chatWithSuggestions(message);
+    const aiResponse = await chatWithSuggestions(message, 'anonymous'); // Use anonymous session for public endpoint
     
     res.json(aiResponse);
 

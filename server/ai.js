@@ -48,18 +48,24 @@ Emergency contacts to mention when relevant:
 
 Remember: You're here to empower and support women in South Africa.`;
 
+// In-memory chat history store (simple implementation for demo)
+// In a real app, you'd use Redis or a database keyed by session ID
+const chatHistory = new Map();
+
 /**
  * Basic chat with AI assistant using Gemini API
  * @param {string} message - User message
+ * @param {string} sessionId - Optional session ID for history tracking
  * @returns {Promise<string>} - AI response
  */
-async function chatWithAI(message) {
-  console.log('🤖 [Gemini AI] Processing user message:', message);
+async function chatWithAI(message, sessionId = 'default') {
+  console.log(`🤖 [Gemini AI] Processing user message for session ${sessionId}:`, message);
   
   try {
-    // Create chat session
-    const chat = model.startChat({
-      history: [
+    // Get or initialize history for this session
+    let history = chatHistory.get(sessionId);
+    if (!history) {
+      history = [
         {
           role: "user",
           parts: [{ text: SYSTEM_PROMPT }],
@@ -67,15 +73,70 @@ async function chatWithAI(message) {
         {
           role: "model",
           parts: [{ text: "I understand my role as a GirliesHub AI assistant. I'm ready to help women in South Africa with financial empowerment, GBV support, and sanitary aid. How can I assist you today?" }],
-        },
-      ],
+        }
+      ];
+      chatHistory.set(sessionId, history);
+    }
+
+    // Safety Override Check (Pre-LLM)
+    // Detect immediate self-harm or severe emergency keywords to force a safety response
+    const emergencyKeywords = ['kill myself', 'suicide', 'drink bleach', 'end my life', 'hurt myself', 'die'];
+    const lowerMessage = message.toLowerCase();
+    
+    if (emergencyKeywords.some(keyword => lowerMessage.includes(keyword))) {
+      console.log('⚠️ Safety override triggered');
+      const safetyResponse = "I care about you and I want you to be safe. You are going through a crisis and need immediate support from a human. Please call 112 or 10111 right now. You can also call the GBV Command Centre at 0800 428 428 any time. Please reach out to them immediately.";
+      
+      // Update history manually so the model "knows" it said this
+      history.push({ role: "user", parts: [{ text: message }] });
+      history.push({ role: "model", parts: [{ text: safetyResponse }] });
+      
+      return safetyResponse;
+    }
+
+    // Create chat session with preserved history
+    const chat = model.startChat({
+      history: history,
     });
 
     // Send user message and get response
     const result = await chat.sendMessage(message);
     const response = await result.response;
-    const aiResponse = response.text();
+    let aiResponse = response.text();
+
+    // Clean up response (remove markdown asterisks for cleaner UI)
+    aiResponse = aiResponse.replace(/\*\*/g, '').replace(/\*/g, '-');
+
+    // Add contextual links based on content
+    const lowerResponse = aiResponse.toLowerCase();
+    const links = [];
+
+    if (lowerResponse.includes('shelter') || lowerResponse.includes('gbv') || lowerResponse.includes('safety')) {
+      links.push('\n\n🔗 [Find Safe Shelters](/gbv-support)');
+    }
+    if (lowerResponse.includes('finance') || lowerResponse.includes('money') || lowerResponse.includes('investment') || lowerResponse.includes('business')) {
+      links.push('\n\n🔗 [Financial Resources](/finance)');
+    }
+    if (lowerResponse.includes('sanitary') || lowerResponse.includes('pads') || lowerResponse.includes('tampons') || lowerResponse.includes('donation')) {
+      links.push('\n\n🔗 [Find Donation Bins](/sanitary-aid)');
+    }
+    if (lowerResponse.includes('emergency') || lowerResponse.includes('police') || lowerResponse.includes('10111')) {
+      links.push('\n\n🚨 [Emergency Contacts](/gbv-support)'); // Removed hash anchor as simple routing is safer
+    }
+
+    // Append unique links to response
+    if (links.length > 0) {
+      aiResponse += [...new Set(links)].join(' ');
+    }
     
+    // Update our local history with the new turn
+    // (Note: startChat takes history as input but doesn't automatically sync it back to our external store unless we do it)
+    // Actually, the `chat` object maintains its own history state during the object's lifecycle,
+    // but since we recreate `startChat` every request (stateless server), we must re-feed the updated history.
+    // We need to manually append the new turn to our `history` array for the NEXT request.
+    const newHistory = await chat.getHistory();
+    chatHistory.set(sessionId, newHistory);
+
     console.log('✅ [Gemini AI] Generated response successfully');
     return aiResponse;
     
@@ -102,11 +163,17 @@ async function chatWithAI(message) {
  */
 async function generateResponseSuggestions(context) {
   try {
-    const prompt = `Based on this conversation context, suggest 3 helpful follow-up questions or responses that would be useful for a user seeking support on our platform. Keep suggestions short and relevant.
-
-Context: "${context}"
-
-Return only the suggestions, one per line, without numbering or formatting.`;
+    const prompt = `Based on this conversation context, suggest 3 short, relevant options for what the USER might say next.
+    
+    Rules:
+    - Write from the USER's perspective (e.g., "Where can I find help?", "Tell me more")
+    - Keep them under 10 words each
+    - Do NOT suggest responses for the AI to say
+    - Do NOT use asterisks, numbering, or quotes
+    
+    Context: "${context}"
+    
+    Return only the 3 lines of text.`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -144,10 +211,10 @@ function getDefaultSuggestions() {
  * @param {string} message - User message
  * @returns {Promise<Object>} - AI response with suggestions
  */
-async function chatWithSuggestions(message) {
+async function chatWithSuggestions(message, sessionId) {
   try {
     // Get AI response
-    const aiResponse = await chatWithAI(message);
+    const aiResponse = await chatWithAI(message, sessionId);
     
     // Generate suggestions based on context
     const suggestions = await generateResponseSuggestions(message);
