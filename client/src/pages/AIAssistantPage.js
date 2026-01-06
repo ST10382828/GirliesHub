@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -14,6 +15,7 @@ import {
   Chip,
   Alert,
   Snackbar,
+  Link,
 } from '@mui/material';
 import {
   SmartToy,
@@ -47,6 +49,41 @@ const AIAssistantPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const messagesEndRef = useRef(null);
+
+  // Helper to parse links in message text: [Link Label](/path)
+  const renderMessageText = (text) => {
+    if (!text) return null;
+    
+    // Split by markdown link pattern: [Label](Url)
+    const parts = text.split(/(\[.*?\]\(.*?\))/g);
+    
+    return parts.map((part, index) => {
+      const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+      if (linkMatch) {
+        const [, label, path] = linkMatch;
+        return (
+          <Link
+            key={index}
+            component={RouterLink}
+            to={path}
+            sx={{
+              color: 'inherit',
+              textDecoration: 'underline',
+              fontWeight: 'bold',
+              mx: 0.5,
+              '&:hover': {
+                color: 'secondary.light',
+                opacity: 0.8
+              }
+            }}
+          >
+            {label}
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
 
   const quickQuestions = [
     t('aiAssistant.quickQuestions.questions.financialSeminars') || 'How can I find financial seminars?',
@@ -277,8 +314,8 @@ const AIAssistantPage = () => {
                     borderTopRightRadius: message.sender === 'user' ? 0 : 2,
                   }}
                 >
-                  <Typography variant="body1" sx={{ lineHeight: 1.5 }}>
-                    {message.text}
+                  <Typography variant="body1" sx={{ lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>
+                    {renderMessageText(message.text)}
                   </Typography>
                   
                   {/* Show suggestions if available */}
