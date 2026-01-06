@@ -1,7 +1,16 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Initialize Gemini AI - using the valid API key directly
-const genAI = new GoogleGenerativeAI('AIzaSyCca7_4PZMY9uBa5BLvNLWaGR_kiQFMoCA');
+// Initialize Gemini AI - using environment variable
+// Log API key status for debugging (masked)
+const apiKey = process.env.GEMINI_API_KEY;
+console.log("Gemini key prefix:", apiKey ? apiKey.slice(0, 6) : "undefined");
+console.log("Gemini key length:", apiKey ? apiKey.length : 0);
+
+if (!apiKey) {
+  console.error("❌ GEMINI_API_KEY is missing from environment variables");
+}
+
+const genAI = new GoogleGenerativeAI(apiKey || "");
 
 // Configure the model
 const model = genAI.getGenerativeModel({ 

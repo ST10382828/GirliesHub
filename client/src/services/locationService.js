@@ -206,7 +206,7 @@ class LocationService {
         },
         {
           enableHighAccuracy: true,
-          timeout: 10000,
+          timeout: 20000, // Increased to 20 seconds to prevent premature timeouts
           maximumAge: 300000 // 5 minutes
         }
       );

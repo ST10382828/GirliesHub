@@ -34,7 +34,8 @@ export async function connectWallet() {
     }
 
     if (!CONTRACT_ADDRESS) {
-      throw new Error('Missing REACT_APP_CONTRACT_ADDRESS (set it in Netlify env vars)');
+      console.warn('Missing REACT_APP_CONTRACT_ADDRESS - Wallet connection will be simulation only');
+      // throw new Error('Missing REACT_APP_CONTRACT_ADDRESS (set it in Netlify env vars)');
     }
 
     // Request account access
@@ -44,8 +45,10 @@ export async function connectWallet() {
     // Get signer
     signer = await provider.getSigner();
     
-    // Initialize contract
-    contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+    // Initialize contract if address is available
+    if (CONTRACT_ADDRESS) {
+      contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+    }
     
     // Check if we're on the correct network
     const network = await provider.getNetwork();
